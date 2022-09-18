@@ -13,6 +13,11 @@ import { NavbarHomeComponent } from './components/navbar-home/navbar-home.compon
 import { LoginHomeComponent } from './components/login-home/login-home.component';
 import { RegisterHomeComponent } from './components/register-home/register-home.component';
 import { NavbarAdminComponent } from './components/navbar-admin/navbar-admin.component';
+import { CardHomeComponent } from './components/card-home/card-home.component';
+import { NavbarUserHomeComponent } from './components/navbar-user-home/navbar-user-home.component';
+import { UserHomeComponent } from './components/user-home/user-home.component';
+import { NavbarAdminHomeComponent } from './components/navbar-admin-home/navbar-admin-home.component';
+import { AdminHomeComponent } from './components/admin-home/admin-home.component';
 
 
 @NgModule({
@@ -23,7 +28,12 @@ import { NavbarAdminComponent } from './components/navbar-admin/navbar-admin.com
     NavbarHomeComponent,
     LoginHomeComponent,
     RegisterHomeComponent,
-    NavbarAdminComponent
+    NavbarAdminComponent,
+    CardHomeComponent,
+    NavbarUserHomeComponent,
+    UserHomeComponent,
+    NavbarAdminHomeComponent,
+    AdminHomeComponent
   ],
   imports: [
     BrowserModule,
