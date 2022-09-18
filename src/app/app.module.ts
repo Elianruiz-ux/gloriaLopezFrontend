@@ -18,6 +18,7 @@ import { NavbarUserHomeComponent } from './components/navbar-user-home/navbar-us
 import { UserHomeComponent } from './components/user-home/user-home.component';
 import { NavbarAdminHomeComponent } from './components/navbar-admin-home/navbar-admin-home.component';
 import { AdminHomeComponent } from './components/admin-home/admin-home.component';
+import { FooterComponent } from './components/footer/footer.component';
 
 
 @NgModule({
@@ -33,7 +34,8 @@ import { AdminHomeComponent } from './components/admin-home/admin-home.component
     NavbarUserHomeComponent,
     UserHomeComponent,
     NavbarAdminHomeComponent,
-    AdminHomeComponent
+    AdminHomeComponent,
+    FooterComponent
   ],
   imports: [
     BrowserModule,
