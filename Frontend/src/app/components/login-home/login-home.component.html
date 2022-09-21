@@ -1,0 +1,16 @@
+<app-navbar-home></app-navbar-home>
+<div class="container">
+    <div class="login">
+      <form class="login__form" [formGroup]="angForm" (ngSubmit)="postdata(angForm)">
+        <h1>Iniciar Sesión</h1>
+        <label for="correo">Correo Electrónico:</label>
+        <input type="email" class="txt" id="correo" name="correo" formControlName="correo" placeholder="Ingrese su correo" required>
+  
+        <label for="contraseña">Contraseña:</label>
+        <input type="password" class="txt" id="contraseña" name="contraseña" formControlName="contraseña" placeholder="Ingrese su contraseña" required>
+        <input type="submit" class="btn" value="Iniciar Sesión">
+        <span>¿No tienes una cuenta? <a routerLink="/registro">Registrate aquí</a></span>
+      </form>
+    </div>
+  
+  </div>

@@ -1,0 +1,22 @@
+.container{
+    margin: 0;
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    box-shadow: 1px 1px 10px rgba(235, 29, 53, 0.522);
+    
+}
+
+footer{
+    background-color: rgb(255, 255, 255);
+    color: rgba(235, 29, 53, 0.699);   
+    display: flex;
+    justify-content: center;
+}
+
+.footer__ul__item {
+    list-style: none;
+}
+
+
+
