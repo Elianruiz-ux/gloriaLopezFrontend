@@ -1,53 +1,53 @@
 <app-navbar-home></app-navbar-home>
 <div class="container">
     <div class="registro">
-      <form class="registro__form" action="" method="POST">
+      <form class="registro__form" [formGroup]="angForm" (ngSubmit)="postdata(angForm)">
         <h1>Registrarse</h1>
         <div>
 
             <div class="columna">            
-                <label for="UserName"><span>*</span>Nombre</label>
-                <input type="text" class="txt" id="UserName" name="UserName" placeholder="Ingrese nombre" required>
+                <label for="nombre"><span>*</span>Nombre</label>
+                <input type="text" class="txt" id="nombre" name="nombre" formControlName="nombre" placeholder="Ingrese nombre" required>
             </div>
         
             <div class="columna">
-                <label for="UserLastName"><span>*</span>Apellido</label>
-                <input type="text" class="txt" id="UserLastName" name="UserLastName" placeholder="Ingrese su apellido" required>    
+                <label for="apellido"><span>*</span>Apellido</label>
+                <input type="text" class="txt" id="apellido" name="apellido" formControlName="apellido" placeholder="Ingrese su apellido" required>    
             </div>
         </div>
             <div>
                 <div class="columna">
                     <label for="documento"><span>*</span>Documento</label>
-                    <input type="text" class="txt" id="documento" name="documento" placeholder="Ingrese su documento" required>
+                    <input type="text" class="txt" id="documento" name="documento" formControlName="documento" placeholder="Ingrese su documento" required>
                 </div>
         
                 <div class="columna">
-                    <label for="celphone"><span>*</span>Número de Celular</label>
-                    <input type="text" class="txt" id="celphone" name="celphone" placeholder="Ingrese su número de celular" required>
+                    <label for="celular"><span>*</span>Número de Celular</label>
+                    <input type="text" class="txt" id="celular" name="celular" formControlName="celular" placeholder="Ingrese su número de celular" required>
                 </div>
             </div>
   
         <div>
             <div class="columna">
-                <label for="email"><span>*</span>Correo Electrónico</label>
-                <input type="email" class="txt" id="email" name="email" placeholder="Ingrese su correo" required>
+                <label for="correo"><span>*</span>Correo Electrónico</label>
+                <input type="email" class="txt" id="correo" name="correo" formControlName="correo" placeholder="Ingrese su correo" required>
             </div>
 
             <div class="columna">
-                <label for="email"><span>*</span>Confirmar Correo Electrónico</label>
-                <input type="email" class="txt" id="email" name="email" placeholder="Confirme su correo" required>
+                <label for="confirmarCorreo"><span>*</span>Confirmar Correo Electrónico</label>
+                <input type="email" class="txt" id="confirmarCorreo" name="confirmarCorreo" formControlName="confirmarCorreo" placeholder="Confirme su correo" required>
             </div>
         </div>
 
         <div>
             <div  class="columna">
-                <label for="password"><span>*</span>Contraseña</label>
-                <input type="password" class="txt" id="password" name="password" placeholder="Ingrese su contraseña" required>
+                <label for="contraseña"><span>*</span>Contraseña</label>
+                <input type="password" class="txt" id="contraseña" name="contraseña" formControlName="contraseña" placeholder="Ingrese su contraseña" required>
             </div>
 
             <div  class="columna">
-                <label for="confirmPassword"><span>*</span>Confirmar Contraseña</label>
-                <input type="password" class="txt" id="confirmPassword" name="confirmPassword" placeholder="Confirme su contraseña" required>        
+                <label for="confirmarContraseña"><span>*</span>Confirmar Contraseña</label>
+                <input type="password" class="txt" id="confirmarContraseña" name="confirmarContraseña" formControlName="confirmarContraseña" placeholder="Confirme su contraseña" required>        
             </div>
         </div>
 

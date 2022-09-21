@@ -6,13 +6,18 @@
     box-shadow: 1px 1px 4px rgba(235, 29, 53, 0.522);
     display: flex;
     justify-content: space-between;
+    
+}
+
+a{
+    cursor: pointer;
 }
 
 .navbar-item {
     text-decoration: none;
     color: rgba(235, 29, 53, 0.522);
     font-size: 16px;
-
+    
 }
 
 .navbar-item:hover{
