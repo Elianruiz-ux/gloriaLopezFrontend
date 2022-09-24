@@ -8,6 +8,7 @@ import { LoginHomeComponent } from "./components/login-home/login-home.component
 import { RegisterHomeComponent } from "./components/register-home/register-home.component";
 import { UserHomeComponent } from "./components/user-home/user-home.component";
 import { AdminHomeComponent } from "./components/admin-home/admin-home.component";
+import { ContactComponent } from "./components/contact/contact.component";
 import { GuardGuard } from "./guard.guard";
 
 const routes: Routes = [
@@ -17,6 +18,7 @@ const routes: Routes = [
   {path: 'registro', component: RegisterHomeComponent},
   {path: 'userhome', component: UserHomeComponent, canActivate:[GuardGuard]},
   {path: 'adminhome', component: AdminHomeComponent},
+  {path: 'contact', component: ContactComponent},
   {path: '**', pathMatch: 'full', redirectTo: 'home'}
 ];
 
