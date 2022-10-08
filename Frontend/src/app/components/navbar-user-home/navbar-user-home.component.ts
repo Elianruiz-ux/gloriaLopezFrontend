@@ -8,23 +8,7 @@ import { ApiService } from 'src/app/api.service';
 })
 export class NavbarUserHomeComponent implements OnInit {
 
-  logoutbtn: boolean;
-
-  constructor(private dataService: ApiService){
-
-
-    if(this.dataService.isLoggedIn()){
-      console.log("loggedin");
-      this.logoutbtn = true
-    }else{ 
-      this.logoutbtn = false
-    }
-  }
-
-  logout(){
-    this.dataService.deleteToken();
-    window.location.href = window.location.href;
-  }
+  constructor() { }
   ngOnInit(): void {
   }
 

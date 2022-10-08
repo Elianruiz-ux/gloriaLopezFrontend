@@ -8,6 +8,20 @@
     justify-content: space-between;
 }
 
+.navbar-buttons ul{
+    list-style: none;
+}
+
+.navbar-menu > li{
+	position: relative;
+	display: inline-block;
+}
+
+.navbar-menu > li > a{
+    display: block;
+	padding: 5px 16px;
+}
+
 .navbar-item {
     text-decoration: none;
     color: rgba(235, 29, 53, 0.522);
@@ -19,10 +33,46 @@
     color: rgba(235, 29, 53, 0.699);
 }
 
-.navbar-buttons{
-    padding-top: 5px;
+.navbar-submenu{
+	position: absolute;
+	background: white;
+	width: 100%;
+	visibility: hidden;
+	opacity: 0;
+	transition: opacity .5s;
+    box-shadow: 1px 1px 4px rgba(235, 29, 53, 0.522);
+    border-radius: 5px;
+
 }
 
-.navbar-buttons > .navbar-item:first-child{
-    padding-right: 16px ;
+.navbar-submenu li a{
+	display: block;
+	padding: 5px;
+	color: rgba(235, 29, 53, 0.522);
+	text-decoration: none;
+}
+
+.navbar-submenu li a:hover{
+    color: rgba(235, 29, 53, 0.722);
+    background-color: rgba(235, 29, 53, 0.122);
+}
+
+li:hover .navbar-submenu{
+	visibility: visible;
+	opacity: 1;
+}
+
+.login{
+    border: 1px solid rgba(235, 29, 53, 0.522);
+    border-radius: 5px;
+}
+.registro{
+    background-color: rgba(235, 29, 53, 0.522);
+    color: white;
+    border-radius: 5px;
+    margin-left: 16px;
+}
+
+.registro:hover{
+    color: rgba(245, 245, 245, 0.922);
 }

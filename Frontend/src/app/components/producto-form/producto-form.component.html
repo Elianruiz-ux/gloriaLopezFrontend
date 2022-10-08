@@ -1,0 +1,62 @@
+<app-navbar-admin-home></app-navbar-admin-home>
+
+<div class="container">
+    <div class="registro">
+      <form class="registro__form">
+        <h1>Registrar producto</h1>
+
+            <div class="columna">            
+                <label for="id_producto"><span>*</span>Id del producto</label>
+                <input type="text" class="txt" id="id_producto" name="id_producto" formControlName="id_producto" placeholder="Ingrese el id del producto" required>
+            </div>
+        
+            <div class="columna">
+                <label for="nombre_producto"><span>*</span>Nombre del producto</label>
+                <input type="text" class="txt" id="nombre_producto" name="nombre_producto" formControlName="nombre_producto" placeholder="Ingrese el nombre" required>    
+            </div>
+
+            <div class="columna">
+                <label for="precio_producto"><span>*</span>Precio del producto</label>
+                <input type="text" class="txt" id="precio_producto" name="precio_producto" formControlName="precio_producto" placeholder="Ingrese el precio" required>
+            </div>
+
+            <div class="columna">
+                <label for="img"><span>*</span>Imagen del producto</label>
+                <input type="file" class="txt" id="img" name="img" formControlName="img" placeholder="Ingrese el precio" required>
+            </div>
+
+        <input type="submit" class="btn" value="Registrar">
+      </form>
+    </div>
+  
+
+    <div class="lista">
+        <div class="lista__contenido">
+            <table class="content-table">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>NOMBRE</th>
+                        <th>PRECIO</th>
+                        <th>IMAGEN</th>
+                        <th></th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>1</td>
+                        <td>peinilla</td>
+                        <td>precio</td>
+                        <td>img</td>
+                        <td><input class="editar" type="button" value="Editar"></td>
+                        <td><input class="eliminar" type="button" value="Eliminar"></td>
+                    </tr>
+                   
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+  </div>
+

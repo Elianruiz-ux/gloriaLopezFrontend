@@ -22,6 +22,7 @@ import { NavbarAdminHomeComponent } from './components/navbar-admin-home/navbar-
 import { AdminHomeComponent } from './components/admin-home/admin-home.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { ContactComponent } from './components/contact/contact.component';
+import { ProductoFormComponent } from './components/producto-form/producto-form.component';
 
 
 @NgModule({
@@ -39,7 +40,8 @@ import { ContactComponent } from './components/contact/contact.component';
     NavbarAdminHomeComponent,
     AdminHomeComponent,
     FooterComponent,
-    ContactComponent
+    ContactComponent,
+    ProductoFormComponent
   ],
   imports: [
     BrowserModule,
