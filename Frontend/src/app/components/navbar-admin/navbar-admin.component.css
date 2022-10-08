@@ -8,6 +8,10 @@
     justify-content: space-between;
 }
 
+a{
+    cursor: pointer;
+}
+
 .navbar-item {
     text-decoration: none;
     color: rgba(235, 29, 53, 0.522);

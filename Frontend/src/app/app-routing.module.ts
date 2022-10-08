@@ -18,7 +18,7 @@ const routes: Routes = [
   {path: 'registro', component: RegisterHomeComponent},
   {path: 'adminhome', component: AdminHomeComponent},
   {path: 'contact', component: ContactComponent},
-  {path: 'producto', component: ProductoFormComponent},
+  {path: 'inventario', component: ProductoFormComponent},
   {path: 'user-home', component: UserHomeComponent},
   {path: '**', pathMatch: 'full', redirectTo: 'home'}
 ];
