@@ -1,4 +1,6 @@
+import { ProveedorService, Proveedor} from './../../SERVICES/proveedor.service';
 import { Component, OnInit } from '@angular/core';
+
 
 import { FormGroup, FormControl, FormBuilder, Validators, NgForm } from '@angular/forms';
 import { first } from 'rxjs/operators';
@@ -13,9 +15,22 @@ import { HttpClientModule } from '@angular/common/http';
 })
 export class ProductoFormComponent implements OnInit {
 
-  constructor() { }
+  //Variable
+ ListarProveedor: Proveedor[] = []; 
+   
+  constructor(private ProveedorService:ProveedorService) { }
   ngOnInit(): void {
+    this.listarProvedores();
   }
 
+  listarProvedores(){
+    this.ProveedorService.getProveedor().subscribe(
+      res=>{
+        console.log(res);
+        this.ListarProveedor= <any>res;
+      }, 
+      err => console.log(err)
+    );
+  }
 
 }

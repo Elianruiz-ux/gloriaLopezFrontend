@@ -1,1 +1,31 @@
 <app-navbar-admin-home></app-navbar-admin-home>
+<div class="container">
+    <p>Lista Provedores</p>
+    <button type="button" class="btn btn-dark">Agregar</button>
+        <div class="lista">
+            <div class="lista__contenido">
+                <table class="content-table">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>NOMBRE</th>
+                            <th>TELEFONO</th>
+                            <th>DIRECCION</th>
+                            <th>CORREO</th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                <tbody *ngFor="let Proveedor of ListarProveedor">
+                        <td>{{Proveedor.IDENTIFICACION_PROVEEDOR}}</td>
+                        <td>{{Proveedor.NOMBRE_PROVEEDOR}}</td>
+                        <td>{{Proveedor.TELEFONO}}</td>
+                        <td>{{Proveedor.CORREO}}</td>
+                        <td>{{Proveedor.DIRECCION}}</td>
+                        <td><input class="editar" type="button" value="Editar"></td>
+                        <td><input (click) = "deleteProveedor(Proveedor.IDENTIFICACION_PROVEEDOR)" 
+                            class="eliminar" type="button" value="Eliminar"></td>
+                </tbody>
+                </table>
+            </div>
+        </div>
+    </div>

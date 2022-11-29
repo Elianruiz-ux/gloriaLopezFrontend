@@ -30,25 +30,26 @@
     </div>
   
 
-    <div class="lista">
-        <div class="lista__contenido">
-            <table class="content-table">
+    <div class="lista" >
+        <div class="lista__contenido" >
+            <table class="content-table" >
                 <thead>
                     <tr>
                         <th>ID</th>
                         <th>NOMBRE</th>
-                        <th>PRECIO</th>
-                        <th>IMAGEN</th>
-                        <th></th>
+                        <th>TELEFONO</th>
+                        <th>DIRECCION</th>
+                        <th>CORREO</th>
                         <th></th>
                     </tr>
                 </thead>
-                <tbody>
-                    <tr>
-                        <td>1</td>
-                        <td>peinilla</td>
-                        <td>precio</td>
-                        <td>img</td>
+                <tbody *ngFor= "let Proveedor of ListarProveedor">
+                    <tr >
+                        <td>{{Proveedor.IDENTIFICACION_PROVEEDOR}}</td>
+                        <td>{{Proveedor.NOMBRE_PROVEEDOR}}</td>
+                        <td>{{Proveedor.TELEFONO}}</td>
+                        <td>{{Proveedor.CORREO}}</td>
+                        <td>{{Proveedor.DIRECCION}}</td>
                         <td><input class="editar" type="button" value="Editar"></td>
                         <td><input class="eliminar" type="button" value="Eliminar"></td>
                     </tr>

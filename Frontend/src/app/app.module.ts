@@ -24,7 +24,6 @@ import { FooterComponent } from './components/footer/footer.component';
 import { ContactComponent } from './components/contact/contact.component';
 import { ProductoFormComponent } from './components/producto-form/producto-form.component';
 
-
 @NgModule({
   declarations: [
     AppComponent,
