@@ -23,6 +23,9 @@ import { AdminHomeComponent } from './components/admin-home/admin-home.component
 import { FooterComponent } from './components/footer/footer.component';
 import { ContactComponent } from './components/contact/contact.component';
 import { ProductoFormComponent } from './components/producto-form/producto-form.component';
+import { ProveedorAdminComponent } from './components/proveedor-admin/proveedor-admin.component';
+import { EditarAdminComponent } from './components/editar-admin/editar-admin.component';
+import { EmpleadoComponent } from './components/empleado/empleado.component';
 
 @NgModule({
   declarations: [
@@ -40,7 +43,10 @@ import { ProductoFormComponent } from './components/producto-form/producto-form.
     AdminHomeComponent,
     FooterComponent,
     ContactComponent,
-    ProductoFormComponent
+    ProductoFormComponent,
+    ProveedorAdminComponent,
+    EditarAdminComponent,
+    EmpleadoComponent
   ],
   imports: [
     BrowserModule,

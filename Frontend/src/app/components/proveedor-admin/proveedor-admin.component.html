@@ -3,25 +3,26 @@
 <div class="container">
     <div class="registro">
       <form class="registro__form">
-        <h1>Registrar producto</h1>
+        <h1>Registrar proveedor</h1>
         <div class="group">
-            <input type="txt" required="required" name="id_producto" formControlName="id_producto" /><span class="highlight"></span><span
-                class="bar"></span>
-            <label>Id del producto</label>
-        </div>
-        <div class="group">
-            <input type="txt" required="required" name="nombre_producto" formControlName="nombre_producto" /><span class="highlight"></span><span
+            <input type="txt" required="required" name="nombre" formControlName="nombre" /><span class="highlight"></span><span
                 class="bar"></span>
             <label>Nombre del producto</label>
         </div>
         <div class="group">
-            <input type="number" required="required" name="precio_producto" formControlName="precio_producto" /><span class="highlight"></span><span
+            <input type="number" required="required" name="telefono" formControlName="telefono" /><span class="highlight"></span><span
                 class="bar"></span>
-            <label>Precio del producto</label>
+            <label>Telefono</label>
         </div>
         <div class="group">
-            <input type="file" required="required" name="img" formControlName="img" /><span class="highlight"></span><span
+            <input type="email" required="required" name="correo" formControlName="correo" /><span class="highlight"></span><span
                 class="bar"></span>
+            <label>Correo</label>
+        </div>
+        <div class="group">
+            <input type="text" required="required" name="dirrecion" formControlName="dirrecion" /><span class="highlight"></span><span
+                class="bar"></span>
+            <label>Dirreción</label>
         </div>
 
         <input type="submit" class="btn" value="Registrar">
@@ -36,14 +37,15 @@
                     <tr>
                         <th>ID</th>
                         <th>NOMBRE</th>
-                        <th>PRECIO</th>
-                        <th>IMAGEN</th>
+                        <th>TELEFONO</th>
+                        <th>CORREO</th>
+                        <th>DIRECCIÓN</th>
                         <th colspan="2"></th>
                     </tr>
                 </thead>
                 <tbody >
-                    <!-- *ngFor="let Proveedor of ListarProveedor" -->
                     <tr >
+                        <!-- *ngFor="let Proveedor of ListarProveedor" -->
                         <!-- <td>{{Proveedor.IDENTIFICACION_PROVEEDOR}}</td>
                         <td>{{Proveedor.NOMBRE_PROVEEDOR}}</td>
                         <td>{{Proveedor.TELEFONO}}</td>
@@ -57,13 +59,16 @@
                         <td>s</td>
                         <td>da</td>
                         <td>asd</td>
+                        <td>asd</td>
                         <td><input class="editar" type="button" value="Editar"></td>
                         <td><input class="eliminar" type="button" value="Eliminar"></td>
+                     
                     </tr>
                     <tr>
                         <td>a</td>
                         <td>s</td>
                         <td>da</td>
+                        <td>asd</td>
                         <td>asd</td>
                         <td><input class="editar" type="button" value="Editar"></td>
                         <td><input class="eliminar" type="button" value="Eliminar"></td>

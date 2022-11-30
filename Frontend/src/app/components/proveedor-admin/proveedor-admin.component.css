@@ -1,28 +1,31 @@
 .container{
     margin: 20px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
   }
 
-  .administrador{
+ 
+  .registro{
     box-shadow: 1px 1px 4px rgba(235, 29, 53, 0.522);
-    width: 30%;
-    height: 50%;
-    margin: 5% auto;
-    padding: 20px;
+    width: 80%;
+    height: 100%;
+    margin: 1.8% auto;
+    padding: 10px;
     display: flex;
     justify-content: center;
     border-radius: 5px;
   }
 
-  .administrador__form h1{
+  .registro__form h1{
     display: flex;
     justify-content: center;
     margin: 10px 0 10px 0;
   }
 
-  .administrador__form{
+  .registro__form{
     display: flex;
     flex-direction: column;
-
+    
   }
 
   div input:focus{
@@ -31,7 +34,7 @@
  
 .group {
     position: relative;
-    margin: 10% 0;
+    margin: 5% 0;
   }
  
   .group textarea {
@@ -97,8 +100,8 @@
 
   }
 
-
   
+
   
 .btn{
     border: none;
@@ -115,9 +118,80 @@
     color: white;
   }
 
-  @media (max-width: 900px) {
-    .administrador{
-      display: block;
-      width: 100%;
+
+
+
+/* Lista */
+
+.content-table { 
+  border-collapse: collapse;
+  border-radius: 10px;
+  margin: 25px auto; 
+  min-width: 100%; 
+  box-shadow: 1px 1px 4px rgba(235, 29, 53, 0.522);
+  justify-content: center;
+}
+
+.content-table thead tr { 
+  background-color: rgba(235, 29, 53, 0.699); 
+  color: #ffffff; 
+  text-align: middle; 
+  
+}
+
+
+
+.content-table th, .content-table td {
+   padding: 12px; 
+   font-weight: 100;
+   margin: auto;
+}
+
+.content-table tbody tr:nth-of-type(even) { 
+  background-color: rgba(235, 29, 53, 0.1); 
+} 
+
+.editar{
+  border: none;
+  padding: 8px 15px;
+  border-radius: 5px;
+  color: white;
+  background-color: rgba(235, 29, 53, 0.522);
+  cursor: pointer;
+  font-size: 1em;
+}
+
+.editar:hover{
+  background-color: rgba(235, 29, 53, 0.699); 
+}
+
+
+.eliminar{
+  border: none;
+  padding: 8px 15px;
+  border-radius: 5px;
+  color: white;
+  background-color: rgb(255, 0, 0);
+  cursor: pointer;
+  font-size: 1em;
+}
+
+.eliminar:hover{
+  background-color: rgba(255, 0, 0, 0.774);
+}
+
+
+@media (max-width: 900px) {
+    .container{
+        display: block;
     }
-  }
+    .registro{
+        display: block;
+        width: 100%;
+        
+    }
+    form{
+        display: block;
+        width: 100%;
+    }
+}

@@ -3,11 +3,19 @@
     <div class="login">
       <form class="login__form">
         <h1>Iniciar Sesión</h1>
-        <label for="correo">Correo Electrónico:</label>
-        <input type="email" class="txt" id="correo" name="correo" formControlName="correo" placeholder="Ingrese su correo" required>
-  
-        <label for="contraseña">Contraseña:</label>
-        <input type="password" class="txt" id="contraseña" name="contraseña" formControlName="contraseña" placeholder="Ingrese su contraseña" required>
+
+        <div class="group">
+          <input type="email" required="required" name="correo" formControlName="correo" /><span class="highlight"></span><span
+              class="bar"></span>
+          <label>Correo</label>
+      </div>
+      <div class="group">
+        <input type="password" required="required" name="contraseña" formControlName="contraseña" /><span class="highlight"></span><span
+            class="bar"></span>
+        <label>Contraseña</label>
+    </div>
+        
+
         <input type="submit" class="btn" value="Iniciar Sesión" routerLink="/user-home">
         <span>¿No tienes una cuenta? <a class="reg" routerLink="/registro">Registrate aquí</a></span>
       </form>

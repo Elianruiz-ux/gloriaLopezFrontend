@@ -14,7 +14,7 @@ a{
 
 .navbar-item {
     text-decoration: none;
-    color: rgba(235, 29, 53, 0.522);
+    color: var(--color-negro);
     font-size: 16px;
     padding-top: 5px;
 }

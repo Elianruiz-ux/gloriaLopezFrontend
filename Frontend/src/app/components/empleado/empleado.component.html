@@ -1,0 +1,143 @@
+<app-navbar-admin-home></app-navbar-admin-home>
+
+<div class="container">
+    <div class="registro">
+      <form class="registro__form">
+        <h1>Registrar empleado</h1>
+        <div class="group">
+            <select name="tipo" class="select">
+                <option selected>Tipo de documento</option>
+                <option value="">C.C.</option>
+                <option value="">C.E.</option>
+            </select>
+        </div>
+        <div class="group">
+            <input type="number" required="required" name="Numero_doc" formControlName="Numero_doc" /><span class="highlight"></span><span
+                class="bar"></span>
+            <label>Numero de documento</label>
+        </div>
+        <div class="group">
+            <input type="text" required="required" name="Nombre" formControlName="Nombre" /><span class="highlight"></span><span
+                class="bar"></span>
+            <label>Nombre completo</label>
+        </div>
+        <div class="group">
+            <input type="text" required="required" name="Fecha" formControlName="Fecha"/><span class="highlight"></span><span
+                class="bar"></span>
+            <label>Fecha de nacimiento</label>
+        </div>
+        <div class="group">
+            <input type="text" required="required" name="residencia" formControlName="residencia"/><span class="highlight"></span><span
+                class="bar"></span>
+            <label>Dirección de residencia</label>
+        </div>
+        <div class="group">
+            <input type="number" required="required" name="celular" formControlName="celular"/><span class="highlight"></span><span
+                class="bar"></span>
+            <label>Numero de celular</label>
+        </div>
+        <div class="group">
+            <input type="email" required="required" name="celular" formControlName="celular"/><span class="highlight"></span><span
+                class="bar"></span>
+            <label>Correo</label>
+        </div>
+        <div class="group">
+            <select name="tipo" class="select">
+                <option selected>Eps</option>
+                <option value="">Sura</option>
+            </select>
+        </div>
+        <div class="group">
+            <select name="tipo" class="select">
+                <option selected>Fondo de prensiones</option>
+                <option value="">Colpensiones</option>
+            </select>
+        </div>
+
+        <div class="group">
+            <select name="tipo" class="select">
+                <option selected>Estado civil</option>
+                <option value="">Solter@</option>
+                <option value="">Casad@</option>
+                <option value="">Viud@</option>
+            </select>
+        </div>
+        <div class="group">
+            <input type="number" required="required" name="hijos" formControlName="hijos" /><span class="highlight"></span><span
+                class="bar"></span>
+            <label>Numero de hijos</label>
+        </div>
+        <div class="group">
+            <select name="tipo" class="select">
+                <option selected>Estudios</option>
+                <option value="">Bachiller</option>
+                <option value="">Tecnico</option>
+                <option value="">Tecnologo</option>
+                <option value="">Pregrado</option>
+            </select>
+        </div>
+        <div class="group">
+            <select name="tipo" class="select">
+                <option selected>Tipo de servicio</option>
+                <option value="">Barberia</option>
+                <option value="">Cosmetologia</option>
+                <option value="">Uñas</option>
+            </select>
+        </div>
+        
+       
+
+        <input type="submit" class="btn" value="Registrar">
+      </form>
+    </div>
+  
+
+    <div class="lista" >
+        <div class="lista__contenido" >
+            <table class="content-table" >
+                <thead>
+                    <tr>
+                        <th>DOCUMENTO</th>
+                        <th>NOMBRE</th>
+                        <th>NUMERO DE CELULAR</th>
+                        <th>CORREO</th>
+                        <th colspan="20"></th>
+                    </tr>
+                </thead>
+                <tbody >
+                    <!-- *ngFor="let Proveedor of ListarProveedor" -->
+                    <tr >
+                        <!-- <td>{{Proveedor.IDENTIFICACION_PROVEEDOR}}</td>
+                        <td>{{Proveedor.NOMBRE_PROVEEDOR}}</td>
+                        <td>{{Proveedor.TELEFONO}}</td>
+                        <td>{{Proveedor.CORREO}}</td>
+                        <td>{{Proveedor.DIRECCION}}</td>
+                        <td><input class="editar" type="button" value="Editar"></td>
+                        <td><input class="eliminar" type="button" value="Eliminar"></td> -->
+                    </tr>
+                    <tr>
+                        <td>a</td>
+                        <td>s</td>
+                        <td>da</td>
+                        <td>asd</td>
+                        <td><input class="editar" type="button" value="Editar"></td>
+                        <td><input class="eliminar" type="button" value="Eliminar"></td>
+                    </tr>
+                    <tr>
+                        <td>a</td>
+                        <td>s</td>
+                        <td>da</td>
+                        <td>asd</td>
+                        <td><input class="editar" type="button" value="Editar"></td>
+                        <td><input class="eliminar" type="button" value="Eliminar"></td>
+                        
+        
+                    </tr>
+                   
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+  </div>
+
