@@ -23,6 +23,7 @@ nav ul li {
 nav ul li a{
     color: var(--color-negro);
     text-decoration: none;
+    cursor: pointer;
 }
 
 .checkbtn{

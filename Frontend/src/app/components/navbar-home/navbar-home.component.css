@@ -23,6 +23,7 @@ nav ul li {
 nav ul li a{
     color: var(--color-negro);
     text-decoration: none;
+    cursor: pointer;
 }
 
 .checkbtn{
@@ -45,7 +46,7 @@ nav ul li a{
 }
 .registro{
     background-color: rgba(235, 29, 53, 0.522);
-    color: white;
+    color: white!important;
     border-radius: 5px;
 }
 

@@ -1,3 +1,131 @@
 .container{
-    margin: 20px;
+  margin: 20px;
+}
+
+.login{
+  box-shadow: 1px 1px 4px rgba(235, 29, 53, 0.522);
+  width: 50%;
+  height: 50%;
+  margin: 1% auto;
+  padding: 20px;
+  display: flex;
+  justify-content: center;
+  border-radius: 5px;
+}
+
+.login__form h1{
+  display: flex;
+  justify-content: center;
+  margin: 10px 0 10px 0;
+}
+
+.login__form{
+  display: flex;
+  flex-direction: column;
+}
+
+
+div input:focus{
+  color: #0000009c;
+}
+
+.group {
+  position: relative;
+  margin: 5% 0;
+}
+
+.group textarea {
+  resize: none;
+}
+
+.group input,
+.group textarea {
+  background: none;
+  color: #0000007c;
+  font-size: 18px;
+  padding: 10px 10px 10px 5px;
+  display: block;
+  width: 100%;
+  border: none;
+  border-radius: 0;
+  border-bottom: 1px solid rgba(235, 29, 53, 0.522);
+}
+.group input:focus,
+.group textarea:focus {
+  outline: none;
+
+}
+.group input:focus ~ label, .group input:valid ~ label,
+.group textarea:focus ~ label,
+.group textarea:valid ~ label {
+  top: -14px;
+  font-size: 12px;
+  color: #10181f;
+}
+.group input:focus ~ .bar:before,
+.group textarea:focus ~ .bar:before {
+  width: 100%;
+}
+
+
+.group label {
+  color: #0000007c;
+  font-size: 16px;
+  font-weight: normal;
+  position: absolute;
+  pointer-events: none;
+  left: 5px;
+  top: 10px;
+  transition: 300ms ease all;
+}
+
+.bar {
+  position: relative;
+  display: block;
+  width: 100%;
+}
+.bar:before {
+  content: "";
+  height: 2px;
+  width: 0;
+  bottom: 0px;
+  position: absolute;
+  background: rgba(235, 29, 53, 0.884);
+  transition: 300ms ease all;
+  left: 0%;
+  color: #000;
+
+}
+
+
+
+.btn{
+  border: none;
+  padding: 8px 15px;
+  border-radius: 5px;
+  color: white;
+  background-color: rgba(235, 29, 53, 0.522);
+  cursor: pointer;
+  font-size: 1em;
   }
+
+.btn:hover{
+  background-color: rgba(235, 29, 53, 0.699);
+  color: white;
+}
+
+
+
+.reg{
+cursor: pointer;
+color: blue;
+text-decoration: underline;
+}
+
+
+@media (max-width: 900px) {
+  .login{
+    display: block;
+    width: 100%;
+  }
+}

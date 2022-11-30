@@ -26,6 +26,8 @@ import { ProductoFormComponent } from './components/producto-form/producto-form.
 import { ProveedorAdminComponent } from './components/proveedor-admin/proveedor-admin.component';
 import { EditarAdminComponent } from './components/editar-admin/editar-admin.component';
 import { EmpleadoComponent } from './components/empleado/empleado.component';
+import { EditarProvAdminComponent } from './components/editar-prov-admin/editar-prov-admin.component';
+import { EditarProducAdminComponent } from './components/editar-produc-admin/editar-produc-admin.component';
 
 @NgModule({
   declarations: [
@@ -46,7 +48,9 @@ import { EmpleadoComponent } from './components/empleado/empleado.component';
     ProductoFormComponent,
     ProveedorAdminComponent,
     EditarAdminComponent,
-    EmpleadoComponent
+    EmpleadoComponent,
+    EditarProvAdminComponent,
+    EditarProducAdminComponent
   ],
   imports: [
     BrowserModule,

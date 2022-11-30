@@ -13,6 +13,9 @@ import { ProductoFormComponent } from "./components/producto-form/producto-form.
 import { ProveedorAdminComponent } from "./components/proveedor-admin/proveedor-admin.component";
 import { EditarAdminComponent } from "./components/editar-admin/editar-admin.component";
 import { EmpleadoComponent } from "./components/empleado/empleado.component";
+import { EditarProducAdminComponent } from "./components/editar-produc-admin/editar-produc-admin.component";
+import { EditarProvAdminComponent } from "./components/editar-prov-admin/editar-prov-admin.component";
+
 
 const routes: Routes = [
   {path: 'admin', component: AdminComponent},
@@ -24,7 +27,9 @@ const routes: Routes = [
   {path: 'inventario', component: ProductoFormComponent},
   {path: 'user-home', component: UserHomeComponent},
   {path: 'proveedores', component: ProveedorAdminComponent},
-  {path: 'aditar', component: EditarAdminComponent},
+  {path: 'editarEmpleado', component: EditarAdminComponent},
+  {path: 'editarProducto', component: EditarProducAdminComponent},
+  {path: 'editarProveedor', component: EditarProvAdminComponent},
   {path: 'empleado', component: EmpleadoComponent},
   {path: '**', pathMatch: 'full', redirectTo: 'home'}
 ];
