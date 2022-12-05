@@ -29,7 +29,7 @@ router.get('/:IDENTIFICACION_PROVEEDOR', (req, res) => {
 //Post
 router.post('/', (req, res) => {
     const { IDENTIFICACION_PROVEEDOR, NOMBRE_PROVEEDOR, TELEFONO, CORREO, DIRECCION } = req.body
-    let sql = `INSERT INTO proveedor(IDENTIFICACION_PROVEEDOR, NOMBRE_PROVEEDOR, TELEFONO, CORREO, DIRECCION) 
+    let sql = `INSERT INTO PROVEEDOR(IDENTIFICACION_PROVEEDOR, NOMBRE_PROVEEDOR, TELEFONO, CORREO, DIRECCION) 
     values ('${IDENTIFICACION_PROVEEDOR}','${NOMBRE_PROVEEDOR}','${TELEFONO}','${CORREO}','${DIRECCION}')`
     pool.query(sql, (err, rows, fields) => {
         if (err) throw err
@@ -50,7 +50,7 @@ router.delete('/:IDENTIFICACION_PROVEEDOR', (req, res) => {
             res.json({ status: 'Se elimino el proveedor' })
         }
     })
-});
+}); 
 
 //Put
 router.put('/:ID', (req, res) => {

@@ -1,15 +1,21 @@
+
 .container{
     margin: 20px;
-    display: grid;
-    grid-template-columns: 1fr 1fr;
   }
-
- 
+  .columnas {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+  }
+ .columna_1{
+  width: 30%;
+ }
+ .columna_2{
+  width: 70%;
+ }
   .registro{
     box-shadow: 1px 1px 4px rgba(235, 29, 53, 0.522);
-    width: 80%;
-    height: 100%;
-    margin: 1.8% auto;
+    width: 100%;
     padding: 10px;
     display: flex;
     justify-content: center;
@@ -41,7 +47,7 @@
     resize: none;
   }
  
-  .group input,
+  .group input, 
   .group textarea {
     background: none;
     color: #0000007c;
@@ -123,11 +129,16 @@
 
 /* Lista */
 
+.lista__contenido{
+  padding-left: 10px; 
+}
+
 .content-table { 
+  
+  width: 100%;
   border-collapse: collapse;
   border-radius: 10px;
-  margin: 25px auto; 
-  min-width: 100%; 
+  margin: 25px auto;  
   box-shadow: 1px 1px 4px rgba(235, 29, 53, 0.522);
   justify-content: center;
 }
@@ -185,13 +196,10 @@
     .container{
         display: block;
     }
-    .registro{
+    .columna_1, .columna_2{
         display: block;
         width: 100%;
         
     }
-    form{
-        display: block;
-        width: 100%;
-    }
+ 
 }

@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient} from '@angular/common/http'; 
+
 @Injectable({
   providedIn: 'root'
 })
@@ -30,7 +31,7 @@ export class ProveedorService {
   }
 
   //Modificar proveedor
-  editProveedor(id:String, proveedor:Proveedor){
+  editProveedor(id:any, proveedor:Proveedor){
     return this.http.put(this.url + '/'+id, proveedor); 
   }
 }

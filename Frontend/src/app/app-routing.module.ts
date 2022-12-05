@@ -29,7 +29,7 @@ const routes: Routes = [
   {path: 'proveedores', component: ProveedorAdminComponent},
   {path: 'editarEmpleado', component: EditarAdminComponent},
   {path: 'editarProducto', component: EditarProducAdminComponent},
-  {path: 'editarProveedor', component: EditarProvAdminComponent},
+  {path: 'editarProveedor/:id', component: EditarProvAdminComponent},
   {path: 'empleado', component: EmpleadoComponent},
   {path: '**', pathMatch: 'full', redirectTo: 'home'}
 ];

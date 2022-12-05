@@ -5,27 +5,32 @@
       <form class="registro__form">
         <h1>Información proveedor</h1>
         <div class="group">
-            <input type="txt" required="required" name="nombre" formControlName="nombre" /><span class="highlight"></span><span
+            <input [(ngModel)]="proveedor.IDENTIFICACION_PROVEEDOR" type="text" required="required" name="identificacion" /><span class="highlight"></span><span
+                class="bar"></span>
+            <label>Cedula</label>
+        </div>
+        <div class="group">
+            <input [(ngModel)]="proveedor.NOMBRE_PROVEEDOR" type="text" required="required" name="nombre" /><span class="highlight"></span><span
                 class="bar"></span>
             <label>Nombre del proveedor</label>
         </div>
         <div class="group">
-            <input type="number" required="required" name="telefono" formControlName="telefono" /><span class="highlight"></span><span
+            <input [(ngModel)]="proveedor.TELEFONO" type="text" required="required" name="telefono"  /><span class="highlight"></span><span
                 class="bar"></span>
             <label>Telefono</label>
         </div>
         <div class="group">
-            <input type="email" required="required" name="correo" formControlName="correo" /><span class="highlight"></span><span
+            <input [(ngModel)]="proveedor.CORREO" type="email" required="required" name="correo" /><span class="highlight"></span><span
                 class="bar"></span>
             <label>Correo</label>
         </div>
         <div class="group">
-            <input type="text" required="required" name="dirrecion" formControlName="dirrecion" /><span class="highlight"></span><span
+            <input [(ngModel)]="proveedor.DIRECCION" type="text" required="required" name="dirrecion" /><span class="highlight"></span><span
                 class="bar"></span>
             <label>Dirreción</label>
         </div>
 
-        <input type="submit" class="btn" value="Registrar">
+        <input type="button" class="btn" value="Registrar" (click)="modificarProveedor()">
       </form>
     </div>
   
