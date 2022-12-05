@@ -65,7 +65,7 @@ router.put('/:ID', (req, res) => {
     DIRECCION = '${DIRECCION}'
     where IDENTIFICACION_PROVEEDOR = '${ID}'`
 
-    conexion.query(sql, (err, rows, fields) => {
+    pool.query(sql, (err, rows, fields) => {
         if (err) throw err
         else {
             res.json({status: 'Se modifico la informacion del proveedor'})
