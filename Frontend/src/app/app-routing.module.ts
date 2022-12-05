@@ -15,6 +15,7 @@ import { EditarAdminComponent } from "./components/editar-admin/editar-admin.com
 import { EmpleadoComponent } from "./components/empleado/empleado.component";
 import { EditarProducAdminComponent } from "./components/editar-produc-admin/editar-produc-admin.component";
 import { EditarProvAdminComponent } from "./components/editar-prov-admin/editar-prov-admin.component";
+import { LoginGuard } from './guards/login.guard';
 
 
 const routes: Routes = [
@@ -25,7 +26,7 @@ const routes: Routes = [
   {path: 'adminhome', component: AdminHomeComponent},
   {path: 'contact', component: ContactComponent},
   {path: 'inventario', component: ProductoFormComponent},
-  {path: 'user-home', component: UserHomeComponent},
+  {path: 'user-home', component: UserHomeComponent, canActivate: [LoginGuard]},
   {path: 'proveedores', component: ProveedorAdminComponent},
   {path: 'editarEmpleado', component: EditarAdminComponent},
   {path: 'editarProducto', component: EditarProducAdminComponent},

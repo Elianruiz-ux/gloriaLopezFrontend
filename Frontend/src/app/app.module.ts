@@ -8,6 +8,9 @@ import { AppComponent } from './app.component';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 
+//providers
+import { JwtHelperService, JWT_OPTIONS } from '@auth0/angular-jwt';
+
 //rutas
 import { AdminComponent } from './components/admin/admin.component';
 import { HomeComponent } from './components/home/home.component';
@@ -59,7 +62,10 @@ import { EditarProducAdminComponent } from './components/editar-produc-admin/edi
     FormsModule,
     HttpClientModule
   ],
-  providers: [],
+  providers: [
+    {provide: JWT_OPTIONS, useValue:JWT_OPTIONS },
+    JwtHelperService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

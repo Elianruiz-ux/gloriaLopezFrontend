@@ -3,6 +3,7 @@
 const express = require('express');
 const morgan = require('morgan');
 const passport =require ('passport'); 
+const cors =require ('cors'); 
 
 //Initializations
 
@@ -31,7 +32,12 @@ app.use(express.json());
 
 app.use(require('../routes/index'));
 app.use(require('../routes/authentication'));
+
 app.use('/api/', require('../routes/links'));
+
+app.use('/api', require('../routes/links'));
+app.use('/user', require('../routes/authentication'));
+
 
 //Public (todo el codigo al que el navegación puede acceder)
 
