@@ -68,8 +68,22 @@ router.put('/:ID', (req, res) => {
     pool.query(sql, (err, rows, fields) => {
         if (err) throw err
         else {
+            console.log('hola '+sql);
             res.json({status: 'Se modifico la informacion del proveedor'})
         }
     })
 })
+
+//Productos
+//Get Productos 
+router.get('/producto', (req, res) => {
+    let sql = 'SELECT * FROM PRODUCTO'
+    pool.query(sql, (err, rows, fields) => {
+        if (err) throw err;
+        else {
+            res.json(rows)
+        }
+    })
+});
+
 module.exports = router;

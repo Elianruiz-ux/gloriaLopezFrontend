@@ -12,49 +12,40 @@ import { Router, ActivatedRoute } from '@angular/router';
 
 export class EditarProvAdminComponent implements OnInit {
 
-  @HostBinding('class') classes = 'row';
 proveedor: Proveedor={
     IDENTIFICACION_PROVEEDOR: '', 
     NOMBRE_PROVEEDOR: '', 
     TELEFONO: '', 
     CORREO: '', 
     DIRECCION: ''
-  }
+  };
+
   constructor(private ProveedorService:ProveedorService, 
     private router:Router,
     private ActivatedRoute:ActivatedRoute) { }
 
   ngOnInit(): void {
     const idProveedor  = <String> this.ActivatedRoute.snapshot.params['id']; 
+    console.log('id entrada: ' + idProveedor);
     if(idProveedor){
-      this.ProveedorService.getUnProveedor(idProveedor).subscribe(res=>{
-        this.proveedor = res; 
-        console.log('Hola desde oninit'); 
-        console.log(res); 
+      this.ProveedorService.getUnProveedor(idProveedor).subscribe(
+        res=>{
+        this.proveedor = <any> res; 
+        console.log( <any> res); 
         
-        this.proveedor = res;
+        this.proveedor =  res;
       },
       err => console.error(err) 
       );
     }
   }
  modificarProveedor(){
-  if(this.proveedor==null){
-    alert('Proveedor vacio')
-  }else{
-    alert('Proveedor con datos: ' + this.proveedor.CORREO)
-    this.router.navigate(['/proveedores']);
-  }
-   this.ProveedorService.editProveedor(this.ActivatedRoute.snapshot.params['id'], this.proveedor).subscribe()
-//    res=>{
-      
-//   //     // console.log('String; ' + this.proveedor.IDENTIFICACION_PROVEEDOR);
-//       console.log('objeto ' + this.proveedor );
-//     console.log(res);
-      
-//     },
-//     err => console.error(err)
-//  );
- this.router.navigate(['/proveedores']);
-  }
+  this.ProveedorService.editProveedor(this.ActivatedRoute.snapshot.params['id'], this.proveedor)
+.subscribe(
+  res => {
+    console.log(res);
+  },
+  err => console.log
+)  
+}
 }
