@@ -32,11 +32,14 @@ app.use(express.json());
 
 app.use(require('../routes/index'));
 app.use(require('../routes/authentication'));
+app.use(require('../routes/admin'));
+app.use(require('../routes/registro'));
 
-app.use('/api/', require('../routes/links'));
 
 app.use('/api', require('../routes/links'));
 app.use('/user', require('../routes/authentication'));
+app.use('/admin', require('../routes/admin'));
+app.use('/reg', require('../routes/registro'));
 
 
 //Public (todo el codigo al que el navegación puede acceder)

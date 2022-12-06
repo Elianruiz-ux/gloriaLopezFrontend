@@ -3,9 +3,9 @@
     <label for="check" class="checkbtn">
       <i class="fas fa-bars"></i>
     </label>
-    <label class="logo"><a routerLink="/home"><img src="../assets/logo2.jpg" alt="logo" class="img"></a></label>
+    <label class="logo"><a routerLink="/user-home"><img src="../assets/logo2.jpg" alt="logo" class="img"></a></label>
     <ul>            
-        <li><a routerLink="/login">Cerrar sesión</a></li>
+        <li><a (click)="logoutUser()">Cerrar sesión</a></li>
 
     </ul>
   </nav>

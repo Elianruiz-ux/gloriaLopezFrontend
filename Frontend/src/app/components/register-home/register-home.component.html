@@ -7,7 +7,7 @@
 
             <div class="columna">
                 <div class="group">
-                    <input type="text" required="required" name="nombre" formControlName="nombre"/><span class="highlight"></span><span
+                    <input type="text" required="required" name="nombre" [(ngModel)]="regUsu.NOMBRE_CLIENTE"/><span class="highlight"></span><span
                         class="bar"></span>
                     <label>Nombre</label>
                 </div>
@@ -15,7 +15,7 @@
         
             <div class="columna">
                 <div class="group">
-                    <input type="text" required="required" name="apellido" formControlName="apellido" /><span class="highlight"></span><span
+                    <input type="text" required="required" name="apellido" /><span class="highlight"></span><span
                         class="bar"></span>
                     <label>Apellido</label>
                 </div>
@@ -25,7 +25,7 @@
 
                 <div class="columna">
                     <div class="group">
-                        <input type="number" required="required" name="documento" formControlName="documento" /><span class="highlight"></span><span
+                        <input type="number" required="required" name="documento" [(ngModel)]="regUsu.IDENTIFICACION_CLIENTE"  /><span class="highlight"></span><span
                             class="bar"></span>
                         <label>Documento</label>
                     </div>
@@ -33,7 +33,7 @@
         
                 <div class="columna">
                     <div class="group">
-                        <input type="number" required="required"name="celular" formControlName="celular" /><span class="highlight"></span><span
+                        <input type="number" required="required"name="celular"  /><span class="highlight"></span><span
                             class="bar"></span>
                         <label>Número de Celular</label>
                     </div>
@@ -43,7 +43,7 @@
         <div class="bloque">
             <div class="columna">
                 <div class="group">
-                    <input type="email" required="required" name="correo" formControlName="correo" /><span class="highlight"></span><span
+                    <input type="email" required="required" name="correo" [(ngModel)]="regUsu.CORREO_CLIENTE"   /><span class="highlight"></span><span
                         class="bar"></span>
                     <label>Correo</label>
                 </div>
@@ -51,7 +51,7 @@
 
             <div class="columna">
                 <div class="group">
-                    <input type="email" required="required" name="confirmarCorreo" formControlName="confirmarCorreo" /><span class="highlight"></span><span
+                    <input type="email" required="required" name="confirmarCorreo" [(ngModel)]="regUsu.CORREO_CLIENTE"   /><span class="highlight"></span><span
                         class="bar"></span>
                     <label>Confirmar Correo</label>
                 </div> 
@@ -62,7 +62,7 @@
         <div class="bloque">
             <div  class="columna">
                 <div class="group">
-                    <input type="password" required="required" name="contraseña" formControlName="contraseña" /><span class="highlight"></span><span
+                    <input type="password" required="required" name="contraseña" [(ngModel)]="regUsu.CONTRASENA_CLIENTE"   /><span class="highlight"></span><span
                         class="bar"></span>
                     <label>Contraseña</label>
                 </div> 
@@ -70,7 +70,8 @@
 
             <div  class="columna">
                 <div class="group">
-                    <input type="password" required="required" name="confirmarContraseña" formControlName="confirmarContraseña" /><span class="highlight"></span><span
+                    
+                    <input type="password" required="required" name="confirmarContraseña" [(ngModel)]="regUsu.CONTRASENA_CLIENTE"  /><span class="highlight"></span><span
                         class="bar"></span>
                     <label>Confirmar Contraseña</label>
                 </div>
@@ -78,7 +79,7 @@
         </div>
 
 
-        <input type="submit" class="btn" value="Registrarse" routerLink="/login">
+        <input type="button" class="btn" value="Registrarse" (click)="Registrar()">
       </form>
     </div>
   

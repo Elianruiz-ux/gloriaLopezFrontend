@@ -16,6 +16,7 @@ import { EmpleadoComponent } from "./components/empleado/empleado.component";
 import { EditarProducAdminComponent } from "./components/editar-produc-admin/editar-produc-admin.component";
 import { EditarProvAdminComponent } from "./components/editar-prov-admin/editar-prov-admin.component";
 import { LoginGuard } from './guards/login.guard';
+import { AdminGuard } from './guards/admin.guard';
 
 
 const routes: Routes = [
@@ -23,7 +24,7 @@ const routes: Routes = [
   {path: 'home', component: HomeComponent},
   {path: 'login', component: LoginHomeComponent},
   {path: 'registro', component: RegisterHomeComponent},
-  {path: 'adminhome', component: AdminHomeComponent},
+  {path: 'adminhome', component: AdminHomeComponent,canActivate: [AdminGuard]},
   {path: 'contact', component: ContactComponent},
   {path: 'inventario', component: ProductoFormComponent},
   {path: 'user-home', component: UserHomeComponent, canActivate: [LoginGuard]},
