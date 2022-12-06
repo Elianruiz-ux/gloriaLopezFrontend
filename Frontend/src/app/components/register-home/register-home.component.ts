@@ -19,7 +19,7 @@ export class RegisterHomeComponent implements OnInit {
     IDENTIFICACION_CLIENTE: '',
     CORREO_CLIENTE: '',
     CONTRASENA_CLIENTE: '',
-    SEXO_EMPLEADO:''
+    SEXO_EMPLEADO:'1'
   }
   
   constructor(private RegistrarService:RegistrarService, private router:Router) { }
@@ -48,7 +48,8 @@ export class RegisterHomeComponent implements OnInit {
 
     }else{
       this.RegistrarService.regUsu(this.regUsu).subscribe();
-   
+      alert('Se registro correctamente');
+      this.router.navigate(['login']);
     }
   }
   

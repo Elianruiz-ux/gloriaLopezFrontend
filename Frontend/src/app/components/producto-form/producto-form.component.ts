@@ -20,7 +20,7 @@ export class ProductoFormComponent implements OnInit {
   NOMBRE_PRODUCTO: '',
   FECHA_COMPRA: '', // <- reemplazar por precio
   CANTIDAD_PRODUCTO: '',
-  IDENTIFICACION_PROVEEDOR: ''
+  IDENTIFICACION_PROVEEDOR: '1007055117'
 }
 
   constructor(private ProductoService:ProductoService, private router:Router) { }
@@ -43,12 +43,13 @@ export class ProductoFormComponent implements OnInit {
     if(!this.producto.IDENTIFICACION_PRODUCTO ||
       !this.producto.NOMBRE_PRODUCTO ||
       !this.producto.FECHA_COMPRA ||
-      !this.producto.CANTIDAD_PRODUCTO ||
-      !this.producto.IDENTIFICACION_PROVEEDOR
+      !this.producto.CANTIDAD_PRODUCTO 
       ){
-      alert('Rellene todos los campos')
+      alert('Rellene todos los campos');
     }else{
       this.ProductoService.addProducto(this.producto).subscribe();
+      alert('Se registro correctamente');
+      this.router.navigate(['inventario']); 
       this.listarProductos();
     }
   }

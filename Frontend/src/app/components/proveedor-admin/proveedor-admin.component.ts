@@ -45,9 +45,11 @@ export class ProveedorAdminComponent implements OnInit {
       !this.proveedor.CORREO ||
       !this.proveedor.DIRECCION
       ){
-      alert('Rellene todos los campos')
+      alert('Rellene todos los campos');
     }else{
       this.ProveedorService.addProveedor(this.proveedor).subscribe();
+      alert('Se registro correctamente');
+      this.router.navigate(['proveedores']); 
       this.listarProvedores();
     }
   }

@@ -31,6 +31,7 @@ import { EditarAdminComponent } from './components/editar-admin/editar-admin.com
 import { EmpleadoComponent } from './components/empleado/empleado.component';
 import { EditarProvAdminComponent } from './components/editar-prov-admin/editar-prov-admin.component';
 import { EditarProducAdminComponent } from './components/editar-produc-admin/editar-produc-admin.component';
+import { EdtiServicioAdminComponent } from './components/edti-servicio-admin/edti-servicio-admin.component';
 
 @NgModule({
   declarations: [
@@ -53,7 +54,8 @@ import { EditarProducAdminComponent } from './components/editar-produc-admin/edi
     EditarAdminComponent,
     EmpleadoComponent,
     EditarProvAdminComponent,
-    EditarProducAdminComponent
+    EditarProducAdminComponent,
+    EdtiServicioAdminComponent
   ],
   imports: [
     BrowserModule,

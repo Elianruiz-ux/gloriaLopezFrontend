@@ -15,6 +15,7 @@ export class NavbarUserHomeComponent implements OnInit {
 
   logoutUser(){
     localStorage.removeItem('token');
+    alert('Se cerró sesión correctamente');
     this.router.navigate(['/login']);
   }
 

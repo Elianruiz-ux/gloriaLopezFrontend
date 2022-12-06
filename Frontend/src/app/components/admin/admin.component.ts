@@ -28,12 +28,25 @@ export class AdminComponent implements OnInit {
 
   logAdmin(){
 
-    console.log(this.admin);
+    if(!this.admin.USUARIO_ADMIN ||
+      !this.admin.CONTRASENA 
+      ){
+      alert('Usuario o contraseña incorrectas');
+    }else{
+      
+    // console.log(this.admin);
     this.adminService.singin(this.admin).subscribe((res:any) =>{
-      console.log(res);
+      // console.log(res);
       localStorage.setItem('token', res.token);
+      alert('Inicio se sesión administrador exitoso');
       this.router.navigate(['adminhome']);
     });
+     
+      
+    
+    }
+
+    
   }
 
 }

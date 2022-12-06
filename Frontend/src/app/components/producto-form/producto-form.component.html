@@ -10,29 +10,35 @@
             <label>Id del producto</label>
         </div>
         <div class="group">
-            <input [(ngModel)]="producto.NOMBRE_PRODUCTO" type="text" required="required" name="nombre_producto"  /><span class="highlight"></span><span
+            <input [(ngModel)]="producto.NOMBRE_PRODUCTO" type="text"  maxlength="40" required="required" name="nombre_producto"  /><span class="highlight"></span><span
                 class="bar"></span>
             <label>Nombre del producto</label>
         </div>
         <div class="group">
-            <input [(ngModel)]="producto.FECHA_COMPRA" type="number" required="required" name="precio_producto" /><span class="highlight"></span><span
+            <input type="date" required="required" name="nombre_producto"  /><span class="highlight"></span><span
                 class="bar"></span>
-            <label>Precio del producto</label>
+            <label>Fecha de ingreso</label>
         </div>
         <div class="group">
             <input [(ngModel)]="producto.CANTIDAD_PRODUCTO" type="number" required="required" name="precio_producto" /><span class="highlight"></span><span
                 class="bar"></span>
             <label>Cantidad Comprada</label>
         </div>
+        <div class="group">
+            <input [(ngModel)]="producto.FECHA_COMPRA" type="number" required="required" name="precio_producto" /><span class="highlight"></span><span
+                class="bar"></span>
+            <label>Precio del producto</label>
+        </div>
+        
 <!--         
         <div class="group">
             <input type="file" required="required" name="img"  /><span class="highlight"></span><span
                 class="bar"></span>
         </div> -->
          <div class="group">
-            <input [(ngModel)]="producto.IDENTIFICACION_PROVEEDOR" type="text" required="required" name="identificacion_proveedor"  /><span class="highlight"></span><span
+            <input [(ngModel)]="producto.IDENTIFICACION_PROVEEDOR" type="hidden" required="required" name="identificacion_proveedor"  /><span class="highlight"></span><span
                 class="bar"></span>
-                <label>identificacion del Proveedor</label>
+                <!-- <label>identificacion del Proveedor</label> -->
         </div>
 
         <input type="button" type = "reset" class="btn" value="Registrar" (click)="AgregarProducto()">

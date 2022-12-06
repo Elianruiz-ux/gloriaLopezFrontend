@@ -5,26 +5,43 @@
       <form class="registro__form">
         <h1>Información producto</h1>
         <div class="group">
-            <input type="txt" required="required" name="id_producto" formControlName="id_producto" /><span class="highlight"></span><span
+            <input type="number" required="required" name="id_producto"  /><span class="highlight"></span><span
                 class="bar"></span>
             <label>Id del producto</label>
         </div>
         <div class="group">
-            <input type="txt" required="required" name="nombre_producto" formControlName="nombre_producto" /><span class="highlight"></span><span
+            <input type="text" required="required" name="nombre_producto"  maxlength="40" pattern="[a-z-A-Z]+"  /><span class="highlight"></span><span
                 class="bar"></span>
             <label>Nombre del producto</label>
         </div>
         <div class="group">
-            <input type="number" required="required" name="precio_producto" formControlName="precio_producto" /><span class="highlight"></span><span
+            <input type="date" required="required" name="nombre_producto"  /><span class="highlight"></span><span
+                class="bar"></span>
+            <label>Fecha de ingreso</label>
+        </div>
+        <div class="group">
+            <input type="number" required="required" name="precio_producto" /><span class="highlight"></span><span
+                class="bar"></span>
+            <label>Cantidad Comprada</label>
+        </div>
+        <div class="group">
+            <input type="number" required="required" name="precio_producto" /><span class="highlight"></span><span
                 class="bar"></span>
             <label>Precio del producto</label>
         </div>
+        
+<!--         
         <div class="group">
-            <input type="file" required="required" name="img" formControlName="img" /><span class="highlight"></span><span
+            <input type="file" required="required" name="img"  /><span class="highlight"></span><span
                 class="bar"></span>
+        </div> -->
+         <div class="group">
+            <input type="hidden" required="required" name="identificacion_proveedor"  /><span class="highlight"></span><span
+                class="bar"></span>
+                <!-- <label>identificacion del Proveedor</label> -->
         </div>
 
-        <input type="submit" class="btn" value="Registrar">
+        <input type="submit" class="btn" value="Guardar">
       </form>
     </div>
   

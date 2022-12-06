@@ -5,33 +5,47 @@
       <form class="registro__form">
         <h1>Información proveedor</h1>
         <div class="group">
-                        <input [(ngModel)]="proveedor.IDENTIFICACION_PROVEEDOR" type="text" required="required" name="identificacion"  /><span
-                            class="highlight"></span><span class="bar"></span>
-                        <label>Cedula</label>
-                    </div>
-                    <div class="group">
-                        <input [(ngModel)]="proveedor.NOMBRE_PROVEEDOR" type="text" required="required" name="nombre"  /><span
-                            class="highlight"></span><span class="bar"></span>
-                        <label>Nombre del proveedor</label>
-                    </div>
-                    <div class="group">
-                        <input [(ngModel)]="proveedor.TELEFONO" type="text" required="required" name="telefono"  /><span
-                            class="highlight"></span><span class="bar"></span>
-                        <label>Telefono</label>
-                    </div>
-                   
-                    <div class="group">
-                        <input [(ngModel)]="proveedor.CORREO" type="email" required="required" name="correo"  /><span
-                            class="highlight"></span><span class="bar"></span>
-                        <label>Correo</label>
-                    </div>
-                    <div class="group">
-                        <input [(ngModel)]="proveedor.DIRECCION" type="text" required="required" name="dirrecion" /><span
-                            class="highlight"></span><span class="bar"></span>
-                        <label>Dirreción</label>
-                    </div>
+            <input [(ngModel)]="proveedor.IDENTIFICACION_PROVEEDOR" type="number" required="required" name="identificacion"  /><span
+                class="highlight"></span><span class="bar"></span>
+            <label>Cedula</label>
+            
+        </div>
 
-        <input type="button" class="btn" value="Registrar" (click)="modificarProveedor()">
+        <div class="group">
+            <input type="text" required="required" name="dirrecion"  maxlength="10"  /><span
+                class="highlight"></span><span class="bar"></span>
+            <label>Tipo de documento</label>
+        </div>
+        <div class="group">
+            <input type="text" required="required" name="dirrecion"  maxlength="40" pattern="[a-z-A-Z]+"/><span
+                class="highlight"></span><span class="bar"></span>
+            <label>Nombre del contacto</label>
+        </div>
+
+        <div class="group">
+            <input [(ngModel)]="proveedor.NOMBRE_PROVEEDOR" type="text" required="required" name="nombre"  maxlength="40" pattern="[a-z-A-Z]+" /><span
+                class="highlight"></span><span class="bar"></span>
+            <label>Nombre del proveedor</label>
+        </div>
+        <div class="group">
+            <input [(ngModel)]="proveedor.TELEFONO" type="text" required="required" name="telefono"  maxlength="40" pattern="[a-z-A-Z]+" /><span
+                class="highlight"></span><span class="bar"></span>
+            <label>Telefono</label>
+        </div>
+       
+        <div class="group">
+            <input [(ngModel)]="proveedor.CORREO" type="email" required="required" name="correo"  maxlength="40" /><span
+                class="highlight"></span><span class="bar"></span>
+            <label>Correo</label>
+        </div>
+        <div class="group">
+            <input [(ngModel)]="proveedor.DIRECCION" type="text" required="required" name="dirrecion"  maxlength="40"  /><span
+                class="highlight"></span><span class="bar"></span>
+            <label>Dirreción</label>
+        </div>
+        
+
+        <input type="button" class="btn" value="Guardar" (click)="modificarProveedor()">
       </form>
     </div>
   

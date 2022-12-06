@@ -15,6 +15,8 @@ import { EditarAdminComponent } from "./components/editar-admin/editar-admin.com
 import { EmpleadoComponent } from "./components/empleado/empleado.component";
 import { EditarProducAdminComponent } from "./components/editar-produc-admin/editar-produc-admin.component";
 import { EditarProvAdminComponent } from "./components/editar-prov-admin/editar-prov-admin.component";
+import { EdtiServicioAdminComponent } from "./components/edti-servicio-admin/edti-servicio-admin.component";
+
 import { LoginGuard } from './guards/login.guard';
 import { AdminGuard } from './guards/admin.guard';
 
@@ -32,6 +34,7 @@ const routes: Routes = [
   {path: 'editarEmpleado', component: EditarAdminComponent},
   {path: 'editarProducto/:id', component: EditarProducAdminComponent},
   {path: 'editarProveedor/:id', component: EditarProvAdminComponent},
+  {path: 'editarServicio', component: EdtiServicioAdminComponent},
   {path: 'empleado', component: EmpleadoComponent},
   {path: '**', pathMatch: 'full', redirectTo: 'home'}
 ];

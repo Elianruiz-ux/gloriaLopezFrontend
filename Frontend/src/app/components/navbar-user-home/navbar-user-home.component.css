@@ -39,6 +39,10 @@ nav ul li a{
     display: none;
 }
 
+.cerrar{
+    color:rgba(0,0,0, 0.450)!important;
+}
+
 @media (max-width: 900px) {
     nav{
         box-shadow: none;

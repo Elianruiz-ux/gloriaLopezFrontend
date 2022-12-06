@@ -143,6 +143,14 @@
   justify-content: center;
 }
 
+thead tr th{
+  text-transform: lowercase;
+}
+
+thead tr th::first-letter{
+  text-transform: uppercase;
+}
+
 .content-table thead tr { 
   background-color: rgba(235, 29, 53, 0.699); 
   color: #ffffff; 

@@ -1,4 +1,96 @@
 <app-navbar-admin-home></app-navbar-admin-home>
+
 <div class="container">
-   <img src="../assets/logo.jpg" alt="">
+    <div class="registro">
+      <form class="registro__form">
+        <h1>Servicio</h1>
+      
+        <div class="group">
+            <input type="number" required="required" name="Numero_doc" /><span class="highlight"></span><span
+                class="bar"></span>
+            <label>Codigo servicio</label>
+        </div>
+        <div class="group">
+            <input type="text" required="required" name="Nombre" maxlength="40" pattern="[a-z-A-Z]+" /><span class="highlight"></span><span
+                class="bar"></span>
+            <label>Nombre servicio</label>
+        </div>
+        <div class="group">
+            <input type="number" required="required" name="Fecha" /><span class="highlight"></span><span
+                class="bar"></span>
+                <label>Costo servicio</label>
+        </div>
+        <div class="group">
+            <input type="date" required="required" name="residencia" /><span class="highlight"></span><span
+                class="bar"></span>
+            <label>Fecha solicitud</label>
+        </div>
+        <div class="group">
+            <input type="date" required="required" name="celular" /><span class="highlight"></span><span
+                class="bar"></span>
+            <label>Fecha prestacion</label>
+        </div>
+        
+        
+        
+       
+
+        <input type="submit" class="btn" value="Registrar">
+      </form>
     </div>
+  
+
+    <div class="lista" >
+        <div class="lista__contenido" >
+            <table class="content-table" >
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>NOMBRE</th>
+                        <th>COSTO</th>
+                        <th>FECHA DE SOLICITUD</th>
+                        <th>FECHA DE PRESTACION</th>
+                        <th colspan="20"></th>
+                    </tr>
+                </thead>
+                <tbody >
+                    <!-- *ngFor="let Proveedor of ListarProveedor" -->
+                    <tr >
+                        <!-- <td>{{Proveedor.IDENTIFICACION_PROVEEDOR}}</td>
+                        <td>{{Proveedor.NOMBRE_PROVEEDOR}}</td>
+                        <td>{{Proveedor.TELEFONO}}</td>
+                        <td>{{Proveedor.CORREO}}</td>
+                        <td>{{Proveedor.DIRECCION}}</td>
+                        <td><input class="editar" routerLink="/editarServicio" type="button" value="Editar"></td>
+                        <td><input class="eliminar" type="button" value="Eliminar"></td> -->
+                    </tr>
+                    <tr>
+                        <td>a</td>
+                        <td>s</td>
+                        <td>da</td>
+                        <td>asd</td>
+                        <td>da</td>
+                        <td>asd</td>
+                        <td><input class="editar" type="button" routerLink="/editarServicio" value="Editar"></td>
+                        <td><input class="eliminar" type="button" value="Eliminar"></td>
+                    </tr>
+                    <tr>
+                        <td>a</td>
+                        <td>s</td>
+                        <td>da</td>
+                        <td>asd</td>
+                        <td>da</td>
+                        <td>asd</td>
+                        <td><input class="editar" routerLink="/editarServicio" type="button" value="Editar"></td>
+                        <td><input class="eliminar" type="button" value="Eliminar"></td>
+                        
+        
+                    </tr>
+                   
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+  </div>
+
