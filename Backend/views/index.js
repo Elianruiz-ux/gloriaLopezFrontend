@@ -41,6 +41,11 @@ app.use('/user', require('../routes/authentication'));
 app.use('/admin', require('../routes/admin'));
 app.use('/reg', require('../routes/registro'));
 
+app.use('/api/', require('../routes/links'));
+app.use('/productos/', require('../routes/productos'));
+app.use('/empleado/',require('../routes/empleado'));
+
+
 
 //Public (todo el codigo al que el navegación puede acceder)
 

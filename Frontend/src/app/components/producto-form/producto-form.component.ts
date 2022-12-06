@@ -1,11 +1,8 @@
-import { ProveedorService, Proveedor} from './../../SERVICES/proveedor.service';
+import { ProductoService, Producto} from './../../SERVICES/producto.service';
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router'; 
 
 
-import { FormGroup, FormControl, FormBuilder, Validators, NgForm } from '@angular/forms';
-import { first } from 'rxjs/operators';
-import { Router } from '@angular/router';
-import { HttpClientModule } from '@angular/common/http';
 
  
 @Component({
@@ -16,19 +13,54 @@ import { HttpClientModule } from '@angular/common/http';
 export class ProductoFormComponent implements OnInit {
 
   //Variable
- ListarProveedor: Proveedor[] = []; 
+ ListaProducto: Producto[] = []; 
    
-  constructor(private ProveedorService:ProveedorService) { }
+ producto: Producto={
+  IDENTIFICACION_PRODUCTO: '',
+  NOMBRE_PRODUCTO: '',
+  FECHA_COMPRA: '', // <- reemplazar por precio
+  CANTIDAD_PRODUCTO: '',
+  IDENTIFICACION_PROVEEDOR: ''
+}
+
+  constructor(private ProductoService:ProductoService, private router:Router) { }
   ngOnInit(): void {
-    this.listarProvedores();
+    this.listarProductos();
   }
 
-  listarProvedores(){
-    this.ProveedorService.getProveedor().subscribe(
+  listarProductos(){
+    this.ProductoService.getProducto().subscribe(
       res=>{
         console.log(res);
-        this.ListarProveedor= <any>res;
+        this.ListaProducto= <any>res;
       }, 
+      err => console.log(err)
+    );
+    
+  }
+
+  AgregarProducto(){
+    if(!this.producto.IDENTIFICACION_PRODUCTO ||
+      !this.producto.NOMBRE_PRODUCTO ||
+      !this.producto.FECHA_COMPRA ||
+      !this.producto.CANTIDAD_PRODUCTO ||
+      !this.producto.IDENTIFICACION_PROVEEDOR
+      ){
+      alert('Rellene todos los campos')
+    }else{
+      this.ProductoService.addProducto(this.producto).subscribe();
+      this.listarProductos();
+    }
+  }
+  ModificarProducto(id:any){
+    this.router.navigate(['editarProducto/'+id]); 
+  }
+  deleteProducto(id:any){
+    this.ProductoService.deleteProducto(id).subscribe(
+      res =>{
+        console.log(res);
+        this.listarProductos();
+      },
       err => console.log(err)
     );
   }

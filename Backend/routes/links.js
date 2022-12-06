@@ -4,6 +4,7 @@ const router = express.Router();
 const pool = require('../views/database');
 //Proveedores: 
 
+
 //Get para varios proveedores
 router.get('/', (req, res) => {
     let sql = 'SELECT * FROM PROVEEDOR'
@@ -74,16 +75,7 @@ router.put('/:ID', (req, res) => {
     })
 })
 
-//Productos
-//Get Productos 
-router.get('/producto', (req, res) => {
-    let sql = 'SELECT * FROM PRODUCTO'
-    pool.query(sql, (err, rows, fields) => {
-        if (err) throw err;
-        else {
-            res.json(rows)
-        }
-    })
-});
+
+
 
 module.exports = router;

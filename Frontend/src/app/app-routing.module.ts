@@ -30,7 +30,7 @@ const routes: Routes = [
   {path: 'user-home', component: UserHomeComponent, canActivate: [LoginGuard]},
   {path: 'proveedores', component: ProveedorAdminComponent},
   {path: 'editarEmpleado', component: EditarAdminComponent},
-  {path: 'editarProducto', component: EditarProducAdminComponent},
+  {path: 'editarProducto/:id', component: EditarProducAdminComponent},
   {path: 'editarProveedor/:id', component: EditarProvAdminComponent},
   {path: 'empleado', component: EmpleadoComponent},
   {path: '**', pathMatch: 'full', redirectTo: 'home'}

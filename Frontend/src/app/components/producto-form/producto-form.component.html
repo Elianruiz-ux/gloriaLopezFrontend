@@ -5,30 +5,37 @@
       <form class="registro__form">
         <h1>Registrar producto</h1>
         <div class="group">
-            <input type="txt" required="required" name="id_producto" formControlName="id_producto" /><span class="highlight"></span><span
+            <input  [(ngModel)]="producto.IDENTIFICACION_PRODUCTO" type="text" required="required" name="id_producto"  /><span class="highlight"></span><span
                 class="bar"></span>
             <label>Id del producto</label>
         </div>
         <div class="group">
-            <input type="txt" required="required" name="nombre_producto" formControlName="nombre_producto" /><span class="highlight"></span><span
+            <input [(ngModel)]="producto.NOMBRE_PRODUCTO" type="text" required="required" name="nombre_producto"  /><span class="highlight"></span><span
                 class="bar"></span>
             <label>Nombre del producto</label>
         </div>
         <div class="group">
-            <input type="number" required="required" name="precio_producto" formControlName="precio_producto" /><span class="highlight"></span><span
+            <input [(ngModel)]="producto.FECHA_COMPRA" type="number" required="required" name="precio_producto" /><span class="highlight"></span><span
                 class="bar"></span>
             <label>Precio del producto</label>
         </div>
         <div class="group">
-            <input type="file" required="required" name="img" formControlName="img" /><span class="highlight"></span><span
+            <input [(ngModel)]="producto.CANTIDAD_PRODUCTO" type="number" required="required" name="precio_producto" /><span class="highlight"></span><span
                 class="bar"></span>
+            <label>Cantidad Comprada</label>
         </div>
-         <div class="group">
-            <input type="date" required="required" name="img" formControlName="img" /><span class="highlight"></span><span
+<!--         
+        <div class="group">
+            <input type="file" required="required" name="img"  /><span class="highlight"></span><span
                 class="bar"></span>
+        </div> -->
+         <div class="group">
+            <input [(ngModel)]="producto.IDENTIFICACION_PROVEEDOR" type="text" required="required" name="identificacion_proveedor"  /><span class="highlight"></span><span
+                class="bar"></span>
+                <label>identificacion del Proveedor</label>
         </div>
 
-        <input type="submit" class="btn" value="Registrar">
+        <input type="button" type = "reset" class="btn" value="Registrar" (click)="AgregarProducto()">
       </form>
     </div>
   
@@ -42,36 +49,18 @@
                         <th>NOMBRE</th>
                         <th>PRECIO</th>
                         <th>IMAGEN</th>
-                        <th colspan="2"></th>
+                        <th colspan="4"></th>
                     </tr>
                 </thead>
-                <tbody >
-                    <!-- *ngFor="let Proveedor of ListarProveedor" -->
+                <tbody *ngFor="let Producto of ListaProducto">
+                     
                     <tr >
-                        <!-- <td>{{Proveedor.IDENTIFICACION_PROVEEDOR}}</td>
-                        <td>{{Proveedor.NOMBRE_PROVEEDOR}}</td>
-                        <td>{{Proveedor.TELEFONO}}</td>
-                        <td>{{Proveedor.CORREO}}</td>
-                        <td>{{Proveedor.DIRECCION}}</td>
-                        <td><input class="editar" routerLink="/editarProducto" type="button" value="Editar"></td>
-                        <td><input class="eliminar" type="button" value="Eliminar"></td> -->
-                    </tr>
-                    <tr>
-                        <td>a</td>
-                        <td>s</td>
-                        <td>da</td>
-                        <td>asd</td>
-                        <td><input class="editar" routerLink="/editarProducto" type="button" value="Editar"></td>
-                        <td><input class="eliminar" type="button" value="Eliminar"></td>
-                    </tr>
-                    <tr>
-                        <td>a</td>
-                        <td>s</td>
-                        <td>da</td>
-                        <td>asd</td>
-                        <td><input class="editar" routerLink="/editarProducto" type="button" value="Editar"></td>
-                        <td><input class="eliminar" type="button" value="Eliminar"></td>
-        
+                        <td>{{Producto.IDENTIFICACION_PRODUCTO}}</td>
+                        <td>{{Producto.NOMBRE_PRODUCTO}}</td>
+                        <td>{{Producto.FECHA_COMPRA}}</td>
+                        <td>{{Producto.CANTIDAD_PRODUCTO}}</td>
+                        <td><input class="editar" (click)="ModificarProducto(Producto.IDENTIFICACION_PRODUCTO)" type="button" value="Editar"></td>
+                        <td><input class="eliminar" (click)="deleteProducto(Producto.IDENTIFICACION_PRODUCTO)"type="button" value="Eliminar"></td>
                     </tr>
                    
                 </tbody>
