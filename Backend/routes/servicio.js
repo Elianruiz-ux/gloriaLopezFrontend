@@ -37,7 +37,7 @@ router.post('/', (req,res)=>{
             res.json({status: 'servicio agregado'})
         }
     })
-})
+});
 
 
 //Delete
@@ -51,22 +51,20 @@ router.delete('/:CODIGO_SERVICIO', (req,res)=>{
             res.json({status: 'Se elimino el servicio'})
         }
     })
-})
+});
 
 //Modificar 
-router.put(':/CODIGO_SERVICIO', (req,res)=>{
-    const {CODIGO_SERVICIO} = req.params
-    const {NOMBRE_SERVICIO	, COSTO_SERVICIO} = req.body
+router.put('/:ID', (req,res)=>{
+    const {ID} = req.params
+    const { NOMBRE_SERVICIO	, COSTO_SERVICIO} = req.body
 
-    let sql = `UPDATE SERVICIO set
+    let sql = `UPDATE SERVICIO SET
     NOMBRE_SERVICIO = '${NOMBRE_SERVICIO}',
     COSTO_SERVICIO = '${COSTO_SERVICIO}'
-    WHERE CODIGO_SERVICIO = '${CODIGO_SERVICIO}'`
-
+    WHERE CODIGO_SERVICIO = '${ID}'`
+    
     pool.query(sql,(err,rows,fields)=>{
-        if (err) { 
-        console.log(sql);
-    }
+        if (err) throw err
         else{
             res.json({status: 'Se modifico la informacion del servicio'})
         }
