@@ -37,9 +37,14 @@ export class AdminComponent implements OnInit {
     // console.log(this.admin);
     this.adminService.singin(this.admin).subscribe((res:any) =>{
       // console.log(res);
-      localStorage.setItem('token', res.token);
-      alert('Inicio se sesión administrador exitoso');
-      this.router.navigate(['adminhome']);
+      if(!res.token){
+        alert('Usuario o contraseña incorrectas');
+      }else{
+        localStorage.setItem('token', res.token);
+        alert('Inicio se sesión administrador exitoso');
+        this.router.navigate(['adminhome']);
+      }
+      
     });
      
       

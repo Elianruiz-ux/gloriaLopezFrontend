@@ -2,7 +2,7 @@
   "name": "PPI2022",
   "version": "1.0.0",
   "description": "",
-  "main": "Backend/views/index.js",
+  "main": "views/index.js",
   "scripts": {
     "dev": "nodemon/index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
