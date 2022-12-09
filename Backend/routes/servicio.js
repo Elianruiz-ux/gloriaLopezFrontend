@@ -3,6 +3,7 @@ const router = express.Router();
 
 const pool = require('../views/database');
 
+var verificar = new Boolean(false); 
 // Varios servicios
 router.get('/', (req, res) => {
     let sql = 'SELECT * FROM SERVICIO'
@@ -21,6 +22,7 @@ router.get('/:CODIGO_SERVICIO',(req,res)=>{
     pool.query(sql,[CODIGO_SERVICIO], (err, rows, fields)=>{
        if(err)throw err;
        else{
+        verificar = true
         res.json(rows)
        } 
     })
@@ -29,7 +31,13 @@ router.get('/:CODIGO_SERVICIO',(req,res)=>{
 //Insertar proveedor
 router.post('/', (req,res)=>{
     const {CODIGO_SERVICIO, NOMBRE_SERVICIO	, COSTO_SERVICIO} = req.body
-    let sql =`INSERT INTO SERVICIO(CODIGO_SERVICIO, NOMBRE_SERVICIO, COSTO_SERVICIO) 
+    var resultado = router.get(CODIGO_SERVICIO);
+    if( resultado != null){
+        console.log('ID existe');     
+        
+    }else{
+      console.log('Id no existe');  
+      let sql =`INSERT INTO SERVICIO(CODIGO_SERVICIO, NOMBRE_SERVICIO, COSTO_SERVICIO) 
     values ('${CODIGO_SERVICIO}','${NOMBRE_SERVICIO}','${COSTO_SERVICIO}')`
     pool.query(sql, (err, rows,fields)=>{
         if(err) throw err
@@ -37,6 +45,8 @@ router.post('/', (req,res)=>{
             res.json({status: 'servicio agregado'})
         }
     })
+    }
+    
 });
 
 
@@ -70,4 +80,6 @@ router.put('/:ID', (req,res)=>{
         }
     })
 })
+
+
 module.exports = router;
