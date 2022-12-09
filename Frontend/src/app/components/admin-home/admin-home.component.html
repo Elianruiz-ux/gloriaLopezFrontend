@@ -39,21 +39,9 @@
                 <tbody *ngFor="let servicio of ListarServicio">
                     <td>{{servicio.CODIGO_SERVICIO}}</td>
                     <td>{{servicio.NOMBRE_SERVICIO}}</td>
-                    <td>{{servicio.COSTO_SERVICIO}}</td>
-                    <td><input class="editar" type="button" routerLink="/editarServicio" value="Editar"></td>
-                        <td><input class="eliminar" type="button" value="Eliminar"></td>
- 
-                    <!-- *ngFor="let Proveedor of ListarProveedor" -->
-                    <tr >
-                        <!-- <td>{{Proveedor.IDENTIFICACION_PROVEEDOR}}</td>
-                        <td>{{Proveedor.NOMBRE_PROVEEDOR}}</td>
-                        <td>{{Proveedor.TELEFONO}}</td>
-                        <td>{{Proveedor.CORREO}}</td>
-                        <td>{{Proveedor.DIRECCION}}</td>
-                        <td><input class="editar" routerLink="/editarServicio" type="button" value="Editar"></td>
-                        <td><input class="eliminar" type="button" value="Eliminar"></td> -->
-                    </tr>
-                   
+                    <td>${{servicio.COSTO_SERVICIO}}</td>
+                    <td><input class="editar" type="button" (click)="modificarServicio(servicio.CODIGO_SERVICIO)" value="Editar"></td>
+                        <td><input class="eliminar" type="button" value="Eliminar" (click)="deleteServicio(servicio.CODIGO_SERVICIO)"></td>        
                 </tbody>
             </table>
         </div>

@@ -1,5 +1,5 @@
-import { Component, OnInit } from '@angular/core';
 import { EmpleadoService, Empleado} from './../../SERVICES/empleado.service';
+import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router'; 
 
 
@@ -33,7 +33,7 @@ export class EmpleadoComponent implements OnInit {
               private router:Router) { }
 
   ngOnInit(): void {
-    this.listarEmpleado; 
+    this.listarEmpleado(); 
   }
   listarEmpleado(){
     this.EmpleadoService.getEmpleado().subscribe(
@@ -61,12 +61,12 @@ export class EmpleadoComponent implements OnInit {
       !this.empleado.ESTUDIOS ||
       !this.empleado.TIPO_SERVICIO
       ){
-      alert('Rellene todos los campos');
+      alert('Rellene todos los campos');    
     }else{
-      this.EmpleadoService.addEmpleado(this.empleado).subscribe();
       alert('Se registro correctamente');
       this.router.navigate(['empleado']); 
       this.listarEmpleado();
+      this.EmpleadoService.addEmpleado(this.empleado).subscribe();
     }
   }
   ModificarEmpleado(id:any){

@@ -43,6 +43,16 @@ export class AdminHomeComponent implements OnInit {
         this.listarServicio();      
        }
   }
-
-  
+  modificarServicio(id:any){
+    this.router.navigate(['editarServicio/'+id]); 
+  }
+  deleteServicio(id:any){
+    this.ServicioService.deleteServicio(id).subscribe(
+      res =>{   
+        alert('Se elimino el servicio')
+        this.listarServicio();
+      },
+      err => console.log(err, alert('no fue posible elimnar el servicio')) 
+    );
+}
 }
