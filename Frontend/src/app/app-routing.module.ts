@@ -31,10 +31,10 @@ const routes: Routes = [
   {path: 'inventario', component: ProductoFormComponent},
   {path: 'user-home', component: UserHomeComponent, canActivate: [LoginGuard]},
   {path: 'proveedores', component: ProveedorAdminComponent},
-  {path: 'editarEmpleado', component: EditarAdminComponent},
+  {path: 'editarEmpleado/:id', component: EditarAdminComponent},
   {path: 'editarProducto/:id', component: EditarProducAdminComponent},
   {path: 'editarProveedor/:id', component: EditarProvAdminComponent},
-  {path: 'editarServicio', component: EdtiServicioAdminComponent},
+  {path: 'editarServicio/:id', component: EdtiServicioAdminComponent},
   {path: 'empleado', component: EmpleadoComponent},
   {path: '**', pathMatch: 'full', redirectTo: 'home'}
 ];

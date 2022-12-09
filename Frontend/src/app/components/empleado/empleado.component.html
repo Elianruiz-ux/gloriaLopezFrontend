@@ -4,7 +4,7 @@
     <div class="registro">
       <form class="registro__form">
         <h1>Registrar empleado</h1>
-        <div class="group">
+        <!-- <div class="group">
             <select name="tipo" class="select">
                 <option selected>Tipo de documento</option>
                 <option value="">C.C.</option>
@@ -91,11 +91,11 @@
                 <option value="">Cosmetologia</option>
                 <option value="">Uñas</option>
             </select>
-        </div>
+        </div> -->
         
        
 
-        <input type="submit" class="btn" value="Registrar">
+        <!-- <input type="submit" class="btn" value="Registrar"> -->
       </form>
     </div>
   
@@ -112,35 +112,35 @@
                         <th colspan="20"></th>
                     </tr>
                 </thead>
-                <tbody >
-                    <!-- *ngFor="let Proveedor of ListarProveedor" -->
+                <tbody *ngFor="let empleado of ListarEmpleado">
                     <tr >
-                        <!-- <td>{{Proveedor.IDENTIFICACION_PROVEEDOR}}</td>
+                        <td>{{empleado.IDENTIFICACION_EMPLEADO}}</td>
+                        <td>{{empleado.TIPO_DOCUMENTO}}</td>
+                        <td>{{empleado.NOMBRE_EMPLEADO}}</td>
+                        <td>{{empleado.FECHA_NACIMIENTO_EMPLEADO}}</td>
+                        
+                        <!-- 
+                            <td>{{Empleado.DIRECCION}}</td>
+                        <td>{{Empleado.SEXO_EMPLEADO}}</td>
+                        <td>{{Empleado.TELEFONO}}</td>
+                        <td>{{Empleado.CORREO}}</td>
+                        <td>{{Empleado.EPS}}</td>
+                        <td>{{Empleado.FONDO_PENSION}}</td>
+                        <td>{{Empleado.ESTADO_CIVIL}}</td>
+                        <td>{{Empleado.HIJOS}}</td>
+                        <td>{{Empleado.ESTUDIOS}}</td>
+                        <td>{{Empleado.TIPO_SERVICIO}}</td>
+
+                        
+                            <td>{{Proveedor.IDENTIFICACION_PROVEEDOR}}</td>
                         <td>{{Proveedor.NOMBRE_PROVEEDOR}}</td>
                         <td>{{Proveedor.TELEFONO}}</td>
                         <td>{{Proveedor.CORREO}}</td>
-                        <td>{{Proveedor.DIRECCION}}</td>
+                        <td>{{Proveedor.DIRECCION}}</td> -->
                         <td><input class="editar" routerLink="/editarEmpleado" type="button" value="Editar"></td>
-                        <td><input class="eliminar" type="button" value="Eliminar"></td> -->
+                        <td><input class="eliminar" type="button" value="Eliminar"></td> 
                     </tr>
-                    <tr>
-                        <td>a</td>
-                        <td>s</td>
-                        <td>da</td>
-                        <td>asd</td>
-                        <td><input class="editar" type="button" routerLink="/editarEmpleado" value="Editar"></td>
-                        <td><input class="eliminar" type="button" value="Eliminar"></td>
-                    </tr>
-                    <tr>
-                        <td>a</td>
-                        <td>s</td>
-                        <td>da</td>
-                        <td>asd</td>
-                        <td><input class="editar" routerLink="/editarEmpleado" type="button" value="Editar"></td>
-                        <td><input class="eliminar" type="button" value="Eliminar"></td>
-                        
-        
-                    </tr>
+
                    
                 </tbody>
             </table>

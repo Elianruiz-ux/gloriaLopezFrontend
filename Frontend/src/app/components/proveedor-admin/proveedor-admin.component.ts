@@ -20,7 +20,8 @@ export class ProveedorAdminComponent implements OnInit {
     CORREO: '', 
     DIRECCION: ''
   }
-  constructor(private ProveedorService:ProveedorService, private router:Router) { }
+  constructor(private ProveedorService:ProveedorService,
+              private router:Router) { }
 
   ngOnInit(): void {
     this.listarProvedores();

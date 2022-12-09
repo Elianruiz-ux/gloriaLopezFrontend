@@ -7,16 +7,15 @@ import { Observable } from 'rxjs';
 })
 export class ProveedorService {
 
-  url = '/api';
+  url = 'http://localhost:3000/proveedor/';
   constructor(private http: HttpClient) { }
 
-  //Get Equipo
+  //Get proveedor
   getProveedor(){
     return this.http.get(this.url);
   }
 
   //get un proveedor
-
   getUnProveedor(id:String){
     return this.http.get(this.url+'/'+id);
   }
