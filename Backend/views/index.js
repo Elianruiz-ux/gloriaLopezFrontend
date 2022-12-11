@@ -24,6 +24,8 @@ app.use(express.json());
 
 //Routes
 
+
+app.use(cors()); // no tocar si nno queire dañar el proyecto 
 app.use(require('../routes/index'));
 app.use(require('../routes/authentication'));
 app.use(require('../routes/admin'));

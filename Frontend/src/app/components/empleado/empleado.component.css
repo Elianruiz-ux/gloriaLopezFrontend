@@ -4,18 +4,26 @@
     grid-template-columns: 1fr 1fr;
   }
 
+
+  .linea{
+    display: inline;
+    float: left;
+    width: 50%;
+    padding-left: 13px;
+  }
  
   .registro{
     box-shadow: 1px 1px 4px rgba(235, 29, 53, 0.522);
-    width: 80%;
-    height: 500px;
+    width: auto;
+    height: 100%;
     margin: 1.8% auto;
-    padding: 10px;
+    padding: 20px;
     display: flex;
     justify-content: center;
     border-radius: 5px;
     overflow: hidden;
     overflow-y: scroll;
+   
   }
 
   .registro__form h1{
@@ -141,6 +149,7 @@
   min-width: 100%; 
   box-shadow: 1px 1px 4px rgba(235, 29, 53, 0.522);
   justify-content: center;
+  text-align: center;
 }
 
 thead tr th{

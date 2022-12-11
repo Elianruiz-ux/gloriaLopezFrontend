@@ -7,10 +7,10 @@
  
   .registro{
     box-shadow: 1px 1px 4px rgba(235, 29, 53, 0.522);
-    width: 80%;
+    width: auto;
     height: 100%;
     margin: 1.8% auto;
-    padding: 10px;
+    padding: 20px;
     display: flex;
     justify-content: center;
     border-radius: 5px;
@@ -130,12 +130,13 @@
   min-width: 100%; 
   box-shadow: 1px 1px 4px rgba(235, 29, 53, 0.522);
   justify-content: center;
+  text-align: center; 
 }
 
 .content-table thead tr { 
   background-color: rgba(235, 29, 53, 0.699); 
   color: #ffffff; 
-  text-align: middle; 
+  text-align: center; 
   
 }
 

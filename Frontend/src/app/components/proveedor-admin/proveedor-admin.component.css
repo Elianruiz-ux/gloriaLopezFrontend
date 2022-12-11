@@ -15,7 +15,8 @@
  }
   .registro{
     box-shadow: 1px 1px 4px rgba(235, 29, 53, 0.522);
-    width: 100%;
+    width: auto;
+    height: auto;
     padding: 10px;
     display: flex;
     justify-content: center;
@@ -106,7 +107,15 @@
 
   }
 
-  
+  .select{
+    font-size: 16px;
+    font-weight: normal;
+    width: 100%;
+    padding: 2%;
+    border: none;
+    border-bottom: 1px solid rgba(235, 29, 53, 0.522);
+    color: #0000007c;
+  }
 
   
 .btn{
@@ -141,6 +150,7 @@
   margin: 25px auto;  
   box-shadow: 1px 1px 4px rgba(235, 29, 53, 0.522);
   justify-content: center;
+  text-align: center;
 }
 
 thead tr th{

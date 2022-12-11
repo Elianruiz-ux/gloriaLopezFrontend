@@ -4,9 +4,9 @@
 
  
   .registro{
-    box-shadow: 1px 1px 4px rgba(235, 29, 53, 0.522);
-    width: 80%;
-    height: 500px;
+
+    width: auto;
+    height: 100%;
     margin: 1.8% auto;
     padding: 10px;
     display: flex;
