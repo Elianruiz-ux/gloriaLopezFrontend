@@ -1,4 +1,3 @@
-import { Producto } from './../../SERVICES/producto.service';
 import { ServicioService, Servicio } from './../../SERVICES/servicio.service';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
@@ -37,10 +36,20 @@ export class AdminHomeComponent implements OnInit {
        !this.servicio.NOMBRE_SERVICIO  ){
         alert('Debes llenar todos los campos');
        }else{
-        this.ServicioService.addServicio(this.servicio).subscribe();
-        alert('Se agregaron los datos exitosamente');
-        this.router.navigate(['adminhome']); 
-        this.listarServicio();      
+        if((Number(this.servicio.COSTO_SERVICIO) < 1000) ){
+          alert('La cantidad del precio deben ser mayor a $1000')
+         }else{
+          this.ServicioService.addServicio(this.servicio).subscribe();
+        this.ServicioService.getUnServicio(this.servicio.CODIGO_SERVICIO).subscribe((rows:any)=>{         
+          if(!rows[0]){
+            alert('Se agregaron los datos exitosamente');
+            this.router.navigate(['adminhome']); 
+            this.listarServicio(); 
+          }else{
+            alert('El id del servicio ya existe, por favor ingresa uno nuevo')      
+          }
+        }); 
+         }           
        }
   }
   modificarServicio(id:any){

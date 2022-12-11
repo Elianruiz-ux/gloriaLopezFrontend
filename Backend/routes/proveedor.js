@@ -30,14 +30,21 @@ router.get('/:IDENTIFICACION_PROVEEDOR', (req, res) => {
 //Post
 router.post('/', (req, res) => {
     const { IDENTIFICACION_PROVEEDOR, NOMBRE_PROVEEDOR, TELEFONO, CORREO, DIRECCION } = req.body
-    let sql = `INSERT INTO PROVEEDOR(IDENTIFICACION_PROVEEDOR, NOMBRE_PROVEEDOR, TELEFONO, CORREO, DIRECCION) 
-    values ('${IDENTIFICACION_PROVEEDOR}','${NOMBRE_PROVEEDOR}','${TELEFONO}','${CORREO}','${DIRECCION}')`
-    pool.query(sql, (err, rows, fields) => {
-        if (err) throw err
-        else {
-            res.json({ status: 'Proveedor agregado' })
-        }
-    })
+    let sql = 'SELECT IDENTIFICACION_PROVEEDOR FROM PROVEEDOR WHERE IDENTIFICACION_PROVEEDOR= ?'
+    pool.query(sql,[IDENTIFICACION_PROVEEDOR], (err,rows,fields) =>{
+        if(err) return err;
+        if(rows[0]) return res.json({status: "error", error: "Este dato ya existe"})   
+    else{
+        let sql = `INSERT INTO PROVEEDOR(IDENTIFICACION_PROVEEDOR, NOMBRE_PROVEEDOR, TELEFONO, CORREO, DIRECCION) 
+        values ('${IDENTIFICACION_PROVEEDOR}','${NOMBRE_PROVEEDOR}','${TELEFONO}','${CORREO}','${DIRECCION}')`
+        pool.query(sql, (err, rows, fields) => {
+            if (err) throw err
+            else {
+                res.json({ status: 'Proveedor agregado' })
+            }
+        })
+    }
+    }) 
 });
 
 //Delete

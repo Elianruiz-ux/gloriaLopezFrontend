@@ -21,6 +21,9 @@ router.get('/:IDENTIFICACION_EMPLEADO', (req, res) => {
     let sql = 'SELECT * FROM EMPLEADO WHERE IDENTIFICACION_EMPLEADO = ?'
     pool.query(sql, [IDENTIFICACION_EMPLEADO], (err, rows, fields) => {
         if (err) throw err;
+        if(!rows[0]){
+            res.json({error: "Este dato no existe"})
+        }
         else {
             res.json(rows)
         }
@@ -29,10 +32,10 @@ router.get('/:IDENTIFICACION_EMPLEADO', (req, res) => {
 
 //Post
 router.post('/', (req, res) => {
-    const { IDENTIFICACION_EMPLEADO, 
-        TIPO_DOCUMENTO, 
-        NOMBRE_EMPLEADO, 
-        FECHA_NACIMIENTO_EMPLEADO, 
+    const { IDENTIFICACION_EMPLEADO,
+        TIPO_DOCUMENTO,
+        NOMBRE_EMPLEADO,
+        FECHA_NACIMIENTO_EMPLEADO,
         DIRECCION,
         SEXO_EMPLEADO,
         TELEFONO,
@@ -43,42 +46,49 @@ router.post('/', (req, res) => {
         HIJOS,
         ESTUDIOS,
         TIPO_SERVICIO
-     } = req.body
-    let sql = `INSERT INTO EMPLEADO(
-        IDENTIFICACION_EMPLEADO, 
-        TIPO_DOCUMENTO, 
-        NOMBRE_EMPLEADO, 
-        FECHA_NACIMIENTO_EMPLEADO, 
-        DIRECCION,
-        SEXO_EMPLEADO,
-        TELEFONO,
-        CORREO,
-        EPS,
-        FONDO_PENSION,
-        ESTADO_CIVIL,
-        HIJOS,
-        ESTUDIOS,
-        TIPO_SERVICIO) 
-    values (
-    '${IDENTIFICACION_EMPLEADO}',
-    '${TIPO_DOCUMENTO}',
-    '${NOMBRE_EMPLEADO}',
-    '${FECHA_NACIMIENTO_EMPLEADO}',
-    '${DIRECCION}',
-    '${SEXO_EMPLEADO}',
-    '${TELEFONO}',
-    '${CORREO}',
-    '${EPS}',
-    '${FONDO_PENSION}',
-    '${ESTADO_CIVIL}',
-    '${HIJOS}',
-    '${ESTUDIOS}',
-    '${TIPO_SERVICIO}'
-    )`
-    pool.query(sql, (err, rows, fields) => {
-        if (err) throw err
+    } = req.body
+    let sql = 'SELECT IDENTIFICACION_EMPLEADO FROM EMPLEADO WHERE IDENTIFICACION_EMPLEADO= ?'
+    pool.query(sql, [IDENTIFICACION_EMPLEADO], (err, rows, fields) => {
+        if (err) return err;
+        if (rows[0]) return res.json({ status: "error", error: "Este dato ya existe" })
         else {
-            res.json({ status: 'empleado agregado' })
+            let sql = `INSERT INTO EMPLEADO(
+            IDENTIFICACION_EMPLEADO, 
+            TIPO_DOCUMENTO, 
+            NOMBRE_EMPLEADO, 
+            FECHA_NACIMIENTO_EMPLEADO, 
+            DIRECCION,
+            SEXO_EMPLEADO,
+            TELEFONO,
+            CORREO,
+            EPS,
+            FONDO_PENSION,
+            ESTADO_CIVIL,
+            HIJOS,
+            ESTUDIOS,
+            TIPO_SERVICIO) 
+        values (
+        '${IDENTIFICACION_EMPLEADO}',
+        '${TIPO_DOCUMENTO}',
+        '${NOMBRE_EMPLEADO}',
+        '${FECHA_NACIMIENTO_EMPLEADO}',
+        '${DIRECCION}',
+        '${SEXO_EMPLEADO}',
+        '${TELEFONO}',
+        '${CORREO}',
+        '${EPS}',
+        '${FONDO_PENSION}',
+        '${ESTADO_CIVIL}',
+        '${HIJOS}',
+        '${ESTUDIOS}',
+        '${TIPO_SERVICIO}'
+        )`
+            pool.query(sql, (err, rows, fields) => {
+                if (err) throw err
+                else {
+                    res.json({ status: 'empleado agregado' })
+                }
+            })
         }
     })
 });
@@ -94,18 +104,18 @@ router.delete('/:IDENTIFICACION_EMPLEADO', (req, res) => {
             res.json({ status: 'Se elimino el proveedor' })
         }
     })
-}); 
+});
 
 
 //Put
 router.put('/:ID', (req, res) => {
-    const {ID} = req.params
+    const { ID } = req.params
 
     const {
-        IDENTIFICACION_EMPLEADO, 
-        TIPO_DOCUMENTO, 
-        NOMBRE_EMPLEADO, 
-        FECHA_NACIMIENTO_EMPLEADO, 
+        IDENTIFICACION_EMPLEADO,
+        TIPO_DOCUMENTO,
+        NOMBRE_EMPLEADO,
+        FECHA_NACIMIENTO_EMPLEADO,
         DIRECCION,
         SEXO_EMPLEADO,
         TELEFONO,
@@ -138,7 +148,7 @@ router.put('/:ID', (req, res) => {
     pool.query(sql, (err, rows, fields) => {
         if (err) throw err
         else {
-            res.json({status: 'Se modifico la informacion del empleado'})
+            res.json({ status: 'Se modifico la informacion del empleado' })
         }
     })
 })

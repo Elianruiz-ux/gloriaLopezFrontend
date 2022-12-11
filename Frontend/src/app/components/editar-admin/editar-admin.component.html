@@ -5,88 +5,96 @@
       <form class="registro__form">
         <h1>Información empleado</h1>
         <div class="group">
-            <select name="tipo" class="select">
+            <select [(ngModel)]="empleado.TIPO_DOCUMENTO" name="tipo" class="select">
                 <option selected>Tipo de documento</option>
-                <option value="">C.C.</option>
-                <option value="">C.E.</option>
+                <option value="C.C.">C.C.</option>
+                <option value="C.E.">C.E.</option>
             </select>
         </div>
         <div class="group">
-            <input type="number" required="required" name="Numero_doc"  /><span class="highlight"></span><span
+            <input [(ngModel)]="empleado.IDENTIFICACION_EMPLEADO" type="number" required="required" name="Numero_doc"  /><span class="highlight"></span><span
                 class="bar"></span>
             <label>Numero de documento</label>
         </div>
         <div class="group">
-            <input type="text" required="required" name="Nombre"  maxlength="40" pattern="[a-z-A-Z]+"  /><span class="highlight"></span><span
+            <input [(ngModel)]="empleado.NOMBRE_EMPLEADO" type="text" required="required" name="Nombre"  maxlength="40" pattern="[a-z-A-Z]+" /><span class="highlight"></span><span
                 class="bar"></span>
             <label>Nombre completo</label>
         </div>
         <div class="group">
-            <input type="date" placeholder="Fecha de nacimiento" required="required" name="Fecha" /><span class="highlight"></span><span
+            <input [(ngModel)]="empleado.FECHA_NACIMIENTO_EMPLEADO" type="date" placeholder="Fecha de nacimiento" required="required" name="Fecha" /><span class="highlight"></span><span
                 class="bar"></span>
                 <label>Fecha de nacimiento</label>
         </div>
         <div class="group">
-            <input type="text" required="required" name="residencia"  maxlength="40" pattern="[a-z-A-Z]+"/><span class="highlight"></span><span
+            <input [(ngModel)]="empleado.DIRECCION" type="text" required="required" name="residencia"  maxlength="40" /><span class="highlight"></span><span
                 class="bar"></span>
             <label>Dirección de residencia</label>
         </div>
         <div class="group">
-            <input type="number" required="required" name="celular" /><span class="highlight"></span><span
+            <input [(ngModel)]="empleado.TELEFONO" type="number" required="required" name="celular" /><span class="highlight"></span><span
                 class="bar"></span>
             <label>Numero de celular</label>
         </div>
         <div class="group">
-            <input type="email" required="required" name="celular"  maxlength="50"  /><span class="highlight"></span><span
+            <input [(ngModel)]="empleado.CORREO" type="email" required="required" name="celular"  maxlength="40"  /><span class="highlight"></span><span
                 class="bar"></span>
             <label>Correo</label>
         </div>
         <div class="group">
-            <select name="tipo" class="select">
-                <option selected>Eps</option>
-                <option value="">Sura</option>
+            <select [(ngModel)]="empleado.SEXO_EMPLEADO" name="tipo" class="select">
+                <option selected>Sexo</option>
+                <option value="0">Hombre</option>
+                <option value="1">Mujeres</option>
+                <option value="2">Otro</option>
             </select>
         </div>
         <div class="group">
-            <select name="tipo" class="select">
+            <select [(ngModel)]="empleado.EPS"  name="tipo" class="select">
+                <option selected>Eps</option>
+                <option value="Sura">Sura</option>
+            </select>
+        </div>
+        <div class="group">
+            <select [(ngModel)]="empleado.FONDO_PENSION" name="tipo" class="select">
                 <option selected>Fondo de prensiones</option>
-                <option value="">Colpensiones</option>
+                <option value="Colpensiones">Colpensiones</option>
             </select>
         </div>
 
         <div class="group">
-            <select name="tipo" class="select">
+            <select [(ngModel)]="empleado.ESTADO_CIVIL" name="tipo" class="select">
                 <option selected>Estado civil</option>
-                <option value="">Solter@</option>
-                <option value="">Casad@</option>
-                <option value="">Viud@</option>
+                <option value="Solter@">Solter@</option>
+                <option value="Casad@">Casad@</option>
+                <option value="Unión libre">Unión libre</option>
             </select>
         </div>
         <div class="group">
-            <input type="number" required="required" name="hijos" /><span class="highlight"></span><span
+            <input [(ngModel)]="empleado.HIJOS" type="number" required="required" name="hijos"  /><span class="highlight"></span><span
                 class="bar"></span>
             <label>Numero de hijos</label>
         </div>
         <div class="group">
-            <select name="tipo" class="select">
+            <select [(ngModel)]="empleado.ESTUDIOS" name="tipo" class="select">
                 <option selected>Estudios</option>
-                <option value="">Bachiller</option>
-                <option value="">Tecnico</option>
-                <option value="">Tecnologo</option>
-                <option value="">Pregrado</option>
+                <option value="Bachiller">Bachiller</option>
+                <option value="Tecnico">Tecnico</option>
+                <option value="Tecnologo">Tecnologo</option>
+                <option value="Pregrado">Pregrado</option>
             </select>
         </div>
         <div class="group">
-            <select name="tipo" class="select">
+            <select [(ngModel)]="empleado.TIPO_SERVICIO" name="tipo" class="select">
                 <option selected>Tipo de servicio</option>
-                <option value="">Barberia</option>
-                <option value="">Cosmetologia</option>
-                <option value="">Uñas</option>
+                <option value="Barberia">Barberia</option>
+                <option value="Cosmetologia">Cosmetologia</option>
+                <option value="Uñas">Uñas</option>
             </select>
-        </div>
+        </div>  
        
 
-        <input type="submit" class="btn" value="Guardar">
+        <input type="button" (click)="modificarEmpleado()" class="btn" value="Guardar" >
       </form>
     </div>
 

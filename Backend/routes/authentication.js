@@ -41,7 +41,7 @@ router.post('/test', verifyToken, (req,res) => {
  });
 
 function verifyToken(req, res, next){
-    if(!req.headers.authorization) return res.status(401).json('No autorizado');
+    if(!req.headers.authorization) return res.status(400).json('No autorizado');
     const token = req.headers.authorization.substr(7);
     
     if(token !== ''){

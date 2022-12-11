@@ -12,9 +12,11 @@
         </div>
 
         <div class="group">
-            <input type="text" required="required" name="dirrecion"  maxlength="10"  /><span
-                class="highlight"></span><span class="bar"></span>
-            <label>Tipo de documento</label>
+            <select name="tipo" class="select">
+                <option selected>Tipo de documento</option>
+                <option value="C.C.">C.C.</option>
+                <option value="C.E.">C.E.</option>
+            </select>
         </div>
         <div class="group">
             <input type="text" required="required" name="dirrecion"  maxlength="40" pattern="[a-z-A-Z]+"/><span

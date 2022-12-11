@@ -14,11 +14,11 @@
                 class="bar"></span>
             <label>Nombre del producto</label>
         </div>
-        <div class="group">
+        <!-- <div class="group">
             <input type="date" required="required" name="nombre_producto"  /><span class="highlight"></span><span
                 class="bar"></span>
             <label>Fecha de ingreso</label>
-        </div>
+        </div> -->
         <div class="group">
             <input [(ngModel)]="producto.CANTIDAD_PRODUCTO" type="number" required="required" name="precio_producto" /><span class="highlight"></span><span
                 class="bar"></span>
@@ -54,7 +54,7 @@
                         <th>ID</th>
                         <th>NOMBRE</th>
                         <th>PRECIO</th>
-                        <th>IMAGEN</th>
+                        <th>CANTIDAD DE PRODUCTOS COMPRADOS</th>
                         <th colspan="4"></th>
                     </tr>
                 </thead>
@@ -63,7 +63,7 @@
                     <tr >
                         <td>{{Producto.IDENTIFICACION_PRODUCTO}}</td>
                         <td>{{Producto.NOMBRE_PRODUCTO}}</td>
-                        <td>{{Producto.FECHA_COMPRA}}</td>
+                        <td>${{Producto.FECHA_COMPRA}}</td>
                         <td>{{Producto.CANTIDAD_PRODUCTO}}</td>
                         <td><input class="editar" (click)="ModificarProducto(Producto.IDENTIFICACION_PRODUCTO)" type="button" value="Editar"></td>
                         <td><input class="eliminar" (click)="deleteProducto(Producto.IDENTIFICACION_PRODUCTO)"type="button" value="Eliminar"></td>

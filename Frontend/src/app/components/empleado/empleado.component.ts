@@ -1,6 +1,6 @@
-import { EmpleadoService, Empleado} from './../../SERVICES/empleado.service';
+import { EmpleadoService, Empleado } from './../../SERVICES/empleado.service';
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router'; 
+import { Router } from '@angular/router';
 
 
 @Component({
@@ -10,43 +10,43 @@ import { Router } from '@angular/router';
 })
 export class EmpleadoComponent implements OnInit {
 
-  ListarEmpleado: Empleado[] = []; 
+  ListarEmpleado: Empleado[] = [];
 
-  empleado: Empleado={
-  IDENTIFICACION_EMPLEADO: '',
-  TIPO_DOCUMENTO: '',
-  NOMBRE_EMPLEADO: '',
-  FECHA_NACIMIENTO_EMPLEADO: '',
-  DIRECCION: '',
-  SEXO_EMPLEADO: '',
-  TELEFONO: '',
-  CORREO: '',
-  EPS: '',
-  FONDO_PENSION: '',
-  ESTADO_CIVIL: '',
-  HIJOS: '',
-  ESTUDIOS: '',
-  TIPO_SERVICIO: ''
+  empleado: Empleado = {
+    IDENTIFICACION_EMPLEADO: '',
+    TIPO_DOCUMENTO: '',
+    NOMBRE_EMPLEADO: '',
+    FECHA_NACIMIENTO_EMPLEADO: '',
+    DIRECCION: '',
+    SEXO_EMPLEADO: '',
+    TELEFONO: '',
+    CORREO: '',
+    EPS: '',
+    FONDO_PENSION: '',
+    ESTADO_CIVIL: '',
+    HIJOS: '',
+    ESTUDIOS: '',
+    TIPO_SERVICIO: ''
   }
 
-  constructor(private EmpleadoService:EmpleadoService, 
-              private router:Router) { }
+  constructor(private EmpleadoService: EmpleadoService,
+    private router: Router) { }
 
   ngOnInit(): void {
-    this.listarEmpleado(); 
+    this.listarEmpleado();
   }
-  listarEmpleado(){
+  listarEmpleado() {
     this.EmpleadoService.getEmpleado().subscribe(
-      res=>{
+      res => {
         console.log(res);
-        this.ListarEmpleado= <any>res;
-      }, 
+        this.ListarEmpleado = <any>res;
+      },
       err => console.log(err)
     );
   }
 
-   AgregarEmpelado(){
-    if(!this.empleado.IDENTIFICACION_EMPLEADO ||
+  AgregarEmpelado() {
+    if (!this.empleado.IDENTIFICACION_EMPLEADO ||
       !this.empleado.TIPO_DOCUMENTO ||
       !this.empleado.NOMBRE_EMPLEADO ||
       !this.empleado.FECHA_NACIMIENTO_EMPLEADO ||
@@ -60,22 +60,57 @@ export class EmpleadoComponent implements OnInit {
       !this.empleado.HIJOS ||
       !this.empleado.ESTUDIOS ||
       !this.empleado.TIPO_SERVICIO
-      ){
-      alert('Rellene todos los campos');    
-    }else{
-      alert('Se registro correctamente');
-      this.router.navigate(['empleado']); 
-      this.listarEmpleado();
-      this.EmpleadoService.addEmpleado(this.empleado).subscribe();
+    ) {
+
+      alert('Rellene todos los campos');
+    } else {
+
+      if ((Number(this.empleado.TELEFONO) > 1000000000) && (Number(this.empleado.TELEFONO) <= 999999999999999)) {
+        if ((Number(this.empleado.HIJOS) >= 0) && (Number(this.empleado.HIJOS) <= 50)) {
+
+          if ((this.empleado.TIPO_DOCUMENTO === 'C.C.') && (Number(this.empleado.IDENTIFICACION_EMPLEADO) >= 1000000000)) {
+            this.EmpleadoService.addEmpleado(this.empleado).subscribe();
+            this.EmpleadoService.getUnEmpleado(this.empleado.IDENTIFICACION_EMPLEADO).subscribe((rows: any) => {
+              if (!rows[0]) {
+                alert('Se registro correctamente');
+                this.router.navigate(['empleado']);
+                this.listarEmpleado();
+              } else {
+                alert('El id del servicio ya existe, por favor ingresa uno nuevo')
+              }
+            })
+
+          } else {
+            if ((this.empleado.TIPO_DOCUMENTO === 'C.E.') && (Number(this.empleado.IDENTIFICACION_EMPLEADO) >= 100000000000)) {
+              this.EmpleadoService.addEmpleado(this.empleado).subscribe();
+              this.EmpleadoService.getUnEmpleado(this.empleado.IDENTIFICACION_EMPLEADO).subscribe((rows: any) => {
+                if (!rows[0]) {
+                  alert('Se registro correctamente');
+                  this.router.navigate(['empleado']);
+                  this.listarEmpleado();
+                } else {
+                  alert('El id del servicio ya existe, por favor ingresa uno nuevo')
+                }
+              })
+            } else {
+              alert('Asegurece que el tipo de documento y el número de documento sean los correspondientes')
+            }
+          }
+        }else{
+          alert('El número de hijos no puede ser negativo')
+        }  
+      } else {
+        alert('La cantidad de digitos del celular no son los correctos')
+      }
     }
   }
-  ModificarEmpleado(id:any){
-    this.router.navigate(['editarProducto/'+id]); 
+  ModificarEmpleado(id: any) {
+    this.router.navigate(['editarEmpleado/' + id]);
   }
 
-  deleteEmpleado(id:any){
+  deleteEmpleado(id: any) {
     this.EmpleadoService.deleteEmpleado(id).subscribe(
-      res =>{
+      res => {
         console.log(res);
         this.listarEmpleado();
       },

@@ -28,14 +28,21 @@ router.get('/:IDENTIFICACION_PRODUCTO', (req, res) => {
 
 router.post('/', (req, res) => {
     const { IDENTIFICACION_PRODUCTO, NOMBRE_PRODUCTO, FECHA_COMPRA, CANTIDAD_PRODUCTO, IDENTIFICACION_PROVEEDOR } = req.body
-    let sql = `INSERT INTO PRODUCTO(IDENTIFICACION_PRODUCTO, NOMBRE_PRODUCTO, FECHA_COMPRA, CANTIDAD_PRODUCTO, IDENTIFICACION_PROVEEDOR) 
-    values ('${IDENTIFICACION_PRODUCTO}','${NOMBRE_PRODUCTO}','${FECHA_COMPRA}','${CANTIDAD_PRODUCTO}','${IDENTIFICACION_PROVEEDOR}')`
-    pool.query(sql, (err, rows, fields) => {
-        if (err) throw err
-        else {
-            res.json({ status: 'Producto agregado agregado' })
-        }
-    })
+    let sql = 'SELECT IDENTIFICACION_PRODUCTO FROM PRODUCTO WHERE IDENTIFICACION_PRODUCTO= ?'
+    pool.query(sql,[IDENTIFICACION_PRODUCTO], (err,rows,fields)=>{
+        if(err) return err;
+        if(rows[0]) return res.json({status: "error", error: "Este dato ya existe"})   
+    else{
+        let sql = `INSERT INTO PRODUCTO(IDENTIFICACION_PRODUCTO, NOMBRE_PRODUCTO, FECHA_COMPRA, CANTIDAD_PRODUCTO, IDENTIFICACION_PROVEEDOR) 
+        values ('${IDENTIFICACION_PRODUCTO}','${NOMBRE_PRODUCTO}','${FECHA_COMPRA}','${CANTIDAD_PRODUCTO}','${IDENTIFICACION_PROVEEDOR}')`
+        pool.query(sql, (err, rows, fields) => {
+            if (err) throw err
+            else {
+                res.json({ status: 'Producto agregado agregado' })
+            }
+        })
+    } 
+    })   
 });
 router.delete('/:IDENTIFICACION_PRODUCTO', (req, res) => {
     const { IDENTIFICACION_PRODUCTO } = req.params

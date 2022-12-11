@@ -3,7 +3,6 @@ const router = express.Router();
 
 const pool = require('../views/database');
 
-var verificar = new Boolean(false); 
 // Varios servicios
 router.get('/', (req, res) => {
     let sql = 'SELECT * FROM SERVICIO'
@@ -21,8 +20,10 @@ router.get('/:CODIGO_SERVICIO',(req,res)=>{
     let sql = 'SELECT * FROM SERVICIO WHERE CODIGO_SERVICIO= ?'
     pool.query(sql,[CODIGO_SERVICIO], (err, rows, fields)=>{
        if(err)throw err;
+       if(!rows[0]){
+        res.status(400).json({error: "Este dato no existe"})
+       }
        else{
-        verificar = true
         res.json(rows)
        } 
     })
@@ -31,22 +32,21 @@ router.get('/:CODIGO_SERVICIO',(req,res)=>{
 //Insertar proveedor
 router.post('/', (req,res)=>{
     const {CODIGO_SERVICIO, NOMBRE_SERVICIO	, COSTO_SERVICIO} = req.body
-    var resultado = router.get(CODIGO_SERVICIO);
-    if( resultado != null){
-        console.log('ID existe');     
-        
-    }else{
-      console.log('Id no existe');  
-      let sql =`INSERT INTO SERVICIO(CODIGO_SERVICIO, NOMBRE_SERVICIO, COSTO_SERVICIO) 
-    values ('${CODIGO_SERVICIO}','${NOMBRE_SERVICIO}','${COSTO_SERVICIO}')`
-    pool.query(sql, (err, rows,fields)=>{
-        if(err) throw err
-        else {
-            res.json({status: 'servicio agregado'})
-        }
-    })
-    }
-    
+    let sql = 'SELECT CODIGO_SERVICIO FROM SERVICIO WHERE CODIGO_SERVICIO= ?'
+    pool.query(sql,[CODIGO_SERVICIO], (err,rows,fields)=>{
+        if(err) return err;
+        if(rows[0]) return res.json({status: "error", error: "Este dato ya existe"})   
+    else{
+        let sql =`INSERT INTO SERVICIO(CODIGO_SERVICIO, NOMBRE_SERVICIO, COSTO_SERVICIO) 
+        values ('${CODIGO_SERVICIO}','${NOMBRE_SERVICIO}','${COSTO_SERVICIO}')`
+        pool.query(sql, (err, rows,fields)=>{
+            if(err) throw err
+            else {
+                res.json({status: 'servicio agregado'})
+            }
+        })  
+    }  
+    })     
 });
 
 
