@@ -4,7 +4,7 @@
   "description": "",
   "main": "views/index.js",
   "scripts": {
-    "dev": "npm nodemon/views/index.js",
+    "dev": "nodemon/views/index.js",
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "npm run dev"
   },
