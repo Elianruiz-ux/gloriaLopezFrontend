@@ -19,12 +19,26 @@
     
   }
 
+  body{
+    height: 100%;
+  }
+
   html{
+    height: 100%;
     color: var(--color-negro);
   }
 
   ::-webkit-scrollbar{
     display: none;
   }
+
+
+  input:-webkit-autofill,
+    input:-webkit-autofill:hover,
+    input:-webkit-autofill:focus,
+    input:-webkit-autofill:active {
+      box-shadow: none;
+      -webkit-box-shadow: 0 0 0 30px var(--color-blanco) inset !important;
+    }
 
   

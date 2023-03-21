@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 
 import { AdminService } from './../../SERVICES/admin.service';
 
-import { FormGroup, FormBuilder, Validators, NgForm } from '@angular/forms';
+import { FormGroup, FormBuilder, Validators, NgForm,FormControl } from '@angular/forms';
 import { first } from 'rxjs/operators';
 import { Router } from '@angular/router';
 
@@ -12,7 +12,18 @@ import { Router } from '@angular/router';
   styleUrls: ['./admin.component.css']
 })
 export class AdminComponent implements OnInit {
+  hide = true;
 
+
+  email = new FormControl('', [Validators.required, Validators.email]);
+
+  getErrorMessage() {
+    if (this.email.hasError('required')) {
+      return 'You must enter a value';
+    }
+
+    return this.email.hasError('email') ? 'Not a valid email' : '';
+  }
   
   admin = {
     USUARIO_ADMIN: '',

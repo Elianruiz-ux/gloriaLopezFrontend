@@ -33,6 +33,15 @@ import { EditarProvAdminComponent } from './components/editar-prov-admin/editar-
 import { EditarProducAdminComponent } from './components/editar-produc-admin/editar-produc-admin.component';
 import { EdtiServicioAdminComponent } from './components/edti-servicio-admin/edti-servicio-admin.component';
 
+
+//estilos
+import {MatSliderModule} from '@angular/material/slider';
+import {MatToolbarModule} from '@angular/material/toolbar';
+import {MatIconModule} from '@angular/material/icon';
+import {MatButtonModule} from '@angular/material/button'
+import {MatFormFieldModule} from '@angular/material/form-field';
+import {MatInputModule} from '@angular/material/input';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -62,7 +71,13 @@ import { EdtiServicioAdminComponent } from './components/edti-servicio-admin/edt
     AppRoutingModule,
     ReactiveFormsModule,
     FormsModule,
-    HttpClientModule
+    HttpClientModule,
+    MatSliderModule,
+    MatToolbarModule,
+    MatIconModule,
+    MatButtonModule,
+    MatFormFieldModule,
+    MatInputModule
   ],
   providers: [
     {provide: JWT_OPTIONS, useValue:JWT_OPTIONS },
