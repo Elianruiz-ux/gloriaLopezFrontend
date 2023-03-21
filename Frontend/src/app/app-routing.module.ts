@@ -8,15 +8,18 @@ import { LoginHomeComponent } from "./components/login-home/login-home.component
 import { RegisterHomeComponent } from "./components/register-home/register-home.component";
 import { UserHomeComponent } from "./components/user-home/user-home.component";
 import { AdminHomeComponent } from "./components/admin-home/admin-home.component";
-import { GuardGuard } from "./guard.guard";
+import { ContactComponent } from "./components/contact/contact.component";
+import { ProductoFormComponent } from "./components/producto-form/producto-form.component";
 
 const routes: Routes = [
   {path: 'admin', component: AdminComponent},
   {path: 'home', component: HomeComponent},
   {path: 'login', component: LoginHomeComponent},
   {path: 'registro', component: RegisterHomeComponent},
-  {path: 'userhome', component: UserHomeComponent, canActivate:[GuardGuard]},
   {path: 'adminhome', component: AdminHomeComponent},
+  {path: 'contact', component: ContactComponent},
+  {path: 'inventario', component: ProductoFormComponent},
+  {path: 'user-home', component: UserHomeComponent},
   {path: '**', pathMatch: 'full', redirectTo: 'home'}
 ];
 

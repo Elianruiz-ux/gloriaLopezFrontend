@@ -65,3 +65,9 @@
     outline: none;
     border-radius: 5px;
 }
+
+.reg{
+  cursor: pointer;
+  color: blue;
+  text-decoration: underline;
+}

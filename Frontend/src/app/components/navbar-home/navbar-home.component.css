@@ -45,11 +45,14 @@
 
 }
 
+a{
+    cursor: pointer;
+}
+
 .navbar-submenu li a{
 	display: block;
 	padding: 5px;
 	color: rgba(235, 29, 53, 0.522);
-	font-family: 'Open sans';
 	text-decoration: none;
 }
 

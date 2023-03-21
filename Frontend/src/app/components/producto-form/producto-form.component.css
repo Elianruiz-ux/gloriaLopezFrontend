@@ -1,0 +1,142 @@
+.container{
+    margin: 20px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+  }
+
+ 
+  .registro{
+    box-shadow: 1px 1px 4px rgba(235, 29, 53, 0.522);
+    width: 80%;
+    height: 100%;
+    margin: 1.8% auto;
+    padding: 10px;
+    display: flex;
+    justify-content: center;
+    border-radius: 5px;
+  }
+
+  .registro__form h1{
+    display: flex;
+    justify-content: center;
+    margin: 10px 0 40px 0;
+  }
+
+  .registro__form{
+    display: flex;
+    flex-direction: column;
+    
+  }
+
+  .columna{
+    display: inline;
+    float: left;
+    width: 50%;
+    padding-left: 13px;
+  }
+  
+  .registro__form label{
+    font-size: 1em;
+    color: rgba(0, 0, 0, 0.8);
+  }
+
+  .registro__form input{
+    margin: 2px 0 20px 0 ;
+  }
+  
+  .registro__form label span{
+    color: red;
+  }
+  
+
+  
+.btn{
+    border: none;
+    padding: 8px 15px;
+    border-radius: 5px;
+    color: white;
+    background-color: rgba(235, 29, 53, 0.522);
+    cursor: pointer;
+    font-size: 1em;
+    }
+  
+.btn:hover{
+    background-color: rgba(235, 29, 53, 0.699);
+    color: white;
+  }
+
+.txt{
+    padding: 8px 2px;
+    border-top: none;
+    border-left: none;
+    border-right: none;
+    border: 0 0 0 2px solid rgba(235, 29, 53, 0.699);
+    width: 200%;
+}
+
+.txt:focus{
+    border: 2px solid rgba(235, 29, 53, 0.699);
+    outline: none;
+    border-radius: 5px;
+}
+
+
+/* Lista */
+
+.content-table { 
+  border-collapse: collapse;
+  border-radius: 10px;
+  margin: 25px auto; 
+  min-width: 100%; 
+  box-shadow: 1px 1px 4px rgba(235, 29, 53, 0.522);
+  justify-content: center;
+}
+
+.content-table thead tr { 
+  background-color: rgba(235, 29, 53, 0.699); 
+  color: #ffffff; 
+  text-align: middle; 
+  
+}
+
+
+
+.content-table th, .content-table td {
+   padding: 12px; 
+   font-weight: 100;
+   margin: auto;
+}
+
+.content-table tbody tr:nth-of-type(even) { 
+  background-color: rgba(235, 29, 53, 0.1); 
+} 
+
+.editar{
+  border: none;
+  padding: 8px 15px;
+  border-radius: 5px;
+  color: white;
+  background-color: rgba(235, 29, 53, 0.522);
+  cursor: pointer;
+  font-size: 1em;
+}
+
+.editar:hover{
+  background-color: rgba(235, 29, 53, 0.699); 
+}
+
+
+.eliminar{
+  border: none;
+  padding: 8px 15px;
+  border-radius: 5px;
+  color: white;
+  background-color: rgb(255, 0, 0);
+  cursor: pointer;
+  font-size: 1em;
+}
+
+.eliminar:hover{
+  background-color: rgba(255, 0, 0, 0.774);
+}
+

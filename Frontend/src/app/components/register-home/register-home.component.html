@@ -1,7 +1,7 @@
 <app-navbar-home></app-navbar-home>
 <div class="container">
     <div class="registro">
-      <form class="registro__form" [formGroup]="angForm" (ngSubmit)="postdata(angForm)">
+      <form class="registro__form">
         <h1>Registrarse</h1>
         <div>
 
@@ -52,7 +52,7 @@
         </div>
 
 
-        <input type="submit" class="btn" value="Registrarse">
+        <input type="submit" class="btn" value="Registrarse" routerLink="/login">
       </form>
     </div>
   
