@@ -39,7 +39,7 @@ export class LoginHomeComponent implements OnInit {
       // console.log(res);
       alert('Inicio se sesión exitoso')
       localStorage.setItem('token', res.token);
-      this.router.navigate(['user-home']);
+      this.router.navigate(['userHome']);
     });
     }
 

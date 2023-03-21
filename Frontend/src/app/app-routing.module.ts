@@ -29,7 +29,7 @@ const routes: Routes = [
   {path: 'adminhome', component: AdminHomeComponent,canActivate: [AdminGuard]},
   {path: 'contact', component: ContactComponent},
   {path: 'inventario', component: ProductoFormComponent},
-  {path: 'user-home', component: UserHomeComponent, canActivate: [LoginGuard]},
+  {path: 'userHome', component: UserHomeComponent, canActivate: [LoginGuard]},
   {path: 'proveedores', component: ProveedorAdminComponent},
   {path: 'editarEmpleado/:id', component: EditarAdminComponent},
   {path: 'editarProducto/:id', component: EditarProducAdminComponent},
