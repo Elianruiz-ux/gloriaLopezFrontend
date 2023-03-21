@@ -8,15 +8,34 @@ import { LoginHomeComponent } from "./components/login-home/login-home.component
 import { RegisterHomeComponent } from "./components/register-home/register-home.component";
 import { UserHomeComponent } from "./components/user-home/user-home.component";
 import { AdminHomeComponent } from "./components/admin-home/admin-home.component";
-import { GuardGuard } from "./guard.guard";
+import { ContactComponent } from "./components/contact/contact.component";
+import { ProductoFormComponent } from "./components/producto-form/producto-form.component";
+import { ProveedorAdminComponent } from "./components/proveedor-admin/proveedor-admin.component";
+import { EditarAdminComponent } from "./components/editar-admin/editar-admin.component";
+import { EmpleadoComponent } from "./components/empleado/empleado.component";
+import { EditarProducAdminComponent } from "./components/editar-produc-admin/editar-produc-admin.component";
+import { EditarProvAdminComponent } from "./components/editar-prov-admin/editar-prov-admin.component";
+import { EdtiServicioAdminComponent } from "./components/edti-servicio-admin/edti-servicio-admin.component";
+
+import { LoginGuard } from './guards/login.guard';
+import { AdminGuard } from './guards/admin.guard';
+
 
 const routes: Routes = [
   {path: 'admin', component: AdminComponent},
   {path: 'home', component: HomeComponent},
   {path: 'login', component: LoginHomeComponent},
   {path: 'registro', component: RegisterHomeComponent},
-  {path: 'userhome', component: UserHomeComponent, canActivate:[GuardGuard]},
-  {path: 'adminhome', component: AdminHomeComponent},
+  {path: 'adminhome', component: AdminHomeComponent,canActivate: [AdminGuard]},
+  {path: 'contact', component: ContactComponent},
+  {path: 'inventario', component: ProductoFormComponent},
+  {path: 'user-home', component: UserHomeComponent, canActivate: [LoginGuard]},
+  {path: 'proveedores', component: ProveedorAdminComponent},
+  {path: 'editarEmpleado/:id', component: EditarAdminComponent},
+  {path: 'editarProducto/:id', component: EditarProducAdminComponent},
+  {path: 'editarProveedor/:id', component: EditarProvAdminComponent},
+  {path: 'editarServicio/:id', component: EdtiServicioAdminComponent},
+  {path: 'empleado', component: EmpleadoComponent},
   {path: '**', pathMatch: 'full', redirectTo: 'home'}
 ];
 

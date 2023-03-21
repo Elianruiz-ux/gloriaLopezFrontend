@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { ApiService } from 'src/app/api.service';
+
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-navbar-user-home',
@@ -8,24 +9,15 @@ import { ApiService } from 'src/app/api.service';
 })
 export class NavbarUserHomeComponent implements OnInit {
 
-  logoutbtn: boolean;
-
-  constructor(private dataService: ApiService){
-
-
-    if(this.dataService.isLoggedIn()){
-      console.log("loggedin");
-      this.logoutbtn = true
-    }else{ 
-      this.logoutbtn = false
-    }
-  }
-
-  logout(){
-    this.dataService.deleteToken();
-    window.location.href = window.location.href;
-  }
+  constructor(private router: Router) { }
   ngOnInit(): void {
   }
+
+  logoutUser(){
+    localStorage.removeItem('token');
+    alert('Se cerró sesión correctamente');
+    this.router.navigate(['/login']);
+  }
+
 
 }

@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-
+import { RegistrarService, RegUsu} from './../../SERVICES/registrar.service';
 import { FormGroup, FormControl, FormBuilder, Validators, NgForm } from '@angular/forms';
 import { first } from 'rxjs/operators';
 import { Router } from '@angular/router';
-import { ApiService } from 'src/app/api.service';
+
 
 @Component({
   selector: 'app-register-home',
@@ -11,46 +11,47 @@ import { ApiService } from 'src/app/api.service';
   styleUrls: ['./register-home.component.css']
 })
 export class RegisterHomeComponent implements OnInit {
-  angForm: FormGroup;
+
+  registrar: RegUsu[] = []; 
   
-  constructor(
-    private fb: FormBuilder, 
-    private dataService: ApiService, 
-    private router: Router
-    ) { 
-      this.angForm = this.fb.group({
-        nombre: ['', Validators.required],
-        apellido: ['', Validators.required],
-        documento: ['', Validators.required],
-        celular: ['', Validators.required],
-        correo: ['', [Validators.required, Validators.minLength(1), Validators.email]],
-        confirmarCorreo: ['', [Validators.required, Validators.minLength(1), Validators.email]],
-        contraseña: ['', Validators.required],
-        confirmarContraseña: ['', Validators.required]
-
-      });
-    }
-
+    regUsu: RegUsu = {
+    NOMBRE_CLIENTE: '',
+    IDENTIFICACION_CLIENTE: '',
+    CORREO_CLIENTE: '',
+    CONTRASENA_CLIENTE: '',
+    SEXO_EMPLEADO:'1'
+  }
+  
+  constructor(private RegistrarService:RegistrarService, private router:Router) { }
   ngOnInit(): void {
+    this.listarProvedores();
   }
 
-  postdata(angForm:any){
-    this.dataService.userregistration(
-      angForm.value.nombre,
-      angForm.value.apellido,
-      angForm.value.documento,
-      angForm.value.celular,
-      angForm.value.correo,
-      angForm.value.confirmarCorreo,
-      angForm.value.contraseña,
-      angForm.value.confirmarContraseña,
-    )
-    .pipe(first())
-    .subscribe( data =>{
-      this.router.navigate(['userhome']);
-    }, 
-    error => {
-    });
+  listarProvedores(){
+    this.RegistrarService.GetUsu().subscribe(
+      res=>{
+        console.log(res);
+        this.registrar= <any>res;
+      }, 
+      err => console.log(err)
+    );
   }
+  Registrar(){
 
+    if(!this.regUsu.NOMBRE_CLIENTE ||
+      !this.regUsu.IDENTIFICACION_CLIENTE ||
+      !this.regUsu.CORREO_CLIENTE ||
+      !this.regUsu.CONTRASENA_CLIENTE 
+      ){
+      alert('Rellene todos los campos')
+      
+
+    }else{
+      this.RegistrarService.regUsu(this.regUsu).subscribe();
+      alert('Se registro correctamente');
+      this.router.navigate(['login']);
+    }
+  }
+  
+  
 }

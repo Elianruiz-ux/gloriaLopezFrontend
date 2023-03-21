@@ -1,18 +1,13 @@
-<nav class="navbar">
-    <a routerLink="/home"><img src="../assets/logo2.jpg" alt="logo" class="img"></a>
-    <div class="navbar-buttons">   
-        <ul class="navbar-menu">
-            <li><a class="navbar-item" routerLink="/home">Inicio</a></li>
-            <li><a class="navbar-item" routerLink="/home">Contactanos</a></li>
-            <li><a routerLink="/home" class="navbar-item">Sobre Nosotros</a>
-                    <ul class="navbar-submenu">
-                        <li><a routerLink="/home">¿Quienes somos?</a></li>
-                        <li><a routerLink="/home">Misión</a></li>
-                        <li><a routerLink="/home">Visión</a></li>
-                    </ul>
-            </li>
-            <li><a class="navbar-item login" routerLink="/login">Iniciar Sesión</a></li>
-            <li><a class="navbar-item registro" routerLink="/registro">Registrarse</a></li>
-        </ul>
-    </div>
+<nav>
+    <input type="checkbox" id="check">
+    <label for="check" class="checkbtn">
+      <i class="fas fa-bars"></i>
+    </label>
+    <label class="logo"><a routerLink="/home"><img src="../assets/logo2.jpg" alt="logo" class="img"></a></label>
+    <ul>            
+        <li><a routerLink="/home">Inicio</a></li>
+        <li><a routerLink="/contact">Contactanos</a></li>
+        <li><a class="login" routerLink="/login">Iniciar Sesión</a></li>
+        <li><a class="registro" routerLink="/registro">Registrarse</a></li>
+    </ul>
   </nav>

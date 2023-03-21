@@ -2,9 +2,29 @@
 
 @import url('https://fonts.googleapis.com/css2?family=Noto+Serif&display=swap');
 
+::root{
+  --color-negro: #000;
+  --color-blanco: #fff;
+  --color-general-1:#eb1d3585;
+  --color-general-2: #eb1d35b2;
+  --color-general-3: #eb1d351f;
+
+}
+
 * {
     box-sizing: border-box;
     margin: 0;
     padding: 0;
     font-family: 'Noto Serif', serif;
+    
   }
+
+  html{
+    color: var(--color-negro);
+  }
+
+  ::-webkit-scrollbar{
+    display: none;
+  }
+
+  

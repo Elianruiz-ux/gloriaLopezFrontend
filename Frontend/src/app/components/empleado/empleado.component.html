@@ -1,0 +1,155 @@
+<app-navbar-admin-home></app-navbar-admin-home>
+
+<div class="container">
+    <div class="registro">
+      <form class="registro__form">
+        <h1>Registrar empleado</h1>
+
+        <div class="group">
+            <select [(ngModel)]="empleado.TIPO_DOCUMENTO" name="tipo" class="select">
+                <option selected>Tipo de documento</option>
+                <option value="C.C.">C.C.</option>
+                <option value="C.E.">C.E.</option>
+            </select>
+        </div>
+        <div class="group">
+            <input [(ngModel)]="empleado.IDENTIFICACION_EMPLEADO" type="number" required="required" name="Numero_doc"  /><span class="highlight"></span><span
+                class="bar"></span>
+            <label>Numero de documento</label>
+        </div>
+        <div class="group">
+            <input [(ngModel)]="empleado.NOMBRE_EMPLEADO" type="text" required="required" name="Nombre"  maxlength="40" pattern="[a-z-A-Z]+" /><span class="highlight"></span><span
+                class="bar"></span>
+            <label>Nombre completo</label>
+        </div>
+        <div class="group">
+            <input [(ngModel)]="empleado.FECHA_NACIMIENTO_EMPLEADO" type="date" placeholder="Fecha de nacimiento" required="required" name="Fecha" /><span class="highlight"></span><span
+                class="bar"></span>
+                <label>Fecha de nacimiento</label>
+        </div>
+        <div class="group">
+            <input [(ngModel)]="empleado.DIRECCION" type="text" required="required" name="residencia"  maxlength="40" /><span class="highlight"></span><span
+                class="bar"></span>
+            <label>Dirección de residencia</label>
+        </div>
+        <div class="group">
+            <input [(ngModel)]="empleado.TELEFONO" type="number" required="required" name="celular" /><span class="highlight"></span><span
+                class="bar"></span>
+            <label>Numero de celular</label>
+        </div>
+        <div class="group">
+            <input [(ngModel)]="empleado.CORREO" type="email" required="required" name="celular"  maxlength="40"  /><span class="highlight"></span><span
+                class="bar"></span>
+            <label>Correo</label>
+        </div>
+        <div class="group">
+            <select [(ngModel)]="empleado.SEXO_EMPLEADO" name="tipo" class="select">
+                <option selected>Sexo</option>
+                <option value="0">Hombre</option>
+                <option value="1">Mujeres</option>
+                <option value="2">Otro</option>
+            </select>
+        </div>
+        <div class="group">
+            <select [(ngModel)]="empleado.EPS"  name="tipo" class="select">
+                <option selected>Eps</option>
+                <option value="Sura">Sura</option>
+            </select>
+        </div>
+        <div class="group">
+            <select [(ngModel)]="empleado.FONDO_PENSION" name="tipo" class="select">
+                <option selected>Fondo de prensiones</option>
+                <option value="Colpensiones">Colpensiones</option>
+            </select>
+        </div>
+
+        <div class="group">
+            <select [(ngModel)]="empleado.ESTADO_CIVIL" name="tipo" class="select">
+                <option selected>Estado civil</option>
+                <option value="Solter@">Solter@</option>
+                <option value="Casad@">Casad@</option>
+                <option value="Unión libre">Unión libre</option>
+            </select>
+        </div>
+        <div class="group">
+            <input [(ngModel)]="empleado.HIJOS" type="number" required="required" name="hijos"  /><span class="highlight"></span><span
+                class="bar"></span>
+            <label>Numero de hijos</label>
+        </div>
+        <div class="group">
+            <select [(ngModel)]="empleado.ESTUDIOS" name="tipo" class="select">
+                <option selected>Estudios</option>
+                <option value="Bachiller">Bachiller</option>
+                <option value="Tecnico">Tecnico</option>
+                <option value="Tecnologo">Tecnologo</option>
+                <option value="Pregrado">Pregrado</option>
+            </select>
+        </div>
+        <div class="group">
+            <select [(ngModel)]="empleado.TIPO_SERVICIO" name="tipo" class="select">
+                <option selected>Tipo de servicio</option>
+                <option value="Barberia">Barberia</option>
+                <option value="Cosmetologia">Cosmetologia</option>
+                <option value="Uñas">Uñas</option>
+            </select>
+        </div>        
+       
+
+        <input type="button" type="reset" class="btn" value="Registrar" (click)="AgregarEmpelado()"> 
+      </form>
+    </div>
+  
+
+    <div class="lista" >
+        <div class="lista__contenido" >
+            <table class="content-table" >
+                <thead>
+                    <tr>
+                        <th>DOCUMENTO</th>
+                        <th>NOMBRE</th>
+                        <th>NUMERO DE CELULAR</th>
+                        <th>CORREO</th>
+                        <th colspan="20"></th>
+                    </tr>
+                </thead>
+                <tbody *ngFor="let empleado of ListarEmpleado">
+                    <tr >
+                        <td>{{empleado.IDENTIFICACION_EMPLEADO}}</td>
+                        <td>{{empleado.NOMBRE_EMPLEADO}}</td>
+                        <td>{{empleado.TELEFONO}}</td>
+                        <td>{{empleado.CORREO}}</td>
+                        <!-- <td>{{empleado.IDENTIFICACION_EMPLEADO}}</td>
+                        <td>{{empleado.TIPO_DOCUMENTO}}</td>
+                        <td>{{empleado.NOMBRE_EMPLEADO}}</td>
+                        <td>{{empleado.FECHA_NACIMIENTO_EMPLEADO}}</td> -->
+                        
+                        <!-- 
+                            <td>{{Empleado.DIRECCION}}</td>
+                        <td>{{Empleado.SEXO_EMPLEADO}}</td>
+                        <td>{{Empleado.TELEFONO}}</td>
+                        <td>{{Empleado.CORREO}}</td>
+                        <td>{{Empleado.EPS}}</td>
+                        <td>{{Empleado.FONDO_PENSION}}</td>
+                        <td>{{Empleado.ESTADO_CIVIL}}</td>
+                        <td>{{Empleado.HIJOS}}</td>
+                        <td>{{Empleado.ESTUDIOS}}</td>
+                        <td>{{Empleado.TIPO_SERVICIO}}</td>
+
+                        
+                            <td>{{Proveedor.IDENTIFICACION_PROVEEDOR}}</td>
+                        <td>{{Proveedor.NOMBRE_PROVEEDOR}}</td>
+                        <td>{{Proveedor.TELEFONO}}</td>
+                        <td>{{Proveedor.CORREO}}</td>
+                        <td>{{Proveedor.DIRECCION}}</td> -->
+                        <td><input class="editar" (click)="ModificarEmpleado(empleado.IDENTIFICACION_EMPLEADO)" type="button" value="Editar"></td>
+                        <td><input class="eliminar" (click)="deleteEmpleado(empleado.IDENTIFICACION_EMPLEADO)" type="button" value="Eliminar"></td> 
+                    </tr>
+
+                   
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+  </div>
+

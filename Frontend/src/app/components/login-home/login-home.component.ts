@@ -1,9 +1,10 @@
 import { Component, OnInit } from '@angular/core';
+import { LoginService } from './../../SERVICES/login.service';
 
-import { FormGroup, FormBuilder, Validators, NgForm } from '@angular/forms';
+import { FormGroup, FormBuilder, Validators, NgForm, EmailValidator } from '@angular/forms';
 import { first } from 'rxjs/operators';
 import { Router } from '@angular/router';
-import { ApiService } from 'src/app/api.service';
+
 
 @Component({
   selector: 'app-login-home',
@@ -11,38 +12,38 @@ import { ApiService } from 'src/app/api.service';
   styleUrls: ['./login-home.component.css']
 })
 export class LoginHomeComponent implements OnInit {
-  angForm: FormGroup;
+
+  user = {
+    CORREO_CLIENTE: '',
+    CONTRASENA_CLIENTE: ''
+  }
   
   constructor(
-    private fb: FormBuilder, 
-    private dataService: ApiService, 
-    private router: Router
-    ) { 
-      this.angForm = this.fb.group({
-        correo: ['', [Validators.required, Validators.minLength(1), Validators.email]],
-        contraseña: ['', Validators.required],
-      });
-    }
-
-
-  postdata(angForm:any){
-    this.dataService.userlogin(angForm.value.correo,angForm.value.contraseña
-    )
-    .pipe(first())
-    .subscribe(
-      data =>  {
-      console.log(data);
-      if(data.message=='success'){
-        //const redirect = this.dataService.redirectUrl ? this.dataService.redirectUrl : '/userhome';
-        this.router.navigate(['/userhome']);
-      }
-    }, 
-    error => {
-      alert("Correo o contraseña incorrectas")
-    });
-  }
+    private loginService: LoginService,
+    private router: Router) {}
 
   ngOnInit(): void {
+  }
+
+  logIn(){
+
+    if(!this.user.CORREO_CLIENTE ||
+      !this.user.CONTRASENA_CLIENTE 
+      ){
+      alert('Correo o contraseña incorrectas');
+      
+
+    }else{
+       // console.log(this.user);
+    this.loginService.singin(this.user).subscribe((res:any) =>{
+      // console.log(res);
+      alert('Inicio se sesión exitoso')
+      localStorage.setItem('token', res.token);
+      this.router.navigate(['user-home']);
+    });
+    }
+
+   
   }
 
 }

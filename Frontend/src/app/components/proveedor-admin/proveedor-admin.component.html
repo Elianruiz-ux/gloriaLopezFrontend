@@ -1,0 +1,89 @@
+<app-navbar-admin-home></app-navbar-admin-home>
+
+<div class="container">
+    <div class="columnas">
+        <div class="columna_1">
+            <div class="registro">
+                <!-- formControl="" -->
+                <form class="registro__form"  > 
+                    <div>
+                        <h1>Registrar proveedor</h1>
+                    </div>
+                    <!-- formControlName="" -->
+                    <div class="group">
+                        <input [(ngModel)]="proveedor.IDENTIFICACION_PROVEEDOR" type="number" required="required" name="identificacion"  /><span
+                            class="highlight"></span><span class="bar"></span>
+                        <label>Cedula</label>
+                        
+                    </div>
+
+                    <div class="group">
+                        <select name="tipo" class="select" class="select">
+                            <option selected>Tipo de documento</option>
+                            <option value="C.C.">C.C.</option>
+                            <option value="C.E.">C.E.</option>
+                        </select>
+                    </div>
+                    <div class="group">
+                        <input type="text" required="required" name="dirrecion" /><span
+                            class="highlight"></span><span class="bar"></span>
+                        <label>Nombre del contacto</label>
+                    </div>
+
+                    <div class="group">
+                        <input [(ngModel)]="proveedor.NOMBRE_PROVEEDOR" type="text"  maxlength="40" pattern="[a-z-A-Z]+" required="required" name="nombre"  /><span
+                            class="highlight"></span><span class="bar"></span>
+                        <label>Nombre del proveedor</label>
+                    </div>
+                    <div class="group">
+                        <input [(ngModel)]="proveedor.TELEFONO" type="number" required="required" name="telefono"  /><span
+                            class="highlight"></span><span class="bar"></span>
+                        <label>Telefono</label>
+                    </div>
+                   
+                    <div class="group">
+                        <input [(ngModel)]="proveedor.CORREO" type="email" required="required" name="correo"  maxlength="40"  /><span
+                            class="highlight"></span><span class="bar"></span>
+                        <label>Correo</label>
+                    </div>
+                    <div class="group">
+                        <input [(ngModel)]="proveedor.DIRECCION" type="text" required="required" name="dirrecion"   maxlength="40"/><span
+                            class="highlight"></span><span class="bar"></span>
+                        <label>Dirreción</label>
+                    </div>
+                    
+
+                    <input type="button" type = "reset" class="btn" value="Registrar" (click)="AgregarProveedor()"> 
+                </form>
+            </div>
+        </div>
+
+        <div class="columna_2">
+           
+                <div class="lista__contenido">
+                    <table class="content-table">
+                        <thead>
+                            <tr>
+                                <th>Cedula</th>
+                                <th>NOMBRE</th>
+                                <th>TELEFONO</th>
+                                <th>CORREO</th>
+                                <th>DIRECCIÓN</th>
+                                <th colspan="2"></th>
+                            </tr>
+                        </thead>
+                        <tbody *ngFor="let Proveedor of ListarProveedor">
+                            <td>{{Proveedor.IDENTIFICACION_PROVEEDOR}}</td>
+                            <td>{{Proveedor.NOMBRE_PROVEEDOR}}</td>
+                            <td>{{Proveedor.TELEFONO}}</td>
+                            <td>{{Proveedor.CORREO}}</td>
+                            <td>{{Proveedor.DIRECCION}}</td>
+                            <td><input class="editar" type="button" value="Editar" (click)="ModificarProveedor(Proveedor.IDENTIFICACION_PROVEEDOR)"></td>
+                            <td><input class="eliminar" type="button" value="Eliminar" (click)="deleteProveedor(Proveedor.IDENTIFICACION_PROVEEDOR)"></td>    
+                            <tr>    
+                        </tbody>
+                    </table>
+                </div>            
+        </div>
+    </div>   
+</div>

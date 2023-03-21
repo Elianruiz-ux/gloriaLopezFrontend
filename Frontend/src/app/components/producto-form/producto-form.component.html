@@ -1,0 +1,78 @@
+<app-navbar-admin-home></app-navbar-admin-home>
+
+<div class="container">
+    <div class="registro">
+      <form class="registro__form">
+        <h1>Registrar producto</h1>
+        <div class="group">
+            <input  [(ngModel)]="producto.IDENTIFICACION_PRODUCTO" type="text" required="required" name="id_producto"  /><span class="highlight"></span><span
+                class="bar"></span>
+            <label>Id del producto</label>
+        </div>
+        <div class="group">
+            <input [(ngModel)]="producto.NOMBRE_PRODUCTO" type="text"  maxlength="40" required="required" name="nombre_producto"  /><span class="highlight"></span><span
+                class="bar"></span>
+            <label>Nombre del producto</label>
+        </div>
+        <!-- <div class="group">
+            <input type="date" required="required" name="nombre_producto"  /><span class="highlight"></span><span
+                class="bar"></span>
+            <label>Fecha de ingreso</label>
+        </div> -->
+        <div class="group">
+            <input [(ngModel)]="producto.CANTIDAD_PRODUCTO" type="number" required="required" name="precio_producto" /><span class="highlight"></span><span
+                class="bar"></span>
+            <label>Cantidad Comprada</label>
+        </div>
+        <div class="group">
+            <input [(ngModel)]="producto.FECHA_COMPRA" type="number" required="required" name="precio_producto" /><span class="highlight"></span><span
+                class="bar"></span>
+            <label>Precio del producto</label>
+        </div>
+        
+<!--         
+        <div class="group">
+            <input type="file" required="required" name="img"  /><span class="highlight"></span><span
+                class="bar"></span>
+        </div> -->
+         <div class="group">
+            <input [(ngModel)]="producto.IDENTIFICACION_PROVEEDOR" type="hidden" required="required" name="identificacion_proveedor"  /><span class="highlight"></span><span
+                class="bar"></span>
+                <!-- <label>identificacion del Proveedor</label> -->
+        </div>
+
+        <input type="button" type = "reset" class="btn" value="Registrar" (click)="AgregarProducto()">
+      </form>
+    </div>
+  
+
+    <div class="lista" >
+        <div class="lista__contenido" >
+            <table class="content-table" >
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>NOMBRE</th>
+                        <th>PRECIO</th>
+                        <th>CANTIDAD</th>
+                        <th colspan="4"></th>
+                    </tr>
+                </thead>
+                <tbody *ngFor="let Producto of ListaProducto">
+                     
+                    <tr >
+                        <td>{{Producto.IDENTIFICACION_PRODUCTO}}</td>
+                        <td>{{Producto.NOMBRE_PRODUCTO}}</td>
+                        <td>${{Producto.FECHA_COMPRA}}</td>
+                        <td>{{Producto.CANTIDAD_PRODUCTO}}</td>
+                        <td><input class="editar" (click)="ModificarProducto(Producto.IDENTIFICACION_PRODUCTO)" type="button" value="Editar"></td>
+                        <td><input class="eliminar" (click)="deleteProducto(Producto.IDENTIFICACION_PRODUCTO)"type="button" value="Eliminar"></td>
+                    </tr>
+                   
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+  </div>
+

@@ -1,0 +1,223 @@
+
+.container{
+    margin: 20px;
+  }
+  .columnas {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+  }
+ .columna_1{
+  width: 30%;
+ }
+ .columna_2{
+  width: 70%;
+ }
+  .registro{
+    box-shadow: 1px 1px 4px rgba(235, 29, 53, 0.522);
+    width: auto;
+    height: auto;
+    padding: 10px;
+    display: flex;
+    justify-content: center;
+    border-radius: 5px;
+  }
+
+  .registro__form h1{
+    display: flex;
+    justify-content: center;
+    margin: 10px 0 10px 0;
+  }
+
+  .registro__form{
+    display: flex;
+    flex-direction: column;
+    
+  }
+
+  div input:focus{
+    color: #0000009c;
+}
+ 
+.group {
+    position: relative;
+    margin: 5% 0;
+  }
+ 
+  .group textarea {
+    resize: none;
+  }
+ 
+  .group input, 
+  .group textarea {
+    background: none;
+    color: #0000007c;
+    font-size: 18px;
+    padding: 10px 10px 10px 5px;
+    display: block;
+    width: 100%;
+    border: none;
+    border-radius: 0;
+    border-bottom: 1px solid rgba(235, 29, 53, 0.522);
+  }
+  .group input:focus,
+  .group textarea:focus {
+    outline: none;
+ 
+  }
+  .group input:focus ~ label, .group input:valid ~ label,
+  .group textarea:focus ~ label,
+  .group textarea:valid ~ label {
+    top: -14px;
+    font-size: 12px;
+    color: #10181f;
+  }
+  .group input:focus ~ .bar:before,
+  .group textarea:focus ~ .bar:before {
+    width: 100%;
+  }
+ 
+ 
+  .group label {
+    color: #0000007c;
+    font-size: 16px;
+    font-weight: normal;
+    position: absolute;
+    pointer-events: none;
+    left: 5px;
+    top: 10px;
+    transition: 300ms ease all;
+  }
+ 
+  .bar {
+    position: relative;
+    display: block;
+    width: 100%;
+  }
+  .bar:before {
+    content: "";
+    height: 2px;
+    width: 0;
+    bottom: 0px;
+    position: absolute;
+    background: rgba(235, 29, 53, 0.884);
+    transition: 300ms ease all;
+    left: 0%;
+    color: #000;
+
+  }
+
+  .select{
+    font-size: 16px;
+    font-weight: normal;
+    width: 100%;
+    padding: 2%;
+    border: none;
+    border-bottom: 1px solid rgba(235, 29, 53, 0.522);
+    color: #0000007c;
+  }
+
+  
+.btn{
+    border: none;
+    padding: 8px 15px;
+    border-radius: 5px;
+    color: white;
+    background-color: rgba(235, 29, 53, 0.522);
+    cursor: pointer;
+    font-size: 1em;
+    }
+  
+.btn:hover{
+    background-color: rgba(235, 29, 53, 0.699);
+    color: white;
+  }
+
+
+
+
+/* Lista */
+
+.lista__contenido{
+  padding-left: 10px; 
+}
+
+.content-table { 
+  
+  width: 100%;
+  border-collapse: collapse;
+  border-radius: 10px;
+  margin: 25px auto;  
+  box-shadow: 1px 1px 4px rgba(235, 29, 53, 0.522);
+  justify-content: center;
+  text-align: center;
+}
+
+thead tr th{
+  text-transform: lowercase;
+}
+
+thead tr th::first-letter{
+  text-transform: uppercase;
+}
+
+.content-table thead tr { 
+  background-color: rgba(235, 29, 53, 0.699); 
+  color: #ffffff; 
+  text-align: middle; 
+  
+}
+
+
+
+.content-table th, .content-table td {
+   padding: 12px; 
+   font-weight: 100;
+   margin: auto;
+}
+
+.content-table tbody tr:nth-of-type(even) { 
+  background-color: rgba(235, 29, 53, 0.1); 
+} 
+
+.editar{
+  border: none;
+  padding: 8px 15px;
+  border-radius: 5px;
+  color: white;
+  background-color: rgba(235, 29, 53, 0.522);
+  cursor: pointer;
+  font-size: 1em;
+}
+
+.editar:hover{
+  background-color: rgba(235, 29, 53, 0.699); 
+}
+
+
+.eliminar{
+  border: none;
+  padding: 8px 15px;
+  border-radius: 5px;
+  color: white;
+  background-color: rgb(255, 0, 0);
+  cursor: pointer;
+  font-size: 1em;
+}
+
+.eliminar:hover{
+  background-color: rgba(255, 0, 0, 0.774);
+}
+
+
+@media (max-width: 900px) {
+    .container{
+        display: block;
+    }
+    .columna_1, .columna_2{
+        display: block;
+        width: 100%;
+        
+    }
+ 
+}

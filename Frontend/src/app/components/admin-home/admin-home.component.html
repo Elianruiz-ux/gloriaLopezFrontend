@@ -1,1 +1,51 @@
 <app-navbar-admin-home></app-navbar-admin-home>
+
+<div class="container">
+    <div class="registro">
+      <form class="registro__form">
+        <h1>Servicio</h1>
+      
+        <div class="group">
+            <input [(ngModel)]="servicio.CODIGO_SERVICIO" type="number" required="required" name="Numero_doc" /><span class="highlight"></span><span
+                class="bar"></span>
+            <label>Codigo servicio</label>
+        </div>
+        <div class="group">
+            <input [(ngModel)]="servicio.NOMBRE_SERVICIO" type="text" required="required" name="Nombre" maxlength="40" pattern="[a-z-A-Z]+" /><span class="highlight"></span><span
+                class="bar"></span>
+            <label>Nombre servicio</label>
+        </div>
+        <div class="group">
+            <input [(ngModel)]="servicio.COSTO_SERVICIO" type="number" required="required" name="Costo_Servicio" /><span class="highlight"></span><span
+                class="bar"></span>
+                <label>Costo servicio</label>
+        </div>
+        <input type="button" type="reset" class="btn" value="Registrar" (click)="agregarServicio()">
+      </form>
+    </div>
+
+
+    <div class="lista" >
+        <div class="lista__contenido" >
+            <table class="content-table" >
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>NOMBRE</th>
+                        <th>COSTO</th>
+                        <th colspan="20"></th>
+                    </tr>
+                </thead>
+                <tbody *ngFor="let servicio of ListarServicio">
+                    <td>{{servicio.CODIGO_SERVICIO}}</td>
+                    <td>{{servicio.NOMBRE_SERVICIO}}</td>
+                    <td>${{servicio.COSTO_SERVICIO}}</td>
+                    <td><input class="editar" type="button" (click)="modificarServicio(servicio.CODIGO_SERVICIO)" value="Editar"></td>
+                        <td><input class="eliminar" type="button" value="Eliminar" (click)="deleteServicio(servicio.CODIGO_SERVICIO)"></td>        
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+ 
+
