@@ -1,3 +1,18 @@
+::ng-deep .mat-focused .mat-form-field-label {
+  /*change color of label*/
+  color: var(--color-negro) !important;
+ }
+
+ ::ng-deep.mat-form-field-underline {
+  /*change color of underline*/
+  background-color: var(--color-negro) !important;
+} 
+
+::ng-deep.mat-form-field-ripple {
+ /*change color of underline when focused*/
+ background-color: var(--color-negro) !important;
+}
+
 
 .container{
   width: 100%;
@@ -19,6 +34,7 @@
   border-radius: 10px;
 
 } 
+
 
 
 .tittle{
@@ -49,8 +65,16 @@ input:-webkit-autofill:active {
 
 .btn{
   text-transform: uppercase;
-
+  border: 1px solid var(--color-negro);
   }
+
+  .errorMessage{
+    font-size: 13px;
+    text-transform: capitalize;
+    color: var(--color-negro-opaco-dos);
+    display: none;
+  }
+
 
 /* .container{
     margin: 20px;

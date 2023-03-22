@@ -14,7 +14,8 @@ import { Router } from '@angular/router';
 export class LoginHomeComponent implements OnInit {
 
   hide = true;
-  
+
+  error: string ='';
 
   user = {
     CORREO_CLIENTE: '',
@@ -28,12 +29,15 @@ export class LoginHomeComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  
+
   logIn(){
 
     if(!this.user.CORREO_CLIENTE ||
       !this.user.CONTRASENA_CLIENTE 
       ){
-      alert('Correo o contraseña incorrectas');
+      // alert('Correo o contraseña incorrectas');
+      this.error= 'Correo o contraseña incorrectas'
       
 
     }else{
