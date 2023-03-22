@@ -1,4 +1,4 @@
-<nav>
+<!-- <nav>
     <input type="checkbox" id="check">
     <label for="check" class="checkbtn">
       <i class="fas fa-bars"></i>
@@ -8,4 +8,15 @@
         <li><a class="cerrar" (click)="logoutUser()">Cerrar sesión</a></li>
 
     </ul>
-  </nav>
+  </nav> -->
+
+
+  <mat-toolbar class="nav">
+    <span class="logo"
+      ><a routerLink="/userHome"
+        ><img src="../assets/logo.jpg" alt="logo" class="img" /></a
+    ></span>
+    <span class="example-spacer"></span>
+    <!-- <span><a routerLink="/user-home">Inicio</a></span> -->
+    <span><a (click)="logoutUser()" class="btn">Cerrar sesión</a></span>
+  </mat-toolbar>

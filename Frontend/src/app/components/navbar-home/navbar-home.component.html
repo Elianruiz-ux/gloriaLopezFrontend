@@ -1,4 +1,4 @@
-<nav>
+<!-- <nav>
     <input type="checkbox" id="check">
     <label for="check" class="checkbtn">
       <i class="fas fa-bars"></i>
@@ -10,4 +10,17 @@
         <li><a class="login" routerLink="/login">Iniciar Sesión</a></li>
         <li><a class="registro" routerLink="/registro">Registrarse</a></li>
     </ul>
-  </nav>
+  </nav> -->
+
+
+  <mat-toolbar class="nav">
+  <span class="logo"
+    ><a routerLink="/home"
+      ><img src="../assets/logo.jpg" alt="logo" class="img" /></a
+  ></span>
+  <span class="example-spacer"></span>
+  <span><a routerLink="/home">Inicio</a></span>
+  <!-- <span><a routerLink="/contact">Contactanos</a></span> -->
+  <span><a routerLink="/login" class="btn">Iniciar sesión</a></span>
+  <span><a routerLink="/registro" class="btn">Registrarse</a></span>
+</mat-toolbar>

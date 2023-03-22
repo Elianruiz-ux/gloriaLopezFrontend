@@ -12,6 +12,10 @@ import { Router } from '@angular/router';
 })
 export class RegisterHomeComponent implements OnInit {
 
+  hide = true;
+  
+
+
   registrar: RegUsu[] = []; 
   
     regUsu: RegUsu = {
@@ -30,7 +34,7 @@ export class RegisterHomeComponent implements OnInit {
   listarProvedores(){
     this.RegistrarService.GetUsu().subscribe(
       res=>{
-        console.log(res);
+        // console.log(res);
         this.registrar= <any>res;
       }, 
       err => console.log(err)

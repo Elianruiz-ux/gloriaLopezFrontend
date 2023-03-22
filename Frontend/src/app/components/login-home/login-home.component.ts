@@ -13,6 +13,9 @@ import { Router } from '@angular/router';
 })
 export class LoginHomeComponent implements OnInit {
 
+  hide = true;
+  
+
   user = {
     CORREO_CLIENTE: '',
     CONTRASENA_CLIENTE: ''

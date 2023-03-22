@@ -2,12 +2,14 @@
 
 @import url('https://fonts.googleapis.com/css2?family=Noto+Serif&display=swap');
 
-::root{
+:root{
   --color-negro: #000;
+  --color-negro-opaco: #00000037;
   --color-blanco: #fff;
-  --color-general-1:#eb1d3585;
-  --color-general-2: #eb1d35b2;
-  --color-general-3: #eb1d351f;
+  --color-general-uno:#eb1d3585;
+  --color-general-uno-opaco:#eb1d3555;
+  --color-general-dos: #eb1d35b2;
+  --color-general-tres: #eb1d351f;
 
 }
 
