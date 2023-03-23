@@ -1,27 +1,26 @@
 ::ng-deep .mat-focused .mat-form-field-label {
   /*change color of label*/
   color: var(--color-negro) !important;
- }
-
- ::ng-deep.mat-form-field-underline {
-  /*change color of underline*/
-  background-color: var(--color-negro) !important;
-} 
-
-::ng-deep.mat-form-field-ripple {
- /*change color of underline when focused*/
- background-color: var(--color-negro) !important;
 }
 
+::ng-deep.mat-form-field-underline {
+  /*change color of underline*/
+  background-color: var(--color-negro) !important;
+}
 
-.container{
+::ng-deep.mat-form-field-ripple {
+  /*change color of underline when focused*/
+  background-color: var(--color-negro) !important;
+}
+
+.container {
   width: 100%;
   display: grid;
   place-content: center;
   place-items: center;
 }
 
-.exampleContainer{
+.exampleContainer {
   width: 100%;
   height: 80vh;
   display: grid;
@@ -29,20 +28,15 @@
   place-items: center;
   gap: 50px;
   margin: 5px;
-  border: 1.5px solid var( --color-general-uno-opaco);
+  border: 1.5px solid var(--color-general-uno-opaco);
   padding: 10px;
   border-radius: 10px;
+}
 
-} 
-
-
-
-.tittle{
+.tittle {
   font-weight: 300;
   text-transform: uppercase;
 }
-
-
 
 .form {
   min-width: 150px;
@@ -50,7 +44,7 @@
   width: 100%;
 }
 
-.inputContainer{
+.inputContainer {
   width: 100%;
 }
 
@@ -62,16 +56,14 @@ input:-webkit-autofill:active {
   -webkit-box-shadow: 0 0 0 30px var(--color-blanco) inset !important;
 }
 
-
-.btn{
+.btn {
   text-transform: uppercase;
   border: 1px solid var(--color-negro);
-  }
+}
 
-  .errorMessage{
-    font-size: 13px;
-    text-transform: capitalize;
-    color: var(--color-negro-opaco-dos);
-    display: none;
-  }
-
+.errorMessage {
+  font-size: 13px;
+  text-transform: capitalize;
+  color: var(--color-negro-opaco-dos);
+  display: none;
+}

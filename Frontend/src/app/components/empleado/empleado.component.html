@@ -1,141 +1,43 @@
 <app-navbar-admin-home></app-navbar-admin-home>
 
 <div class="container">
-    <!-- <div class="registro">
-      <form class="registro__form">
-        <h1>Registrar empleado</h1>
+  <mat-drawer-container class="cotenedorBtn">
+    <div class="contenbtn">
+      <button
+        type="button"
+        class="btnslide"
+        mat-button
+        (click)="drawer.toggle()"
+      >
+        registrar empleado
+      </button>
+    </div>
+  </mat-drawer-container>
 
-        <div class="group">
-            <select [(ngModel)]="empleado.TIPO_DOCUMENTO" name="tipo" class="select">
-                <option selected>Tipo de documento</option>
-                <option value="C.C.">C.C.</option>
-                <option value="C.E.">C.E.</option>
-            </select>
-        </div>
-        <div class="group">
-            <input [(ngModel)]="empleado.IDENTIFICACION_EMPLEADO" type="number" required="required" name="Numero_doc"  /><span class="highlight"></span><span
-                class="bar"></span>
-            <label>Numero de documento</label>
-        </div>
-        <div class="group">
-            <input [(ngModel)]="empleado.NOMBRE_EMPLEADO" type="text" required="required" name="Nombre"  maxlength="40" pattern="[a-z-A-Z]+" /><span class="highlight"></span><span
-                class="bar"></span>
-            <label>Nombre completo</label>
-        </div>
-        <div class="group">
-            <input [(ngModel)]="empleado.FECHA_NACIMIENTO_EMPLEADO" type="date" placeholder="Fecha de nacimiento" required="required" name="Fecha" /><span class="highlight"></span><span
-                class="bar"></span>
-                <label>Fecha de nacimiento</label>
-        </div>
-        <div class="group">
-            <input [(ngModel)]="empleado.DIRECCION" type="text" required="required" name="residencia"  maxlength="40" /><span class="highlight"></span><span
-                class="bar"></span>
-            <label>Dirección de residencia</label>
-        </div>
-        <div class="group">
-            <input [(ngModel)]="empleado.TELEFONO" type="number" required="required" name="celular" /><span class="highlight"></span><span
-                class="bar"></span>
-            <label>Numero de celular</label>
-        </div>
-        <div class="group">
-            <input [(ngModel)]="empleado.CORREO" type="email" required="required" name="celular"  maxlength="40"  /><span class="highlight"></span><span
-                class="bar"></span>
-            <label>Correo</label>
-        </div>
-        <div class="group">
-            <select [(ngModel)]="empleado.SEXO_EMPLEADO" name="tipo" class="select">
-                <option selected>Sexo</option>
-                <option value="0">Hombre</option>
-                <option value="1">Mujeres</option>
-                <option value="2">Otro</option>
-            </select>
-        </div>
-        <div class="group">
-            <select [(ngModel)]="empleado.EPS"  name="tipo" class="select">
-                <option selected>Eps</option>
-                <option value="Sura">Sura</option>
-            </select>
-        </div>
-        <div class="group">
-            <select [(ngModel)]="empleado.FONDO_PENSION" name="tipo" class="select">
-                <option selected>Fondo de prensiones</option>
-                <option value="Colpensiones">Colpensiones</option>
-            </select>
-        </div>
-
-        <div class="group">
-            <select [(ngModel)]="empleado.ESTADO_CIVIL" name="tipo" class="select">
-                <option selected>Estado civil</option>
-                <option value="Solter@">Solter@</option>
-                <option value="Casad@">Casad@</option>
-                <option value="Unión libre">Unión libre</option>
-            </select>
-        </div>
-        <div class="group">
-            <input [(ngModel)]="empleado.HIJOS" type="number" required="required" name="hijos"  /><span class="highlight"></span><span
-                class="bar"></span>
-            <label>Numero de hijos</label>
-        </div>
-        <div class="group">
-            <select [(ngModel)]="empleado.ESTUDIOS" name="tipo" class="select">
-                <option selected>Estudios</option>
-                <option value="Bachiller">Bachiller</option>
-                <option value="Tecnico">Tecnico</option>
-                <option value="Tecnologo">Tecnologo</option>
-                <option value="Pregrado">Pregrado</option>
-            </select>
-        </div>
-        <div class="group">
-            <select [(ngModel)]="empleado.TIPO_SERVICIO" name="tipo" class="select">
-                <option selected>Tipo de servicio</option>
-                <option value="Barberia">Barberia</option>
-                <option value="Cosmetologia">Cosmetologia</option>
-                <option value="Uñas">Uñas</option>
-            </select>
-        </div>        
-       
-
-        <input type="button" type="reset" class="btn" value="Registrar" (click)="AgregarEmpelado()"> 
-      </form>
-    </div> -->
-  
-    <mat-drawer-container class="cotenedorBtn" >
-        
-      
-        <div class="contenbtn">
-          <button type="button" class="btnslide" mat-button (click)="drawer.toggle()">
-            registrar empleado
-          </button>
-        </div>
-      
-  
-      
-    </mat-drawer-container>
-
-    <div class="lista" >
-        <div class="content-table" >
-            <table>
-                <thead>
-                    <tr>
-                        <th>DOCUMENTO</th>
-                        <th>NOMBRE</th>
-                        <th>NUMERO DE CELULAR</th>
-                        <th>CORREO</th>
-                        <th colspan="20"></th>
-                    </tr>
-                </thead>
-                <tbody *ngFor="let empleado of ListarEmpleado">
-                    <tr >
-                        <td>{{empleado.IDENTIFICACION_EMPLEADO}}</td>
-                        <td>{{empleado.NOMBRE_EMPLEADO}}</td>
-                        <td>{{empleado.TELEFONO}}</td>
-                        <td>{{empleado.CORREO}}</td>
-                        <!-- <td>{{empleado.IDENTIFICACION_EMPLEADO}}</td>
+  <div class="lista">
+    <div class="content-table">
+      <table>
+        <thead>
+          <tr>
+            <th>DOCUMENTO</th>
+            <th>NOMBRE</th>
+            <th>NUMERO DE CELULAR</th>
+            <th>CORREO</th>
+            <th colspan="20"></th>
+          </tr>
+        </thead>
+        <tbody *ngFor="let empleado of ListarEmpleado">
+          <tr>
+            <td>{{ empleado.IDENTIFICACION_EMPLEADO }}</td>
+            <td>{{ empleado.NOMBRE_EMPLEADO }}</td>
+            <td>{{ empleado.TELEFONO }}</td>
+            <td>{{ empleado.CORREO }}</td>
+            <!-- <td>{{empleado.IDENTIFICACION_EMPLEADO}}</td>
                         <td>{{empleado.TIPO_DOCUMENTO}}</td>
                         <td>{{empleado.NOMBRE_EMPLEADO}}</td>
                         <td>{{empleado.FECHA_NACIMIENTO_EMPLEADO}}</td> -->
-                        
-                        <!-- 
+
+            <!-- 
                             <td>{{Empleado.DIRECCION}}</td>
                         <td>{{Empleado.SEXO_EMPLEADO}}</td>
                         <td>{{Empleado.TELEFONO}}</td>
@@ -153,51 +55,182 @@
                         <td>{{Proveedor.TELEFONO}}</td>
                         <td>{{Proveedor.CORREO}}</td>
                         <td>{{Proveedor.DIRECCION}}</td> -->
-                        <td><mat-icon class="btn edit" (click)="ModificarEmpleado(empleado.IDENTIFICACION_EMPLEADO)" value="Editar">create</mat-icon></td>
-                    <td><mat-icon class="btn delete" value="Eliminar" (click)="deleteEmpleado(empleado.IDENTIFICACION_EMPLEADO)">delete_forever</mat-icon></td>
-                
-                    </tr>
-
-                   
-                </tbody>
-            </table>
-        </div>
+            <td>
+              <mat-icon
+                class="btn edit"
+                (click)="ModificarEmpleado(empleado.IDENTIFICACION_EMPLEADO)"
+                value="Editar"
+                >create</mat-icon
+              >
+            </td>
+            <td>
+              <mat-icon
+                class="btn delete"
+                value="Eliminar"
+                (click)="deleteEmpleado(empleado.IDENTIFICACION_EMPLEADO)"
+                >delete_forever</mat-icon
+              >
+            </td>
+          </tr>
+        </tbody>
+      </table>
     </div>
+  </div>
+</div>
 
+<mat-drawer #drawer class="sliderNav" mode="side">
+  <div class="containerTittle">
+    <h2 class="tittle">empleado</h2>
   </div>
 
+  <form class="registro__form">
+    <mat-form-field appearance="fill" class="inputContaine padding">
+      <mat-label>Tipo documento</mat-label>
+      <mat-select [(ngModel)]="empleado.TIPO_DOCUMENTO" name="tipo1">
+        <mat-option value="C.C.">C.C.</mat-option>
+        <mat-option value="C.E.">C.E.</mat-option>
+      </mat-select>
+    </mat-form-field>
 
-  
-<mat-drawer #drawer class="sliderNav" mode="side">
-    <div class="containerTittle">
-        <h2 class="tittle">empleado</h2>
-    </div>
-    
-    <form class="registro__form">
-        
+    <mat-form-field appearance="fill" class="inputContaine">
+      <mat-label>Número de documento</mat-label>
+      <input
+        matInput
+        [(ngModel)]="empleado.IDENTIFICACION_EMPLEADO"
+        type="number"
+        name="nu"
+      />
+      <!-- <mat-error *ngIf="email.invalid">{{getErrorMessage()}}</mat-error> -->
+    </mat-form-field>
 
-        <mat-form-field appearance="fill" class="inputContainer">
-            <mat-label>Codigo servicio</mat-label>
-            <input matInput type="number"   name="Numero_doc">
-            <!-- <mat-error *ngIf="email.invalid">{{getErrorMessage()}}</mat-error> -->
-          </mat-form-field>
+    <mat-form-field appearance="fill" class="inputContaine padding">
+      <mat-label>Nombres</mat-label>
+      <input
+        matInput
+        type="text"
+        [(ngModel)]="empleado.NOMBRE_EMPLEADO"
+        name="no"
+      />
+      <!-- <mat-error *ngIf="email.invalid">{{getErrorMessage()}}</mat-error> -->
+    </mat-form-field>
 
-          <mat-form-field appearance="fill" class="inputContainer">
-            <mat-label>Nombre servicio</mat-label>
-            <input matInput type="text"  name="Nombre" maxlength="40" pattern="[a-z-A-Z]+">
-            <!-- <mat-error *ngIf="email.invalid">{{getErrorMessage()}}</mat-error> -->
-          </mat-form-field>
-      
-          <mat-form-field appearance="fill" class="inputContainer">
-            <mat-label>Costo servicio</mat-label>
-            <input matInput type="number" name="Costo_Servicio" >
-            <!-- <mat-error *ngIf="email.invalid">{{getErrorMessage()}}</mat-error> -->
-          </mat-form-field>
-          <button mat-button value="Registrar" (click)="AgregarEmpelado()" class="inputContainer btnInicio">registrar</button>
+    <mat-form-field appearance="fill" class="inputContaine">
+      <mat-label>Apellidos</mat-label>
+      <input matInput type="text"  />
+      <!-- <mat-error *ngIf="email.invalid">{{getErrorMessage()}}</mat-error> -->
+    </mat-form-field>
 
-          
-        </form>
+    <mat-form-field appearance="fill" class="inputContaine padding">
+      <mat-label>Fecha de nacimiento</mat-label>
+      <input
+        matInput
+        [(ngModel)]="empleado.FECHA_NACIMIENTO_EMPLEADO"
+        type="date"
+        name="fe"
+      />
+      <!-- <mat-error *ngIf="email.invalid">{{getErrorMessage()}}</mat-error> -->
+    </mat-form-field>
 
-        <button mat-button (click)="drawer.toggle()" class="inputContainer btnCancelar">Cancelar</button>
+    <mat-form-field appearance="fill" class="inputContaine">
+      <mat-label>Dirección de residencia</mat-label>
+      <input
+        matInput
+        [(ngModel)]="empleado.DIRECCION"
+        type="text"
+        name="residencia"
+      />
+      <!-- <mat-error *ngIf="email.invalid">{{getErrorMessage()}}</mat-error> -->
+    </mat-form-field>
 
+    <mat-form-field appearance="fill" class="inputContaine padding">
+      <mat-label>Número de celular</mat-label>
+      <input
+        matInput
+        [(ngModel)]="empleado.TELEFONO"
+        type="tel"
+        name="celular"
+      />
+      <!-- <mat-error *ngIf="email.invalid">{{getErrorMessage()}}</mat-error> -->
+    </mat-form-field>
+
+    <mat-form-field appearance="fill" class="inputContaine">
+      <mat-label>Correo</mat-label>
+      <input matInput [(ngModel)]="empleado.CORREO" type="email" name="em"/>
+      <!-- <mat-error *ngIf="email.invalid">{{getErrorMessage()}}</mat-error> -->
+    </mat-form-field>
+
+    <mat-form-field appearance="fill" class="inputContaine padding">
+      <mat-label>Sexo</mat-label>
+      <mat-select [(ngModel)]="empleado.SEXO_EMPLEADO" name="tipo2">
+        <mat-option value="h">Hombre</mat-option>
+        <mat-option value="m">Mujeres</mat-option>
+        <mat-option value="o">Otro</mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <mat-form-field appearance="fill" class="inputContaine">
+      <mat-label>Eps</mat-label>
+      <mat-select [(ngModel)]="empleado.EPS" name="tipo3">
+        <mat-option value="Sura">Sura</mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <mat-form-field appearance="fill" class="inputContaine padding">
+      <mat-label>Fondo de prensiones</mat-label>
+      <mat-select [(ngModel)]="empleado.FONDO_PENSION" name="tipo4">
+        <mat-option value="Colpensiones">Colpensiones</mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <mat-form-field appearance="fill" class="inputContaine">
+      <mat-label>Estado civil</mat-label>
+      <mat-select [(ngModel)]="empleado.ESTADO_CIVIL" name="tipo5">
+        <mat-option value="Solter@">Solter@</mat-option>
+        <mat-option value="Casad@">Casad@</mat-option>
+        <mat-option value="Unión libre">Unión libre</mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <mat-form-field appearance="fill" class="inputContaine padding">
+      <mat-label>Número de hijos</mat-label>
+      <input matInput [(ngModel)]="empleado.HIJOS" type="number" name="hijos" />
+      <!-- <mat-error *ngIf="email.invalid">{{getErrorMessage()}}</mat-error> -->
+    </mat-form-field>
+
+    <mat-form-field appearance="fill" class="inputContaine">
+      <mat-label>Estudios</mat-label>
+      <mat-select [(ngModel)]="empleado.ESTUDIOS" name="tipo6">
+        <mat-option value="Bachiller">Bachiller</mat-option>
+        <mat-option value="Tecnico">Tecnico</mat-option>
+        <mat-option value="Tecnologo">Tecnologo</mat-option>
+        <mat-option value="Pregrado">Pregrado</mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <mat-form-field appearance="fill" class="inputContainer">
+      <mat-label>Tipo de servicio</mat-label>
+      <mat-select [(ngModel)]="empleado.TIPO_SERVICIO" name="tipo7">
+        <mat-option value="Barberia">Barberia</mat-option>
+        <mat-option value="Cosmetologia">Cosmetologia</mat-option>
+        <mat-option value="Uñas">Uñas</mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <button
+      mat-button
+      value="Registrar"
+      (click)="AgregarEmpelado()"
+      class="inputContainer btnInicio"
+    >
+      registrar
+    </button>
+  </form>
+
+  <button
+    mat-button
+    (click)="drawer.toggle()"
+    class="inputContainer btnCancelar"
+  >
+    Cancelar
+  </button>
 </mat-drawer>

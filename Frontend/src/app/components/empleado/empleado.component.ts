@@ -41,7 +41,7 @@ export class EmpleadoComponent implements OnInit {
   listarEmpleado() {
     this.EmpleadoService.getEmpleado().subscribe(
       res => {
-        console.log(res);
+        // console.log(res);
         this.ListarEmpleado = <any>res;
       },
       err => console.log(err)

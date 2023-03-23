@@ -32,7 +32,7 @@ export class ProveedorAdminComponent implements OnInit {
   listarProvedores() {
     this.ProveedorService.getProveedor().subscribe(
       res => {
-        console.log(res);
+        // console.log(res);
         this.ListarProveedor = <any>res;
       },
       err => console.log(err)

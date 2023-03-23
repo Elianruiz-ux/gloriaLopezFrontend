@@ -1,35 +1,50 @@
 <app-navbar-home></app-navbar-home>
 
-  <div class="container">
-
-
-
-    <div class="exampleContainer">
-      
-      <div>
-        <h2 class="tittle">Iniciar sesión</h2>
-      </div>
-      <div class="errorMessage">{{error}}</div >
-      <form class="form">
-    
-      
-
+<div class="container">
+  <div class="exampleContainer">
+    <div>
+      <h2 class="tittle">Iniciar sesión</h2>
+    </div>
+    <div class="errorMessage">{{ error }}</div>
+    <form class="form">
       <mat-form-field appearance="fill" class="inputContainer">
         <mat-label>Correo</mat-label>
-        <input matInput type="email" [(ngModel)]="user.CORREO_CLIENTE"  name="correo">
+        <input
+          matInput
+          type="email"
+          [(ngModel)]="user.CORREO_CLIENTE"
+          name="correo"
+        />
         <!-- <mat-error *ngIf="email.invalid">{{getErrorMessage()}}</mat-error> -->
       </mat-form-field>
 
       <mat-form-field class="inputContainer" appearance="fill">
         <mat-label>Contraseña</mat-label>
-        <input matInput [type]="hide ? 'password' : 'text'" class="input" [(ngModel)]="user.CONTRASENA_CLIENTE"   name="contraseña">
-        <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
-          <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+        <input
+          matInput
+          [type]="hide ? 'password' : 'text'"
+          class="input"
+          [(ngModel)]="user.CONTRASENA_CLIENTE"
+          name="contraseña"
+        />
+        <button
+          mat-icon-button
+          matSuffix
+          (click)="hide = !hide"
+          [attr.aria-label]="'Hide password'"
+          [attr.aria-pressed]="hide"
+        >
+          <mat-icon>{{ hide ? "visibility_off" : "visibility" }}</mat-icon>
         </button>
       </mat-form-field>
-      <button mat-button value="Iniciar Sesión" (click)="logIn()" class="inputContainer btn">iniciar sesión</button>
-      </form>
-    </div>
-
-  
+      <button
+        mat-button
+        value="Iniciar Sesión"
+        (click)="logIn()"
+        class="inputContainer btn"
+      >
+        iniciar sesión
+      </button>
+    </form>
   </div>
+</div>

@@ -34,7 +34,12 @@
   }
 
   ::-webkit-scrollbar{
-    display: none;
+    width: 8px;
+  }
+
+  ::-webkit-scrollbar-thumb{
+    background-color: var(--color-negro-opaco-dos);
+    border-radius: 20px;
   }
 
 

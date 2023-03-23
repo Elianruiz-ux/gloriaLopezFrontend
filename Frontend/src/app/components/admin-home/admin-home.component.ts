@@ -30,7 +30,7 @@ export class AdminHomeComponent implements OnInit {
   listarServicio() {
     this.ServicioService.getServicio().subscribe(
       res => {
-        console.log(res);
+        // console.log(res);
         this.ListarServicio = <any>res;
       },
       err => console.log(err)
