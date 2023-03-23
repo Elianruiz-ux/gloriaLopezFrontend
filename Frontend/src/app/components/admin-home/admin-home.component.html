@@ -1,33 +1,24 @@
 <app-navbar-admin-home></app-navbar-admin-home>
 
 <div class="container">
-    <div class="registro">
-      <form class="registro__form">
-        <h1>Servicio</h1>
-      
-        <div class="group">
-            <input [(ngModel)]="servicio.CODIGO_SERVICIO" type="number" required="required" name="Numero_doc" /><span class="highlight"></span><span
-                class="bar"></span>
-            <label>Codigo servicio</label>
-        </div>
-        <div class="group">
-            <input [(ngModel)]="servicio.NOMBRE_SERVICIO" type="text" required="required" name="Nombre" maxlength="40" pattern="[a-z-A-Z]+" /><span class="highlight"></span><span
-                class="bar"></span>
-            <label>Nombre servicio</label>
-        </div>
-        <div class="group">
-            <input [(ngModel)]="servicio.COSTO_SERVICIO" type="number" required="required" name="Costo_Servicio" /><span class="highlight"></span><span
-                class="bar"></span>
-                <label>Costo servicio</label>
-        </div>
-        <input type="button" type="reset" class="btn" value="Registrar" (click)="agregarServicio()">
-      </form>
-    </div>
 
+
+    <mat-drawer-container class="cotenedorBtn" >
+        
+      
+        <div class="contenbtn">
+          <button type="button" class="btnslide" mat-button (click)="drawer.toggle()">
+            registrar servicio
+          </button>
+        </div>
+      
+  
+      
+    </mat-drawer-container>
 
     <div class="lista" >
-        <div class="lista__contenido" >
-            <table class="content-table" >
+        <div class="content-table" >
+            <table >
                 <thead>
                     <tr>
                         <th>ID</th>
@@ -40,12 +31,48 @@
                     <td>{{servicio.CODIGO_SERVICIO}}</td>
                     <td>{{servicio.NOMBRE_SERVICIO}}</td>
                     <td>${{servicio.COSTO_SERVICIO}}</td>
-                    <td><input class="editar" type="button" (click)="modificarServicio(servicio.CODIGO_SERVICIO)" value="Editar"></td>
-                        <td><input class="eliminar" type="button" value="Eliminar" (click)="deleteServicio(servicio.CODIGO_SERVICIO)"></td>        
+                    <td><mat-icon class="btn edit" (click)="modificarServicio(servicio.CODIGO_SERVICIO)" value="Editar">create</mat-icon></td>
+                    <td><mat-icon class="btn delete" value="Eliminar" (click)="deleteServicio(servicio.CODIGO_SERVICIO)">delete_forever</mat-icon></td>
                 </tbody>
             </table>
         </div>
     </div>
 
+</div>
  
 
+
+
+<mat-drawer #drawer class="sliderNav" mode="side">
+    <div class="containerTittle">
+        <h2 class="tittle">Servicio</h2>
+    </div>
+    
+    <form class="registro__form">
+        
+
+        <mat-form-field appearance="fill" class="inputContainer">
+            <mat-label>Codigo servicio</mat-label>
+            <input matInput type="number" [(ngModel)]="servicio.CODIGO_SERVICIO"  name="Numero_doc">
+            <!-- <mat-error *ngIf="email.invalid">{{getErrorMessage()}}</mat-error> -->
+          </mat-form-field>
+
+          <mat-form-field appearance="fill" class="inputContainer">
+            <mat-label>Nombre servicio</mat-label>
+            <input matInput type="text" [(ngModel)]="servicio.NOMBRE_SERVICIO" name="Nombre" maxlength="40" pattern="[a-z-A-Z]+">
+            <!-- <mat-error *ngIf="email.invalid">{{getErrorMessage()}}</mat-error> -->
+          </mat-form-field>
+      
+          <mat-form-field appearance="fill" class="inputContainer">
+            <mat-label>Costo servicio</mat-label>
+            <input matInput type="number" [(ngModel)]="servicio.COSTO_SERVICIO" name="Costo_Servicio" >
+            <!-- <mat-error *ngIf="email.invalid">{{getErrorMessage()}}</mat-error> -->
+          </mat-form-field>
+          <button mat-button value="Registrar" (click)="agregarServicio()" class="inputContainer btnInicio">registrar</button>
+
+          
+        </form>
+
+        <button mat-button (click)="drawer.toggle()" class="inputContainer btnCancelar">Cancelar</button>
+
+</mat-drawer>

@@ -1,221 +1,135 @@
-.container{
-    margin: 20px;
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-  }
 
- 
-  .registro{
-    box-shadow: 1px 1px 4px rgba(235, 29, 53, 0.522);
-    width: auto;
-    height: 100%;
-    margin: 1.8% auto;
-    padding: 20px;
-    display: flex;
-    justify-content: center;
-    border-radius: 5px;
-    overflow: hidden;
-    overflow-y: scroll;
-  }
+::ng-deep .mat-focused .mat-form-field-label {
+  /*change color of label*/
+  color: var(--color-negro) !important;
+ }
 
-  .registro__form h1{
-    display: flex;
-    justify-content: center;
-    margin: 10px 0 10px ;
-    
-  }
-
-  .registro__form{
-    display: flex;
-    flex-direction: column;
-  }
-
-  div input:focus{
-    color: #0000009c;
-}
- 
-.group {
-    position: relative;
-    margin: 5% 0;
-  }
- 
-  .group textarea {
-    resize: none;
-  }
- 
-  .group input,
-  .group textarea {
-    background: none;
-    color: #0000007c;
-    font-size: 18px;
-    padding: 10px 10px 10px 5px;
-    display: block;
-    width: 100%;
-    border: none;
-    border-radius: 0;
-    border-bottom: 1px solid rgba(235, 29, 53, 0.522);
-  }
-  .group input:focus,
-  .group textarea:focus {
-    outline: none;
- 
-  }
-  .group input:focus ~ label, .group input:valid ~ label,
-  .group textarea:focus ~ label,
-  .group textarea:valid ~ label {
-    top: -14px;
-    font-size: 12px;
-    color: #10181f;
-  }
-  .group input:focus ~ .bar:before,
-  .group textarea:focus ~ .bar:before {
-    width: 100%;
-  }
- 
- 
-  .group label {
-    color: #0000007c;
-    font-size: 16px;
-    font-weight: normal;
-    position: absolute;
-    pointer-events: none;
-    left: 5px;
-    top: 10px;
-    transition: 300ms ease all;
-  }
- 
-  .bar {
-    position: relative;
-    display: block;
-    width: 100%;
-  }
-  .bar:before {
-    content: "";
-    height: 2px;
-    width: 0;
-    bottom: 0px;
-    position: absolute;
-    background: rgba(235, 29, 53, 0.884);
-    transition: 300ms ease all;
-    left: 0%;
-    color: #000;
-
-  }
-
-  .select{
-    font-size: 16px;
-    font-weight: normal;
-    width: 100%;
-    padding: 2%;
-    border: none;
-    border-bottom: 1px solid rgba(235, 29, 53, 0.522);
-    color: #0000007c;
-  }
-  
-
-  
-.btn{
-    border: none;
-    padding: 8px 15px;
-    border-radius: 5px;
-    color: white;
-    background-color: rgba(235, 29, 53, 0.522);
-    cursor: pointer;
-    font-size: 1em;
-    margin-top: 30px;
-    }
-  
-.btn:hover{
-    background-color: rgba(235, 29, 53, 0.699);
-    color: white;
-  }
-
-
-
-
-/* Lista */
-
-.content-table { 
-  border-collapse: collapse;
-  border-radius: 10px;
-  margin: 25px auto; 
-  min-width: 100%; 
-  box-shadow: 1px 1px 4px rgba(235, 29, 53, 0.522);
-  justify-content: center;
-  text-align: center; 
-}
-
-thead tr th{
-    text-transform: lowercase;
-}
-
-thead tr th::first-letter{
-    text-transform: uppercase;
-}
-
-.content-table thead tr { 
-  background-color: rgba(235, 29, 53, 0.699); 
-  color: #ffffff; 
-  text-align: middle; 
-  
-}
-
-
-
-.content-table th, .content-table td {
-   padding: 12px; 
-   font-weight: 100;
-   margin: auto;
-}
-
-.content-table tbody tr:nth-of-type(even) { 
-  background-color: rgba(235, 29, 53, 0.1); 
+ ::ng-deep.mat-form-field-underline {
+  /*change color of underline*/
+  background-color: var(--color-negro) !important;
 } 
 
-.editar{
-  border: none;
-  padding: 8px 15px;
-  border-radius: 5px;
-  color: white;
-  background-color: rgba(235, 29, 53, 0.522);
+::ng-deep.mat-form-field-ripple {
+ /*change color of underline when focused*/
+ background-color: var(--color-negro) !important;
+} 
+
+
+.container{
+  margin: 20px;
+  display: grid;
+  gap: 10px;
+}
+
+.content-table{
+  overflow: hidden;
+  width: 100%; 
+  border-radius: 10px;
+  border: 1px solid var(--color-general-uno-opaco);
+}
+table { 
+  border-collapse: collapse;
+  margin:  auto; 
+  min-width: 100%; 
+  justify-content: center;
+  text-align: center; 
+  overflow: hidden;
+}
+
+
+table tr th, table td {
+  padding: 10px;
+  text-transform: lowercase;
+}
+
+table tr th{
+  font-weight: 600;
+}
+
+table tr th::first-letter, table td::first-letter{
+  text-transform: uppercase;
+}
+
+table thead{
+ border-bottom: 1px solid var(--color-general-uno-opaco);
+}
+
+table tbody:hover{
+  background-color: var(--color-general-uno-opaco-dos);
+}
+
+
+.btn{
   cursor: pointer;
-  font-size: 1em;
+ }
+
+ .edit{
+  color: var(--color-blue);
+ }
+
+ .delete{
+  color: var(--color-red);
+ }
+
+.btnInicio{
+  text-transform: uppercase;
+  border: 1px solid var(--color-negro);
 }
 
-.editar:hover{
-  background-color: rgba(235, 29, 53, 0.699); 
+  .btnCancelar{
+    margin-top: 10px;
+    text-transform: uppercase;
+
+  }
+
+ .cotenedorBtn {
+  width: 100%;
+  background-color: transparent;
+  
+}
+
+ .contenbtn {
+  width: 100%;
+  height: 100%;
+} 
+
+.btnslide{
+  text-transform: uppercase;
+  border: 1px solid var(--color-general-uno);
+}
+
+.sliderNav{
+  width: 500px;
+  box-shadow: 0 2px 50px var(--color-general-uno-opaco);
+  border: none!important;
+  padding: 10px;
+  overflow: hidden;
+  display: grid;
+  place-content: center;
+  place-items: center;
+  text-align: center;
+  min-height: 100vh;
+
+}
+
+.containerTittle{
+  margin-bottom: 50px;
+}
+
+.inputContainer{
+  width: 100%;
+}
+
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+input:-webkit-autofill:active {
+  box-shadow: none;
+  -webkit-box-shadow: 0 0 0 30px var(--color-blanco) inset !important;
+}
+.tittle{
+  font-weight: 300;
+  text-transform: uppercase;
 }
 
 
-.eliminar{
-  border: none;
-  padding: 8px 15px;
-  border-radius: 5px;
-  color: white;
-  background-color: rgb(255, 0, 0);
-  cursor: pointer;
-  font-size: 1em;
-}
-
-.eliminar:hover{
-  background-color: rgba(255, 0, 0, 0.774);
-}
-
-
-
-
-
-@media (max-width: 900px) {
-    .container{
-        display: block;
-    }
-    .registro{
-        display: block;
-        width: 100%;
-        
-    }
-    form{
-        display: block;
-        width: 100%;
-    }
-}

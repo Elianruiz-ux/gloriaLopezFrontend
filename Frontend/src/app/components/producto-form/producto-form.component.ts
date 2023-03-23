@@ -11,6 +11,7 @@ import { Router } from '@angular/router';
   styleUrls: ['./producto-form.component.css']
 })
 export class ProductoFormComponent implements OnInit {
+  showFiller = false;
 
   //Variable
   ListaProducto: Producto[] = [];

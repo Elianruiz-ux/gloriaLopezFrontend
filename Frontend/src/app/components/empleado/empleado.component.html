@@ -1,7 +1,7 @@
 <app-navbar-admin-home></app-navbar-admin-home>
 
 <div class="container">
-    <div class="registro">
+    <!-- <div class="registro">
       <form class="registro__form">
         <h1>Registrar empleado</h1>
 
@@ -97,12 +97,24 @@
 
         <input type="button" type="reset" class="btn" value="Registrar" (click)="AgregarEmpelado()"> 
       </form>
-    </div>
+    </div> -->
   
+    <mat-drawer-container class="cotenedorBtn" >
+        
+      
+        <div class="contenbtn">
+          <button type="button" class="btnslide" mat-button (click)="drawer.toggle()">
+            registrar empleado
+          </button>
+        </div>
+      
+  
+      
+    </mat-drawer-container>
 
     <div class="lista" >
-        <div class="lista__contenido" >
-            <table class="content-table" >
+        <div class="content-table" >
+            <table>
                 <thead>
                     <tr>
                         <th>DOCUMENTO</th>
@@ -141,8 +153,9 @@
                         <td>{{Proveedor.TELEFONO}}</td>
                         <td>{{Proveedor.CORREO}}</td>
                         <td>{{Proveedor.DIRECCION}}</td> -->
-                        <td><input class="editar" (click)="ModificarEmpleado(empleado.IDENTIFICACION_EMPLEADO)" type="button" value="Editar"></td>
-                        <td><input class="eliminar" (click)="deleteEmpleado(empleado.IDENTIFICACION_EMPLEADO)" type="button" value="Eliminar"></td> 
+                        <td><mat-icon class="btn edit" (click)="ModificarEmpleado(empleado.IDENTIFICACION_EMPLEADO)" value="Editar">create</mat-icon></td>
+                    <td><mat-icon class="btn delete" value="Eliminar" (click)="deleteEmpleado(empleado.IDENTIFICACION_EMPLEADO)">delete_forever</mat-icon></td>
+                
                     </tr>
 
                    
@@ -153,3 +166,38 @@
 
   </div>
 
+
+  
+<mat-drawer #drawer class="sliderNav" mode="side">
+    <div class="containerTittle">
+        <h2 class="tittle">empleado</h2>
+    </div>
+    
+    <form class="registro__form">
+        
+
+        <mat-form-field appearance="fill" class="inputContainer">
+            <mat-label>Codigo servicio</mat-label>
+            <input matInput type="number"   name="Numero_doc">
+            <!-- <mat-error *ngIf="email.invalid">{{getErrorMessage()}}</mat-error> -->
+          </mat-form-field>
+
+          <mat-form-field appearance="fill" class="inputContainer">
+            <mat-label>Nombre servicio</mat-label>
+            <input matInput type="text"  name="Nombre" maxlength="40" pattern="[a-z-A-Z]+">
+            <!-- <mat-error *ngIf="email.invalid">{{getErrorMessage()}}</mat-error> -->
+          </mat-form-field>
+      
+          <mat-form-field appearance="fill" class="inputContainer">
+            <mat-label>Costo servicio</mat-label>
+            <input matInput type="number" name="Costo_Servicio" >
+            <!-- <mat-error *ngIf="email.invalid">{{getErrorMessage()}}</mat-error> -->
+          </mat-form-field>
+          <button mat-button value="Registrar" (click)="AgregarEmpelado()" class="inputContainer btnInicio">registrar</button>
+
+          
+        </form>
+
+        <button mat-button (click)="drawer.toggle()" class="inputContainer btnCancelar">Cancelar</button>
+
+</mat-drawer>

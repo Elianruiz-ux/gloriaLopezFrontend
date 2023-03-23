@@ -1,6 +1,9 @@
 import { ServicioService, Servicio } from './../../SERVICES/servicio.service';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit} from '@angular/core';
 import { Router } from '@angular/router';
+
+
+
 
 @Component({
   selector: 'app-admin-home',
@@ -9,6 +12,7 @@ import { Router } from '@angular/router';
 })
 export class AdminHomeComponent implements OnInit {
 
+  showFiller = false;
 
   ListarServicio: Servicio[] = [];
   servicio: Servicio = {
@@ -21,6 +25,8 @@ export class AdminHomeComponent implements OnInit {
   ngOnInit(): void {
     this.listarServicio();
   }
+
+
   listarServicio() {
     this.ServicioService.getServicio().subscribe(
       res => {
@@ -46,7 +52,7 @@ export class AdminHomeComponent implements OnInit {
             this.router.navigate(['adminhome']); 
             this.listarServicio(); 
           }else{
-            alert('El id del servicio ya existe, por favor ingresa uno nuevo')      
+            alert('El id del servicio ya existe, por favor ingresa uno nuevo');
           }
         }); 
          }           

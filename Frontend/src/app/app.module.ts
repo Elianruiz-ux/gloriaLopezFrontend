@@ -43,7 +43,11 @@ import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatInputModule} from '@angular/material/input';
 import {MatSelectModule} from '@angular/material/select';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-
+import {MatTableModule} from '@angular/material/table';
+import {MatPaginatorModule} from '@angular/material/paginator';
+import {CdkTableModule} from '@angular/cdk/table';
+import { CdkColumnDef } from '@angular/cdk/table';
+import {MatSidenavModule} from '@angular/material/sidenav';
 
 @NgModule({
   declarations: [
@@ -82,11 +86,16 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     MatFormFieldModule,
     MatInputModule,
     MatSelectModule,
-    BrowserAnimationsModule 
+    BrowserAnimationsModule,
+    MatTableModule,
+    MatPaginatorModule,
+    CdkTableModule,
+    MatSidenavModule
   ],
   providers: [
     {provide: JWT_OPTIONS, useValue:JWT_OPTIONS },
-    JwtHelperService
+    JwtHelperService,
+    CdkColumnDef
   ],
   bootstrap: [AppComponent]
 })

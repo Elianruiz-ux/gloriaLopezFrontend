@@ -10,6 +10,7 @@ import { Router } from '@angular/router';
   styleUrls: ['./proveedor-admin.component.css']
 })
 export class ProveedorAdminComponent implements OnInit {
+  showFiller = false;
 
   ListarProveedor: Proveedor[] = [];
 

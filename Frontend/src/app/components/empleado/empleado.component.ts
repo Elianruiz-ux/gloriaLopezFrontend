@@ -10,6 +10,9 @@ import { Router } from '@angular/router';
 })
 export class EmpleadoComponent implements OnInit {
 
+  showFiller = false;
+
+
   ListarEmpleado: Empleado[] = [];
 
   empleado: Empleado = {

@@ -9,16 +9,18 @@
   --color-blanco: #fff;
   --color-general-uno:#eb1d3585;
   --color-general-uno-opaco:#eb1d3555;
+  --color-general-uno-opaco-dos:#eb1d352c;
   --color-general-dos: #eb1d35b2;
   --color-general-tres: #eb1d351f;
-
+  --color-blue: blue;
+  --color-red: red;
 }
 
 * {
     box-sizing: border-box;
     margin: 0;
     padding: 0;
-    font-family: 'Noto Serif', serif;
+    font-family: 'Neue-Helvetica', 'Arial', Sans-Serif;
     
   }
 
