@@ -1,0 +1,25 @@
+:root{
+    --txt-color-negro: #000;
+    --bg-btn-primario: #fff;
+    --bg-btn-secundario: #dadada;
+    --bg-btn-peligro: #ff0000;
+    --bg-navbar: #fff;
+    --bg-color-blanco: #fff;
+    --color-borde: #eb1d35b2;
+    --bg-color-scroll: #0000006c;
+    --color-general-uno:#eb1d3585;
+    --color-borde-dos:#eb1d3555;
+    --color-general-uno-opaco-dos:#eb1d352c;
+    --color-general-dos: #eb1d35b2;
+    --color-general-tres: #eb1d351f;
+}
+
+::-webkit-scrollbar{width: 8px; height: 8px;}
+::-webkit-scrollbar-thumb{ background: var(--bg-color-scroll); border-radius: 10px;}
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, Helvetica, sans-serif;
+}
