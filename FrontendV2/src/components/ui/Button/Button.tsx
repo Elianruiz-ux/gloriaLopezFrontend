@@ -4,7 +4,7 @@ import { ButtonCss } from './Button.styled';
 // eslint-disable-next-line @typescript-eslint/no-empty-interface
 interface ButtonProps {
   placeholder: string;
-  onClick: () => void;
+  onClick?: () => void;
   variant: 'primario' | 'secundario' | 'peligro';
 }
 
@@ -20,18 +20,22 @@ const Buttonhtml = ({ placeholder, onClick, variant }: ButtonProps) => {
 // eslint-disable-next-line @typescript-eslint/no-empty-interface
 interface ButtonTheme {
   color: string;
+  bgColor: string;
 }
 
 const buttonPrimario: ButtonTheme = {
-  color: `var()`
+  color: `var(--txt-color-negro)`,
+  bgColor: `var(--bg-color-primario-btn)`
 };
 
 const buttonSecundario: ButtonTheme = {
-  color: `var()`
+  color: `var(--txt-color-negro)`,
+  bgColor: `var(--bg-color-secundario-btn)`
 };
 
 const buttonPeligro: ButtonTheme = {
-  color: `var()`
+  color: `var(--txt-color-blanco)`,
+  bgColor: `var(--bg-color-peligro-btn)`
 };
 
 const Button = (props: ButtonProps) => (

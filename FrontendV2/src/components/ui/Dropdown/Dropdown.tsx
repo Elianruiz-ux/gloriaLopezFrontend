@@ -1,53 +1,58 @@
 import { ThemeProvider } from 'styled-components'; // Define the interface for the Input component
-import { Inputcss } from './Input.styled';
+import { Dropdowncss } from './Dropdown.styled';
 
 // eslint-disable-next-line @typescript-eslint/no-empty-interface
-interface InputProps {
+interface DropdownProps {
   placeholder: string;
-  type: string;
   variant: 'primario' | 'secundario';
 }
 
 // Use the Single Responsibility Principle (SRP)
-const Inputhtml = ({ placeholder, variant, type }: InputProps) => {
+const Dropdownhtml = ({ placeholder, variant }: DropdownProps) => {
   return (
-    <Inputcss variant={variant}>
+    <Dropdowncss variant={variant}>
       <label className="text">{placeholder}</label>
-      <input type={type} className="input" autoComplete="off" />
-    </Inputcss>
+      <select className="dropdown" autoComplete="off">
+        <option defaultValue={''}></option>
+        <option value={'c'}>C.c</option>
+        <option value={'t'}>T.i</option>
+      </select>
+    </Dropdowncss>
   );
 };
 
 // eslint-disable-next-line @typescript-eslint/no-empty-interface
-interface InputTheme {
+interface DropdownTheme {
   color_texto: string;
   color_fondo: string;
   color_borde: string;
   ancho: string;
 }
 
-const inputPrimario: InputTheme = {
+const dropdownPrimario: DropdownTheme = {
   color_texto: `var(--txt-color-negro)`,
   color_fondo: `var(--bg-color-blanco)`,
   color_borde: `var(--color-borde)`,
   ancho: `100%`
 };
 
-const inputSecundario: InputTheme = {
+const dropdownSecundario: DropdownTheme = {
   color_texto: `var(--txt-color-negro)`,
   color_fondo: `var(--bg-color-blanco)`,
   color_borde: `var(--color-borde)`,
   ancho: `50%`
 };
 
-const Input = (props: InputProps) => (
+const Dropdown = (props: DropdownProps) => (
   <ThemeProvider
     theme={
-      props.variant == 'primario' ? inputPrimario : props.variant == 'secundario' && inputSecundario
+      props.variant == 'primario'
+        ? dropdownPrimario
+        : props.variant == 'secundario' && dropdownSecundario
     }
   >
-    <Inputhtml {...props} />
+    <Dropdownhtml {...props} />
   </ThemeProvider>
 );
 
-export default Input;
+export default Dropdown;

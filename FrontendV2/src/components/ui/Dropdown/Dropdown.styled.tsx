@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-export const Inputcss = styled.div<{ variant: string }>`
+export const Dropdowncss = styled.div<{ variant: string }>`
   display: flex;
   flex-direction: column;
   width: ${(props) => props.theme.ancho};
@@ -22,7 +22,7 @@ export const Inputcss = styled.div<{ variant: string }>`
     }
   }
 
-  & input.input {
+  & select.dropdown {
     padding: 11px 10px;
     font-size: 0.77rem;
     border: 2px ${(props) => props.theme.color_borde} solid;
@@ -30,7 +30,7 @@ export const Inputcss = styled.div<{ variant: string }>`
     background-color: ${(props) => props.theme.color_fondo};
   }
 
-  & input.input:focus {
+  & select.dropdown:focus {
     outline: none;
   }
 `;

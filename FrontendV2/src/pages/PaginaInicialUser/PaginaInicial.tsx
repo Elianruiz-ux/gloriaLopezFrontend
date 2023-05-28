@@ -1,6 +1,6 @@
 import { Helmet } from 'react-helmet-async';
 import Nabvar from '../../components/ui/Nabvar/Nabvar';
-import Input from '../../components/ui/Input/Input';
+import { DivPaginaInicial } from './PaginaInicial.styled';
 
 export default function PaginaInicial() {
   return (
@@ -8,10 +8,9 @@ export default function PaginaInicial() {
       <Helmet>
         <title>Inicio</title>
       </Helmet>
-      <div>
+      <DivPaginaInicial>
         <Nabvar variant="usuario" />
-        <Input placeholder="nombre" type="text" variant="primario" />
-      </div>
+      </DivPaginaInicial>
     </div>
   );
 }

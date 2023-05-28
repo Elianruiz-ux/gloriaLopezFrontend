@@ -11,7 +11,18 @@ interface NabvarProps {
 const Nabvarhtml = ({ variant }: NabvarProps) => {
   return (
     <Nav variant={variant}>
-      <div className="columna">logo</div>
+      <div className="columna">
+        {/* <div className="ContenedorLogo">
+          <p className="titulo">Gloria López</p>
+          <p className="subtitulo">Centro de estetica</p>
+          <span className="tijeras">
+            <RxScissors />
+          </span>
+        </div> */}
+        <div className="contenedorImg">
+          <img src="./logo.png" alt="logo" className="img" />
+        </div>
+      </div>
       <div className="columna">
         <ul>
           {variant == 'usuario' ? (

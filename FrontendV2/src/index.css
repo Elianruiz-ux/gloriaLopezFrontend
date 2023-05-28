@@ -8,10 +8,17 @@
     --color-borde: #eb1d35b2;
     --bg-color-scroll: #0000006c;
     --color-general-uno:#eb1d3585;
-    --color-borde-dos:#eb1d3555;
+    --color-borde-dos:#eb1d35;
     --color-general-uno-opaco-dos:#eb1d352c;
-    --color-general-dos: #eb1d35b2;
+    --color-general-dos: #eb1d35;
     --color-general-tres: #eb1d351f;
+    --bg-color-blanco-transparent: #ffffff7e;
+    --color-sombra: #eb1d3550;
+    --color-negro: #000;
+    --txt-color-blanco:#fff;
+    --bg-color-primario-btn:#dfdfdf;
+    --bg-color-secundario-btn:#9b9b9b;
+    --bg-color-peligro-btn:red;
 }
 
 ::-webkit-scrollbar{width: 8px; height: 8px;}
