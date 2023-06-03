@@ -11,6 +11,10 @@ export const ButtonCss = styled.button<{ variant: string }>`
   color: ${(props) => props.theme.color};
   background-color: ${(props) => props.theme.bgColor};
 
+  &::first-letter {
+    text-transform: uppercase;
+  }
+
   &:hover {
     outline: auto;
     cursor: pointer;

@@ -7,6 +7,14 @@ export const DivPaginaServicio = styled.div`
   & .contenedorGeneral {
     padding: 1%;
 
+    & .contendortitulo {
+      width: 100%;
+      text-align: center;
+      &::first-letter {
+        text-transform: uppercase;
+      }
+    }
+
     & .contenedorFiltros {
       width: 100%;
       height: 70px;

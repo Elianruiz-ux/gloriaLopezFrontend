@@ -19,6 +19,9 @@ export default function PaginaProducto() {
       <DivProducto>
         <Nabvar variant="administradorLogeo" />
         <div className="contenedorGeneral">
+          <div className="contendortitulo">
+            <h2>productos</h2>
+          </div>
           <div className="contenedorFiltros">
             <div className="contenedorBtn">
               <Button
@@ -34,7 +37,7 @@ export default function PaginaProducto() {
             </div>
           </div>
         </div>
-        <div>{isOpen && <PopUpFormulario variant={'citas'} onClick={abrirPopup} />}</div>
+        <div>{isOpen && <PopUpFormulario variant={'productos'} onClick={abrirPopup} />}</div>
       </DivProducto>
     </div>
   );

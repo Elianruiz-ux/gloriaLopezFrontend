@@ -79,12 +79,17 @@ export const Nav = styled.nav<{ variant: string }>`
         text-decoration: none;
         padding: 5px 10px;
         color: var(--txt-color-negro);
+
+        &:hover {
+          filter: drop-shadow(0 0 10px var(--color-general-dos));
+        }
       }
 
       & .cerrarsesion,
       & .iniciar {
         border-radius: 5px;
         border: 1.5px solid var(--color-borde-dos);
+        /* box-shadow: 6px 6px 12px #c5c5c5, -6px -6px 12px #ffffff; */
       }
 
       & .registro {

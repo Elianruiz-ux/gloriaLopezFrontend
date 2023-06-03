@@ -65,7 +65,7 @@ const Cartahtml = ({ variant }: CartaLoginProps) => {
             />
           </div>
           <div className="alinear">
-            <Input placeholder="Celular" type="number" required={true} variant="secundario" />
+            <Input placeholder="Celular" type="text" required={true} variant="secundario" />
             <Input placeholder="Correo" type="email" required={true} variant="secundario" />
           </div>
           <div className="alinear">

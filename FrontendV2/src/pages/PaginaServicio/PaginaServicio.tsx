@@ -19,6 +19,9 @@ export default function PaginaServicio() {
       <DivPaginaServicio>
         <Nabvar variant="administradorLogeo" />
         <div className="contenedorGeneral">
+          <div className="contendortitulo">
+            <h2>servicios</h2>
+          </div>
           <div className="contenedorFiltros">
             <div className="contenedorBtn">
               <Button
@@ -34,7 +37,7 @@ export default function PaginaServicio() {
             </div>
           </div>
         </div>
-        <div>{isOpen && <PopUpFormulario variant={'citas'} onClick={abrirPopup} />}</div>
+        <div>{isOpen && <PopUpFormulario variant={'servicios'} onClick={abrirPopup} />}</div>
       </DivPaginaServicio>
     </div>
   );

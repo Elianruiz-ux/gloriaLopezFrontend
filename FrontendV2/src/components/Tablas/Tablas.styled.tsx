@@ -3,7 +3,7 @@ import styled from 'styled-components';
 export const DivTablas = styled.div<{ variant: string }>`
   width: 100%;
   overflow: auto;
-  height: 73vh;
+  height: 70vh;
   border-radius: 10px;
 
   & table {

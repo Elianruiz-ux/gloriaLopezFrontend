@@ -19,6 +19,9 @@ export default function PaginaCitas() {
       <DivPaginaCitas>
         <Nabvar variant="administradorLogeo" />
         <div className="contenedorGeneral">
+          <div className="contendortitulo">
+            <h2>citas</h2>
+          </div>
           <div className="contenedorFiltros">
             <div className="contenedorBtn">
               <Button placeholder="Agregar cita" variant="secundario" onClick={abrirPopup}></Button>

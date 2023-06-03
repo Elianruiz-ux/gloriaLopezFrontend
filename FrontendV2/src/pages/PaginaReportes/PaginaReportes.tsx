@@ -7,11 +7,14 @@ export default function PaginaReportes() {
   return (
     <div>
       <Helmet>
-        <title>Resportes</title>
+        <title>Reportes</title>
       </Helmet>
       <DivPaginaReportes>
         <Nabvar variant="administradorLogeo" />
         <div className="contenedorGeneral">
+          <div className="contendortitulo">
+            <h2>reportes</h2>
+          </div>
           <div className="contenedorFiltros">
             <div className="contenedorBtn">
               <Button placeholder="Generar reporte" variant="secundario"></Button>
