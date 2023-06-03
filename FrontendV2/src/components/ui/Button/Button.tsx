@@ -17,6 +17,8 @@ const Buttonhtml = ({ placeholder, onClick, variant }: ButtonProps) => {
   );
 };
 
+//cuando los campos sean obligatorio tengan un color diferente y se si esta validado los campos sean de otro color y se active le boton
+
 // eslint-disable-next-line @typescript-eslint/no-empty-interface
 interface ButtonTheme {
   color: string;
@@ -29,7 +31,7 @@ const buttonPrimario: ButtonTheme = {
 };
 
 const buttonSecundario: ButtonTheme = {
-  color: `var(--txt-color-negro)`,
+  color: `var(--txt-color-blanco)`,
   bgColor: `var(--bg-color-secundario-btn)`
 };
 

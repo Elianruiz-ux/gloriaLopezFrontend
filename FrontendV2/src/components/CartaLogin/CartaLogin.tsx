@@ -12,6 +12,16 @@ interface CartaLoginProps {
 
 // Use the Single Responsibility Principle (SRP)
 const Cartahtml = ({ variant }: CartaLoginProps) => {
+  const handleClickIngresarUsuario = () => {
+    window.location.href = '/#/homeUsuario';
+  };
+  const handleClickRegistrarUsuario = () => {
+    window.location.href = '/#/homeUsuario';
+  };
+  const handleClickIngresarAdministrador = () => {
+    window.location.href = '/#/homeAdministrador';
+  };
+
   return (
     <DivCartaLogin variant={variant}>
       <header>
@@ -26,35 +36,53 @@ const Cartahtml = ({ variant }: CartaLoginProps) => {
       {variant == 'login' ? (
         <main>
           <div>
-            <Input placeholder="Correo" type="email" variant="primario" />
+            <Input placeholder="Correo" type="email" required={true} variant="primario" />
           </div>
           <div>
-            <Input placeholder="Contraseña" type="password" variant="primario" />
+            <Input placeholder="Contraseña" type="password" required={true} variant="primario" />
           </div>
           <div>
-            <Button placeholder="Iniciar sesión" variant="primario"></Button>
+            <Button
+              placeholder="Iniciar sesión"
+              variant="primario"
+              onClick={handleClickIngresarUsuario}
+            ></Button>
           </div>
         </main>
       ) : variant == 'registro' ? (
         <main>
           <div className="alinear">
-            <Input placeholder="Nombre" type="text" variant="secundario" />
-            <Input placeholder="Apellido" type="text" variant="secundario" />
+            <Input placeholder="Nombre" type="text" required={true} variant="secundario" />
+            <Input placeholder="Apellido" type="text" required={true} variant="secundario" />
           </div>
           <div className="alinear">
-            <Dropdown placeholder="Tipo de documento" variant="secundario" />
-            <Input placeholder="Numero de documento" type="number" variant="secundario" />
+            <Dropdown placeholder="Tipo de documento" required={true} variant="secundario" />
+            <Input
+              placeholder="Número de documento"
+              required={true}
+              type="text"
+              variant="secundario"
+            />
           </div>
           <div className="alinear">
-            <Input placeholder="Celular" type="number" variant="secundario" />
-            <Input placeholder="Correo" type="email" variant="secundario" />
+            <Input placeholder="Celular" type="number" required={true} variant="secundario" />
+            <Input placeholder="Correo" type="email" required={true} variant="secundario" />
           </div>
           <div className="alinear">
-            <Input placeholder="Contraseña" type="password" variant="secundario" />
-            <Input placeholder="Confirmar contraseña" type="password" variant="secundario" />
+            <Input placeholder="Contraseña" type="password" required={true} variant="secundario" />
+            <Input
+              placeholder="Confirmar contraseña"
+              required={true}
+              type="password"
+              variant="secundario"
+            />
           </div>
           <div>
-            <Button placeholder="Iniciar sesión" variant="primario"></Button>
+            <Button
+              placeholder="Iniciar sesión"
+              variant="primario"
+              onClick={handleClickRegistrarUsuario}
+            ></Button>
           </div>
         </main>
       ) : (
@@ -67,7 +95,11 @@ const Cartahtml = ({ variant }: CartaLoginProps) => {
               <Input placeholder="Contraseña" type="password" variant="primario" />
             </div>
             <div>
-              <Button placeholder="Iniciar sesión" variant="primario"></Button>
+              <Button
+                placeholder="Iniciar sesión"
+                variant="primario"
+                onClick={handleClickIngresarAdministrador}
+              ></Button>
             </div>
           </main>
         )

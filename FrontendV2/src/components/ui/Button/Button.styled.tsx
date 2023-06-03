@@ -7,10 +7,14 @@ export const ButtonCss = styled.button<{ variant: string }>`
   padding: 11px 10px;
   width: 100%;
   border-radius: 5px;
-  font-size: 18px;
+  font-size: 15px;
   color: ${(props) => props.theme.color};
   background-color: ${(props) => props.theme.bgColor};
+
   &:hover {
+    outline: auto;
     cursor: pointer;
+    outline-offset: 3px;
+    outline-color: ${(props) => props.theme.bgColor};
   }
 `;

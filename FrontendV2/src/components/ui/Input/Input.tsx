@@ -5,15 +5,16 @@ import { Inputcss } from './Input.styled';
 interface InputProps {
   placeholder: string;
   type: string;
+  required?: boolean;
   variant: 'primario' | 'secundario';
 }
 
 // Use the Single Responsibility Principle (SRP)
-const Inputhtml = ({ placeholder, variant, type }: InputProps) => {
+const Inputhtml = ({ placeholder, variant, type, required }: InputProps) => {
   return (
     <Inputcss variant={variant}>
       <label className="text">{placeholder}</label>
-      <input type={type} className="input" autoComplete="off" />
+      <input type={type} className="input" autoComplete="off" required={required} />
     </Inputcss>
   );
 };

@@ -25,7 +25,7 @@ export const Inputcss = styled.div<{ variant: string }>`
   & input.input {
     padding: 11px 10px;
     font-size: 0.77rem;
-    border: 2px ${(props) => props.theme.color_borde} solid;
+    border: 1.5px ${(props) => props.theme.color_borde} solid;
     border-radius: 5px;
     background-color: ${(props) => props.theme.color_fondo};
   }

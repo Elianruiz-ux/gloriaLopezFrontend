@@ -10,9 +10,13 @@ export const Nav = styled.nav<{ variant: string }>`
   padding: 0 20px;
   color: var(--txt-color-negro);
   background-color: transparent;
+  backdrop-filter: blur(5px);
 
-  & .columna {
-    width: 50%;
+  & .columnaUno {
+    width: 10%;
+  }
+  & .columnaDos {
+    width: 90%;
   }
 
   & .ContenedorLogo {
@@ -77,6 +81,7 @@ export const Nav = styled.nav<{ variant: string }>`
         color: var(--txt-color-negro);
       }
 
+      & .cerrarsesion,
       & .iniciar {
         border-radius: 5px;
         border: 1.5px solid var(--color-borde-dos);

@@ -5,14 +5,15 @@ import { Dropdowncss } from './Dropdown.styled';
 interface DropdownProps {
   placeholder: string;
   variant: 'primario' | 'secundario';
+  required?: boolean;
 }
 
 // Use the Single Responsibility Principle (SRP)
-const Dropdownhtml = ({ placeholder, variant }: DropdownProps) => {
+const Dropdownhtml = ({ placeholder, variant, required }: DropdownProps) => {
   return (
     <Dropdowncss variant={variant}>
       <label className="text">{placeholder}</label>
-      <select className="dropdown" autoComplete="off">
+      <select className="dropdown" autoComplete="off" required={required}>
         <option defaultValue={''}></option>
         <option value={'c'}>C.c</option>
         <option value={'t'}>T.i</option>

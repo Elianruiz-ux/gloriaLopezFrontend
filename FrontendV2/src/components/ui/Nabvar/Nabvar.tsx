@@ -4,14 +4,14 @@ import { Link } from 'react-router-dom';
 
 // eslint-disable-next-line @typescript-eslint/no-empty-interface
 interface NabvarProps {
-  variant: 'usuario' | 'administrador';
+  variant: 'usuario' | 'usuarioLogeo' | 'administrador' | 'administradorLogeo';
 }
 
 // Use the Single Responsibility Principle (SRP)
 const Nabvarhtml = ({ variant }: NabvarProps) => {
   return (
     <Nav variant={variant}>
-      <div className="columna">
+      <div className="columnaUno">
         {/* <div className="ContenedorLogo">
           <p className="titulo">Gloria López</p>
           <p className="subtitulo">Centro de estetica</p>
@@ -20,10 +20,24 @@ const Nabvarhtml = ({ variant }: NabvarProps) => {
           </span>
         </div> */}
         <div className="contenedorImg">
-          <img src="./logo.png" alt="logo" className="img" />
+          <Link
+            to={
+              variant == 'usuario'
+                ? '/'
+                : variant == 'usuarioLogeo'
+                ? '/homeUsuario'
+                : variant == 'administrador'
+                ? '/administrador'
+                : variant == 'administradorLogeo'
+                ? '/homeAdministrador'
+                : '/'
+            }
+          >
+            <img src="./logo.png" alt="logo" className="img" />
+          </Link>
         </div>
       </div>
-      <div className="columna">
+      <div className="columnaDos">
         <ul>
           {variant == 'usuario' ? (
             <div className="objetosNabVar">
@@ -41,11 +55,51 @@ const Nabvarhtml = ({ variant }: NabvarProps) => {
                 </Link>
               </li>
             </div>
+          ) : variant == 'administrador' ? (
+            <div className="objetosNabVar">
+              <li>
+                <Link to={'/administrador'}>administrador</Link>
+              </li>
+            </div>
+          ) : variant == 'administradorLogeo' ? (
+            <div className="objetosNabVar">
+              <li>
+                <Link to={'/homeAdministrador'}>Inicio</Link>
+              </li>
+              <li>
+                <Link to={'/citas'}>Citas</Link>
+              </li>
+              <li>
+                <Link to={'/productos'}>Productos</Link>
+              </li>
+              <li>
+                <Link to={'/proveedores'}>Proveedores</Link>
+              </li>
+              <li>
+                <Link to={'/servicios'}>Servicios</Link>
+              </li>
+              <li>
+                <Link to={'/empleado'}>Empleados</Link>
+              </li>
+              <li>
+                <Link to={'/reportes'}>Reportes</Link>
+              </li>
+              <li>
+                <Link to={'/administrador'} className="cerrarsesion">
+                  Cerrar sesión
+                </Link>
+              </li>
+            </div>
           ) : (
-            variant == 'administrador' && (
+            variant == 'usuarioLogeo' && (
               <div className="objetosNabVar">
                 <li>
-                  <Link to={'/administrador'}>administrador</Link>
+                  <Link to={'/homeUsuario'}>Inicio</Link>
+                </li>
+                <li>
+                  <Link to={'/'} className="cerrarsesion">
+                    Cerrar sesión
+                  </Link>
                 </li>
               </div>
             )

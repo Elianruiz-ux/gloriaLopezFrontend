@@ -4,6 +4,7 @@ export const DivCartaLogin = styled.div<{ variant: string }>`
   width: 400px;
   height: 400px;
   background-color: var(--bg-color-blanco-transparent);
+  backdrop-filter: blur(5px);
   box-shadow: 0 7px 20px 1px var(--color-sombra);
   border-radius: 10px;
   display: flex;
