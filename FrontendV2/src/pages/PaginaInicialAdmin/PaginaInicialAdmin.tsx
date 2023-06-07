@@ -2,8 +2,14 @@ import { Helmet } from 'react-helmet-async';
 import Nabvar from '../../components/ui/Nabvar/Nabvar';
 import { DivPaginaInicialAdmin } from './PaginaInicialAdmin.styled';
 import CartaLogin from '../../components/CartaLogin/CartaLogin';
+import PopUpFormulario from '../../components/PopupFormulario/PopupFormulario';
+import { useState } from 'react';
 
 export default function PaginaInicialAdmin() {
+  const [isOpen, setIsOpen] = useState(false);
+  const abrirPopup = () => {
+    setIsOpen(!isOpen);
+  };
   return (
     <div>
       <Helmet>
@@ -12,8 +18,9 @@ export default function PaginaInicialAdmin() {
       <DivPaginaInicialAdmin>
         <Nabvar variant="administrador" />
         <div className="contenedorFormulario">
-          <CartaLogin variant="admin"></CartaLogin>
+          <CartaLogin onClick={abrirPopup} variant="admin"></CartaLogin>
         </div>
+        <div>{isOpen && <PopUpFormulario variant={'login'} onClick={abrirPopup} />}</div>
       </DivPaginaInicialAdmin>
     </div>
   );

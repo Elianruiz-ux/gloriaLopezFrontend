@@ -35,5 +35,21 @@ export const DivCartaLogin = styled.div<{ variant: string }>`
     height: 10%;
     text-align: center;
     font-size: 16px;
+
+    & a {
+      color: var(--color-azul-txt);
+    }
+
+    & button {
+      appearance: none;
+      border: none;
+      background-color: var(--bg-color-blanco-transparent);
+      font-size: 16px;
+      color: var(--color-azul-txt);
+      text-decoration: underline;
+      &:hover {
+        cursor: pointer;
+      }
+    }
   }
 `;

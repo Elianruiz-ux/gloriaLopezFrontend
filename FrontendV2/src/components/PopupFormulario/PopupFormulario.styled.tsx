@@ -25,13 +25,15 @@ export const DivPopUp = styled.div<{ variant: string }>`
   }
 
   & .popupContent {
-    width: 80%;
-    height: 90%;
+    width: ${(props) => props.theme.width};
+    height: ${(props) => props.theme.heigth};
     background-color: var(--color-blanco);
     padding: 10px;
+    min-width: 300px !important;
     border-radius: 10px;
     box-shadow: 0 2px 5px var(--bg-popup-shadow);
     position: relative;
+    display: grid;
     z-index: 10;
     overflow: hidden;
 
@@ -53,9 +55,9 @@ export const DivPopUp = styled.div<{ variant: string }>`
       }
     }
 
-    & .contenedorFormulario {
+    & .contenedorFormularios {
       width: 100%;
-      height: 80%;
+      /* height: 80%; */
       overflow: auto;
       padding: 10px;
 

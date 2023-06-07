@@ -4,7 +4,12 @@ import { Link } from 'react-router-dom';
 
 // eslint-disable-next-line @typescript-eslint/no-empty-interface
 interface NabvarProps {
-  variant: 'usuario' | 'usuarioLogeo' | 'administrador' | 'administradorLogeo';
+  variant:
+    | 'usuario'
+    | 'usuarioLogeo'
+    | 'administrador'
+    | 'administradorLogeo'
+    | 'administradorLogeoSinTitulos';
 }
 
 // Use the Single Responsibility Principle (SRP)
@@ -28,7 +33,7 @@ const Nabvarhtml = ({ variant }: NabvarProps) => {
                 ? '/homeUsuario'
                 : variant == 'administrador'
                 ? '/administrador'
-                : variant == 'administradorLogeo'
+                : variant == 'administradorLogeo' || variant == 'administradorLogeoSinTitulos'
                 ? '/homeAdministrador'
                 : '/'
             }
@@ -84,11 +89,6 @@ const Nabvarhtml = ({ variant }: NabvarProps) => {
               <li>
                 <Link to={'/reportes'}>Reportes</Link>
               </li>
-              <li>
-                <Link to={'/administrador'} className="cerrarsesion">
-                  Cerrar sesión
-                </Link>
-              </li>
             </div>
           ) : (
             variant == 'usuarioLogeo' && (
@@ -103,6 +103,16 @@ const Nabvarhtml = ({ variant }: NabvarProps) => {
                 </li>
               </div>
             )
+          )}
+
+          {(variant == 'administradorLogeo' || variant == 'administradorLogeoSinTitulos') && (
+            <div className="objetosNabVar">
+              <li>
+                <Link to={'/administrador'} className="cerrarsesion">
+                  Cerrar sesión
+                </Link>
+              </li>
+            </div>
           )}
         </ul>
       </div>

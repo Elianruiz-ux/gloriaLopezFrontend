@@ -12,11 +12,14 @@ import PaginaProveedores from './pages/PaginaProveedores/PaginaProveedores';
 import PaginaReportes from './pages/PaginaReportes/PaginaReportes';
 import PaginaServicio from './pages/PaginaServicio/PaginaServicio';
 import PaginaInicialLogueoAdministrador from './pages/PaginaInicialLogueoAdministrador/PaginaInicialLogueoAdministrador';
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 function App() {
   return (
     <HashRouter>
       <main>
+        <ToastContainer autoClose={2500} position="top-center" />
         <Routes>
           <Route path="/administrador" element={<PaginaInicialAdmin />} />
           <Route path="/citas" element={<PaginaCitas />} />

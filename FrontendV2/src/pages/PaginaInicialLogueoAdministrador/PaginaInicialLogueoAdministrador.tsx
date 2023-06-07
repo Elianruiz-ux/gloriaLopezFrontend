@@ -10,7 +10,7 @@ export default function PaginaInicialLogueoAdministrador() {
         <title>Inicio</title>
       </Helmet>
       <DivPaginaInicialLogueoAdministrador>
-        <Nabvar variant="administradorLogeo" />
+        <Nabvar variant="administradorLogeoSinTitulos" />
         <div className="contenedorGeneral">
           <div className="contendorCartas">
             <div>

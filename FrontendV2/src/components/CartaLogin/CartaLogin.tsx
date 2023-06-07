@@ -4,22 +4,30 @@ import Input from '../ui/Input/Input';
 import Button from '../ui/Button/Button';
 import { Link } from 'react-router-dom';
 import Dropdown from '../ui/Dropdown/Dropdown';
+import { toast } from 'react-toastify';
 
 // eslint-disable-next-line @typescript-eslint/no-empty-interface
 interface CartaLoginProps {
   variant: 'login' | 'registro' | 'admin';
+  onClick?: () => void;
 }
 
 // Use the Single Responsibility Principle (SRP)
-const Cartahtml = ({ variant }: CartaLoginProps) => {
+const Cartahtml = ({ variant, onClick }: CartaLoginProps) => {
   const handleClickIngresarUsuario = () => {
-    window.location.href = '/#/homeUsuario';
+    toast.success('¡Inicio exitoso!');
+    toast.error('Correo o contraseña incorrectas');
+    // window.location.href = '/#/homeUsuario';
   };
   const handleClickRegistrarUsuario = () => {
-    window.location.href = '/#/homeUsuario';
+    toast.success('Registro exitoso!');
+    toast.error('Por favor rellene todos los campos');
+    // window.location.href = '/#/homeUsuario';
   };
   const handleClickIngresarAdministrador = () => {
-    window.location.href = '/#/homeAdministrador';
+    toast.success('¡Inicio exitoso!');
+    toast.error('Correo o contraseña incorrectas');
+    // window.location.href = '/#/homeAdministrador';
   };
 
   return (
@@ -103,6 +111,19 @@ const Cartahtml = ({ variant }: CartaLoginProps) => {
             </div>
           </main>
         )
+      )}
+      {(variant == 'login' || variant == 'admin') && (
+        <footer>
+          <div className="noCuenta">
+            <p>
+              Recuperar contraseña
+              <span>
+                {' '}
+                <button onClick={onClick}>Recuperar aquí</button>
+              </span>
+            </p>
+          </div>
+        </footer>
       )}
       {variant == 'login' && (
         <footer>
