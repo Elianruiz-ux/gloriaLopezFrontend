@@ -10,6 +10,7 @@ export default function PaginaInicialAdmin() {
   const abrirPopup = () => {
     setIsOpen(!isOpen);
   };
+
   return (
     <div>
       <Helmet>

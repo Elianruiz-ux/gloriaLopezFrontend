@@ -4,6 +4,8 @@ import { GrClose } from 'react-icons/gr';
 import Button from '../ui/Button/Button';
 import Input from '../ui/Input/Input';
 import Dropdown from '../ui/Dropdown/Dropdown';
+import { toast } from 'react-toastify';
+import { useState } from 'react';
 
 // eslint-disable-next-line @typescript-eslint/no-empty-interface
 interface PopUpFormualarioProps {
@@ -13,6 +15,85 @@ interface PopUpFormualarioProps {
 
 // Use the Single Responsibility Principle (SRP)
 const PopUpFormualariohtml = ({ variant, onClick }: PopUpFormualarioProps) => {
+  const [nombre, setNombre] = useState('');
+  const [fechaInicio, setFechaInicio] = useState('');
+  const [fechaFin, setFechaFin] = useState('');
+  const [fechaNacimiento, setFechaNacimiento] = useState('');
+  const [correo, setCorreo] = useState('');
+  const [empleado, setEmpleado] = useState('');
+  const [estado, setEstado] = useState('');
+  const [cantidad, setCantidad] = useState('');
+  const [tipoProducto, setTipoProducto] = useState('');
+  const [tipoDocumento, setTipoDocumento] = useState('');
+  const [numeroDocumento, setNumeroDocumento] = useState('');
+  const [celular, setCelular] = useState('');
+  const [direccion, setDireccion] = useState('');
+  const [rol, setRol] = useState('');
+  const [tipoEmpleado, setTipoEmpleado] = useState('');
+  const [valor, setValor] = useState('');
+
+  const handleClickRegistrarCita = () => {
+    if (nombre == '' || fechaInicio == '' || fechaFin == '') {
+      toast.error('Rellene todos los campos');
+    } else {
+      toast.success('¡Cita registrada!');
+      onClick;
+    }
+  };
+
+  const handleClickRegistrarProducto = () => {
+    if (nombre == '' || cantidad == '') {
+      toast.error('Rellene todos los campo');
+    } else {
+      toast.success('¡Producto registrado!');
+      onClick;
+    }
+  };
+
+  const handleClickRegistrarProveedor = () => {
+    if (nombre == '' || correo == '' || numeroDocumento == '') {
+      toast.error('Rellene todos los campo');
+    } else {
+      toast.success('¡Proveedor registrado!');
+      onClick;
+    }
+  };
+
+  const handleClickRegistrarServicio = () => {
+    if (nombre == '' || valor == '') {
+      toast.error('Rellene todos los campo');
+    } else {
+      toast.success('¡Servicio registrado!');
+      onClick;
+    }
+  };
+
+  const handleClickRegistrarEmpleado = () => {
+    if (
+      nombre == '' ||
+      fechaNacimiento == '' ||
+      fechaInicio == '' ||
+      direccion == '' ||
+      numeroDocumento == '' ||
+      correo == '' ||
+      celular == ''
+    ) {
+      toast.error('Rellene todos los campo');
+    } else {
+      toast.success('¡Empleado registrado!');
+      onClick;
+    }
+  };
+
+  const handleClickEnviar = () => {
+    if (correo == '') {
+      toast.error('Por favor ingrese un correo');
+    } else {
+      toast.success('¡Envio exitoso!');
+      onClick;
+    }
+  };
+
   return (
     <DivPopUp variant={variant}>
       <div className="popupContainer">
@@ -33,9 +114,27 @@ const PopUpFormualariohtml = ({ variant, onClick }: PopUpFormualarioProps) => {
           </div>
           {variant == 'citas' && (
             <div className="contenedorFormularios">
-              <Input variant="primario" placeholder="nombre" type="text" />
-              <Input variant="primario" placeholder="fecha inicio" type="date" />
-              <Input variant="primario" placeholder="fecha fin" type="date" />
+              <Input
+                onInputSearch={(nombre) => setNombre(nombre)}
+                value={nombre}
+                variant="primario"
+                placeholder="nombre"
+                type="text"
+              />
+              <Input
+                onInputSearch={(fechaInicio) => setFechaInicio(fechaInicio)}
+                value={fechaInicio}
+                variant="primario"
+                placeholder="fecha inicio"
+                type="date"
+              />
+              <Input
+                onInputSearch={(fechaFin) => setFechaFin(fechaFin)}
+                value={fechaFin}
+                variant="primario"
+                placeholder="fecha fin"
+                type="date"
+              />
               <Dropdown placeholder="usuario" variant="primario" />
               <Dropdown placeholder="empleado" variant="primario" />
               <Dropdown placeholder="estado" variant="primario" />
@@ -43,45 +142,129 @@ const PopUpFormualariohtml = ({ variant, onClick }: PopUpFormualarioProps) => {
           )}
           {variant == 'productos' && (
             <div className="contenedorFormularios">
-              <Input variant="primario" placeholder="nombre" type="text" />
-              <Input variant="primario" placeholder="cantidad" type="number" />
+              <Input
+                onInputSearch={(nombre) => setNombre(nombre)}
+                value={nombre}
+                variant="primario"
+                placeholder="nombre"
+                type="text"
+              />
+              <Input
+                onInputSearch={(cantidad) => setCantidad(cantidad)}
+                value={cantidad}
+                variant="primario"
+                placeholder="cantidad"
+                type="number"
+              />
               <Dropdown placeholder="tipo de producto" variant="primario" />
               <Dropdown placeholder="proveedor" variant="primario" />
             </div>
           )}
           {variant == 'proveedores' && (
             <div className="contenedorFormularios">
-              <Input variant="primario" placeholder="nombre" type="text" />
-              <Input variant="primario" placeholder="correo" type="email" />
+              <Input
+                onInputSearch={(nombre) => setNombre(nombre)}
+                value={nombre}
+                variant="primario"
+                placeholder="nombre"
+                type="text"
+              />
+              <Input
+                onInputSearch={(correo) => setCorreo(correo)}
+                value={correo}
+                variant="primario"
+                placeholder="correo"
+                type="email"
+              />
               <Dropdown placeholder="tipo documento" variant="primario" />
-              <Input variant="primario" placeholder="número documento" type="number" />
+              <Input
+                onInputSearch={(numeroDocumento) => setNumeroDocumento(numeroDocumento)}
+                value={numeroDocumento}
+                variant="primario"
+                placeholder="número documento"
+                type="number"
+              />
               <Dropdown placeholder="estado" variant="primario" />
             </div>
           )}
           {variant == 'servicios' && (
             <div className="contenedorFormularios">
-              <Input variant="primario" placeholder="nombre" type="text" />
-              <Input variant="primario" placeholder="valor" type="number" />
+              <Input
+                onInputSearch={(nombre) => setNombre(nombre)}
+                value={nombre}
+                variant="primario"
+                placeholder="nombre"
+                type="text"
+              />
+              <Input
+                onInputSearch={(valor) => setValor(valor)}
+                value={valor}
+                variant="primario"
+                placeholder="valor"
+                type="number"
+              />
               <Dropdown placeholder="estado" variant="primario" />
             </div>
           )}
           {variant == 'empleados' && (
             <div className="contenedorFormularios">
               <div className="alinear">
-                <Input variant="secundario" placeholder="nombre" type="text" />
-                <Input variant="secundario" placeholder="fecha nacimiento" type="date" />
+                <Input
+                  onInputSearch={(nombre) => setNombre(nombre)}
+                  value={nombre}
+                  variant="secundario"
+                  placeholder="nombre"
+                  type="text"
+                />
+                <Input
+                  onInputSearch={(fechaNacimiento) => setFechaNacimiento(fechaNacimiento)}
+                  value={fechaNacimiento}
+                  variant="secundario"
+                  placeholder="fecha nacimiento"
+                  type="date"
+                />
               </div>
               <div className="alinear">
-                <Input variant="secundario" placeholder="fecha ingreso" type="date" />
-                <Input variant="secundario" placeholder="dirección" type="text" />
+                <Input
+                  onInputSearch={(fechaInicio) => setFechaInicio(fechaInicio)}
+                  value={fechaInicio}
+                  variant="secundario"
+                  placeholder="fecha ingreso"
+                  type="date"
+                />
+                <Input
+                  onInputSearch={(direccion) => setDireccion(direccion)}
+                  value={direccion}
+                  variant="secundario"
+                  placeholder="dirección"
+                  type="text"
+                />
               </div>
               <div className="alinear">
                 <Dropdown placeholder="tipo documento" variant="secundario" />
-                <Input variant="secundario" placeholder="número documento" type="number" />
+                <Input
+                  onInputSearch={(numeroDocumento) => setNumeroDocumento(numeroDocumento)}
+                  value={numeroDocumento}
+                  variant="secundario"
+                  placeholder="número documento"
+                  type="number"
+                />
               </div>
               <div className="alinear">
-                <Input variant="secundario" placeholder="correo" type="email" />
-                <Input variant="secundario" placeholder="celular" type="text" />
+                <Input
+                  onInputSearch={(correo) => setCorreo(correo)}
+                  value={correo}
+                  variant="secundario"
+                  placeholder="correo"
+                  type="email"
+                />
+                <Input
+                  onInputSearch={(celular) => setCelular(celular)}
+                  value={celular}
+                  variant="secundario"
+                  placeholder="celular"
+                  type="text"
+                />
               </div>
               <div className="alinear">
                 <Dropdown placeholder="rol" variant="secundario" />
@@ -93,7 +276,13 @@ const PopUpFormualariohtml = ({ variant, onClick }: PopUpFormualarioProps) => {
 
           {variant == 'login' && (
             <div className="contenedorFormularios">
-              <Input variant="primario" placeholder="Correo" type="email" />
+              <Input
+                onInputSearch={(correo) => setCorreo(correo)}
+                value={correo}
+                variant="primario"
+                placeholder="Correo"
+                type="email"
+              />
             </div>
           )}
           <div className="contenedorbtnAgregar">
@@ -101,6 +290,19 @@ const PopUpFormualariohtml = ({ variant, onClick }: PopUpFormualarioProps) => {
               <Button
                 placeholder={variant == 'login' ? 'enviar' : 'agregar'}
                 variant="primario"
+                onClick={
+                  variant == 'citas'
+                    ? handleClickRegistrarCita
+                    : variant == 'productos'
+                    ? handleClickRegistrarProducto
+                    : variant == 'servicios'
+                    ? handleClickRegistrarServicio
+                    : variant == 'proveedores'
+                    ? handleClickRegistrarProveedor
+                    : variant == 'empleados'
+                    ? handleClickRegistrarEmpleado
+                    : handleClickEnviar
+                }
               ></Button>
             </div>
             <div className="column">

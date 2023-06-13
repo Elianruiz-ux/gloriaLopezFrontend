@@ -5,6 +5,7 @@ import Button from '../ui/Button/Button';
 import { Link } from 'react-router-dom';
 import Dropdown from '../ui/Dropdown/Dropdown';
 import { toast } from 'react-toastify';
+import { useState } from 'react';
 
 // eslint-disable-next-line @typescript-eslint/no-empty-interface
 interface CartaLoginProps {
@@ -14,20 +15,48 @@ interface CartaLoginProps {
 
 // Use the Single Responsibility Principle (SRP)
 const Cartahtml = ({ variant, onClick }: CartaLoginProps) => {
+  const [user, setUser] = useState('');
+  const [password, setPassword] = useState('');
+  const [confirmarPassword, setConfirmarPassword] = useState('');
+  const [nombre, setNombre] = useState('');
+  const [apellido, setApellido] = useState('');
+  //const [tipoDocumento, setTipoDocumento] = useState('');
+  const [numeroDocumento, setNumeroDocumento] = useState('');
+  const [celular, setCelular] = useState('');
+
   const handleClickIngresarUsuario = () => {
-    toast.success('¡Inicio exitoso!');
-    toast.error('Correo o contraseña incorrectas');
-    // window.location.href = '/#/homeUsuario';
+    if (user == '' || password == '') {
+      toast.error('Correo o contraseña incorrectas');
+    } else {
+      toast.success('¡Inicio exitoso!');
+      window.location.href = '/#/homeUsuario';
+    }
   };
   const handleClickRegistrarUsuario = () => {
-    toast.success('Registro exitoso!');
-    toast.error('Por favor rellene todos los campos');
-    // window.location.href = '/#/homeUsuario';
+    if (
+      nombre == '' ||
+      apellido == '' ||
+      numeroDocumento == '' ||
+      celular == '' ||
+      user == '' ||
+      password == '' ||
+      confirmarPassword == ''
+    ) {
+      toast.error('Por favor complete los campos');
+    } else if (password !== confirmarPassword) {
+      toast.error('Las contraseñas no coinciden');
+    } else {
+      toast.success('¡Registro exitoso!');
+      window.location.href = '/#/homeUsuario';
+    }
   };
   const handleClickIngresarAdministrador = () => {
-    toast.success('¡Inicio exitoso!');
-    toast.error('Correo o contraseña incorrectas');
-    // window.location.href = '/#/homeAdministrador';
+    if (user == '' || password == '') {
+      toast.error('Correo o contraseña incorrectas');
+    } else {
+      toast.success('¡Inicio exitoso!');
+      window.location.href = '/#/homeAdministrador';
+    }
   };
 
   return (
@@ -44,10 +73,25 @@ const Cartahtml = ({ variant, onClick }: CartaLoginProps) => {
       {variant == 'login' ? (
         <main>
           <div>
-            <Input placeholder="Correo" type="email" required={true} variant="primario" />
+            <Input
+              onInputSearch={(user) => setUser(user)}
+              placeholder="Correo"
+              type="email"
+              required={true}
+              variant="primario"
+              value={user}
+            />
           </div>
+
           <div>
-            <Input placeholder="Contraseña" type="password" required={true} variant="primario" />
+            <Input
+              onInputSearch={(password) => setPassword(password)}
+              placeholder="Contraseña"
+              type="password"
+              required={true}
+              variant="primario"
+              value={password}
+            />
           </div>
           <div>
             <Button
@@ -60,12 +104,28 @@ const Cartahtml = ({ variant, onClick }: CartaLoginProps) => {
       ) : variant == 'registro' ? (
         <main>
           <div className="alinear">
-            <Input placeholder="Nombre" type="text" required={true} variant="secundario" />
-            <Input placeholder="Apellido" type="text" required={true} variant="secundario" />
+            <Input
+              onInputSearch={(nombre) => setNombre(nombre)}
+              value={nombre}
+              placeholder="Nombre"
+              type="text"
+              required={true}
+              variant="secundario"
+            />
+            <Input
+              onInputSearch={(apellido) => setApellido(apellido)}
+              value={apellido}
+              placeholder="Apellido"
+              type="text"
+              required={true}
+              variant="secundario"
+            />
           </div>
           <div className="alinear">
             <Dropdown placeholder="Tipo de documento" required={true} variant="secundario" />
             <Input
+              onInputSearch={(numeroDocumento) => setNumeroDocumento(numeroDocumento)}
+              value={numeroDocumento}
               placeholder="Número de documento"
               required={true}
               type="text"
@@ -73,12 +133,35 @@ const Cartahtml = ({ variant, onClick }: CartaLoginProps) => {
             />
           </div>
           <div className="alinear">
-            <Input placeholder="Celular" type="text" required={true} variant="secundario" />
-            <Input placeholder="Correo" type="email" required={true} variant="secundario" />
+            <Input
+              onInputSearch={(celular) => setCelular(celular)}
+              value={celular}
+              placeholder="Celular"
+              type="text"
+              required={true}
+              variant="secundario"
+            />
+            <Input
+              onInputSearch={(user) => setUser(user)}
+              value={user}
+              placeholder="Correo"
+              type="email"
+              required={true}
+              variant="secundario"
+            />
           </div>
           <div className="alinear">
-            <Input placeholder="Contraseña" type="password" required={true} variant="secundario" />
             <Input
+              onInputSearch={(password) => setPassword(password)}
+              value={password}
+              placeholder="Contraseña"
+              type="password"
+              required={true}
+              variant="secundario"
+            />
+            <Input
+              onInputSearch={(confirmarPassword) => setConfirmarPassword(confirmarPassword)}
+              value={confirmarPassword}
               placeholder="Confirmar contraseña"
               required={true}
               type="password"
@@ -97,10 +180,22 @@ const Cartahtml = ({ variant, onClick }: CartaLoginProps) => {
         variant == 'admin' && (
           <main>
             <div>
-              <Input placeholder="Correo" type="email" variant="primario" />
+              <Input
+                onInputSearch={(user) => setUser(user)}
+                placeholder="Correo"
+                type="email"
+                variant="primario"
+                value={user}
+              />
             </div>
             <div>
-              <Input placeholder="Contraseña" type="password" variant="primario" />
+              <Input
+                onInputSearch={(password) => setPassword(password)}
+                placeholder="Contraseña"
+                type="password"
+                variant="primario"
+                value={password}
+              />
             </div>
             <div>
               <Button

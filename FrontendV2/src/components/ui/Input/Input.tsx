@@ -1,5 +1,6 @@
 import { ThemeProvider } from 'styled-components'; // Define the interface for the Input component
 import { Inputcss } from './Input.styled';
+import { useState } from 'react';
 
 // eslint-disable-next-line @typescript-eslint/no-empty-interface
 interface InputProps {
@@ -7,14 +8,31 @@ interface InputProps {
   type: string;
   required?: boolean;
   variant: 'primario' | 'secundario';
+  value?: string | undefined;
+  onInputSearch: (value: string) => void;
 }
 
 // Use the Single Responsibility Principle (SRP)
-const Inputhtml = ({ placeholder, variant, type, required }: InputProps) => {
+const Inputhtml = ({ placeholder, variant, type, required, value, onInputSearch }: InputProps) => {
+  const [searchTerm, setSearchTerm] = useState('');
+  const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    if (event.target.value !== null) {
+      setSearchTerm(event.target.value);
+      onInputSearch(event.target.value);
+    }
+  };
   return (
     <Inputcss variant={variant}>
       <label className="text">{placeholder}</label>
-      <input type={type} className="input" autoComplete="off" required={required} />
+      <input
+        type={type}
+        className="input"
+        autoComplete="off"
+        required={required}
+        value={searchTerm}
+        onChange={handleInputChange}
+        placeholder={value}
+      />
     </Inputcss>
   );
 };

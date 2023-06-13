@@ -19,7 +19,7 @@ function App() {
   return (
     <HashRouter>
       <main>
-        <ToastContainer autoClose={2500} position="top-center" />
+        <ToastContainer autoClose={2000} position="top-center" />
         <Routes>
           <Route path="/administrador" element={<PaginaInicialAdmin />} />
           <Route path="/citas" element={<PaginaCitas />} />
