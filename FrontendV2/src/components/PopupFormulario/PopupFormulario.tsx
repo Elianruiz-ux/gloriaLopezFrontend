@@ -6,6 +6,7 @@ import Input from '../ui/Input/Input';
 import Dropdown from '../ui/Dropdown/Dropdown';
 import { toast } from 'react-toastify';
 import { useState } from 'react';
+import { sendEmail } from '../../Conection/metodo';
 
 // eslint-disable-next-line @typescript-eslint/no-empty-interface
 interface PopUpFormualarioProps {
@@ -85,12 +86,17 @@ const PopUpFormualariohtml = ({ variant, onClick }: PopUpFormualarioProps) => {
     }
   };
 
-  const handleClickEnviar = () => {
+  const handleClickEnviar = async () => {
     if (correo == '') {
       toast.error('Por favor ingrese un correo');
     } else {
-      toast.success('¡Envio exitoso!');
-      onClick;
+      try {
+        await sendEmail(correo);
+        toast.success('¡Envio exitoso!');
+        onClick;
+      } catch (err) {
+        toast.error('Hubo un problema al enviar el correo');
+      }
     }
   };
 

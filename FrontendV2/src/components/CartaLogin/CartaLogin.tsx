@@ -6,6 +6,7 @@ import { Link } from 'react-router-dom';
 import Dropdown from '../ui/Dropdown/Dropdown';
 import { toast } from 'react-toastify';
 import { useState } from 'react';
+import { login, loginUser, sigup } from '../../Conection/metodo';
 
 // eslint-disable-next-line @typescript-eslint/no-empty-interface
 interface CartaLoginProps {
@@ -24,15 +25,21 @@ const Cartahtml = ({ variant, onClick }: CartaLoginProps) => {
   const [numeroDocumento, setNumeroDocumento] = useState('');
   const [celular, setCelular] = useState('');
 
-  const handleClickIngresarUsuario = () => {
+  const handleClickIngresarUsuario = async () => {
     if (user == '' || password == '') {
       toast.error('Correo o contraseña incorrectas');
     } else {
-      toast.success('¡Inicio exitoso!');
-      window.location.href = '/#/homeUsuario';
+      try {
+        const token = await loginUser(user, password);
+        toast.success('¡Inicio exitoso!');
+        console.log('Inicio de sesión exitoso:', token);
+        window.location.href = '/#/homeUsuario';
+      } catch (error) {
+        toast.error('Correo o contraseña incorrectas');
+      }
     }
   };
-  const handleClickRegistrarUsuario = () => {
+  const handleClickRegistrarUsuario = async () => {
     if (
       nombre == '' ||
       apellido == '' ||
@@ -46,16 +53,27 @@ const Cartahtml = ({ variant, onClick }: CartaLoginProps) => {
     } else if (password !== confirmarPassword) {
       toast.error('Las contraseñas no coinciden');
     } else {
-      toast.success('¡Registro exitoso!');
-      window.location.href = '/#/homeUsuario';
+      try {
+        toast.success('¡Registro exitoso!');
+        await sigup(nombre.concat(apellido), 1, numeroDocumento, celular, user, password);
+        window.location.href = '/#/login';
+      } catch (error) {
+        toast.error('Correo existente');
+      }
     }
   };
-  const handleClickIngresarAdministrador = () => {
+  const handleClickIngresarAdministrador = async () => {
     if (user == '' || password == '') {
       toast.error('Correo o contraseña incorrectas');
     } else {
-      toast.success('¡Inicio exitoso!');
-      window.location.href = '/#/homeAdministrador';
+      try {
+        const token = await login(user, password);
+        toast.success('¡Inicio exitoso!');
+        console.log('Inicio de sesión exitoso:', token);
+        window.location.href = '/#/homeAdministrador';
+      } catch (error) {
+        toast.error('Correo o contraseña incorrectas');
+      }
     }
   };
 
@@ -170,7 +188,7 @@ const Cartahtml = ({ variant, onClick }: CartaLoginProps) => {
           </div>
           <div>
             <Button
-              placeholder="Iniciar sesión"
+              placeholder="Registrar"
               variant="primario"
               onClick={handleClickRegistrarUsuario}
             ></Button>
