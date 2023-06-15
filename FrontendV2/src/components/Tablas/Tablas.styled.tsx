@@ -6,6 +6,18 @@ export const DivTablas = styled.div<{ variant: string }>`
   height: 70vh;
   border-radius: 10px;
 
+  & .btnEditar {
+    appearance: none;
+    border: none;
+    background-color: var(--bg-color-blanco-transparent);
+    color: var(--color-azul-txt);
+    font-size: 1.6em;
+
+    &:hover {
+      cursor: pointer;
+    }
+  }
+
   & table {
     width: 100%;
     height: 100%;

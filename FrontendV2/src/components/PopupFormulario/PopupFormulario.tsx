@@ -141,9 +141,9 @@ const PopUpFormualariohtml = ({ variant, onClick }: PopUpFormualarioProps) => {
                 placeholder="fecha fin"
                 type="date"
               />
-              <Dropdown placeholder="usuario" variant="primario" />
-              <Dropdown placeholder="empleado" variant="primario" />
-              <Dropdown placeholder="estado" variant="primario" />
+              {/* <Dropdown placeholder="usuario" variant="primario" /> */}
+              <Dropdown placeholder="empleado" variant="primario" varianteDos="empleado" />
+              {/* <Dropdown placeholder="estado" variant="primario" /> */}
             </div>
           )}
           {variant == 'productos' && (
@@ -162,8 +162,12 @@ const PopUpFormualariohtml = ({ variant, onClick }: PopUpFormualarioProps) => {
                 placeholder="cantidad"
                 type="number"
               />
-              <Dropdown placeholder="tipo de producto" variant="primario" />
-              <Dropdown placeholder="proveedor" variant="primario" />
+              <Dropdown
+                placeholder="tipo de producto"
+                variant="primario"
+                varianteDos="tipoProducto"
+              />
+              <Dropdown placeholder="proveedor" variant="primario" varianteDos="proveedor" />
             </div>
           )}
           {variant == 'proveedores' && (
@@ -182,7 +186,11 @@ const PopUpFormualariohtml = ({ variant, onClick }: PopUpFormualarioProps) => {
                 placeholder="correo"
                 type="email"
               />
-              <Dropdown placeholder="tipo documento" variant="primario" />
+              <Dropdown
+                placeholder="tipo documento"
+                variant="primario"
+                varianteDos="tipoDocumento"
+              />
               <Input
                 onInputSearch={(numeroDocumento) => setNumeroDocumento(numeroDocumento)}
                 value={numeroDocumento}
@@ -190,7 +198,7 @@ const PopUpFormualariohtml = ({ variant, onClick }: PopUpFormualarioProps) => {
                 placeholder="número documento"
                 type="number"
               />
-              <Dropdown placeholder="estado" variant="primario" />
+              {/* <Dropdown placeholder="estado" variant="primario" /> */}
             </div>
           )}
           {variant == 'servicios' && (
@@ -209,7 +217,7 @@ const PopUpFormualariohtml = ({ variant, onClick }: PopUpFormualarioProps) => {
                 placeholder="valor"
                 type="number"
               />
-              <Dropdown placeholder="estado" variant="primario" />
+              <Dropdown placeholder="estado" variant="primario" varianteDos="estado" />
             </div>
           )}
           {variant == 'empleados' && (
@@ -247,7 +255,11 @@ const PopUpFormualariohtml = ({ variant, onClick }: PopUpFormualarioProps) => {
                 />
               </div>
               <div className="alinear">
-                <Dropdown placeholder="tipo documento" variant="secundario" />
+                <Dropdown
+                  placeholder="tipo documento"
+                  variant="secundario"
+                  varianteDos="tipoDocumento"
+                />
                 <Input
                   onInputSearch={(numeroDocumento) => setNumeroDocumento(numeroDocumento)}
                   value={numeroDocumento}
@@ -273,9 +285,11 @@ const PopUpFormualariohtml = ({ variant, onClick }: PopUpFormualarioProps) => {
                 />
               </div>
               <div className="alinear">
-                <Dropdown placeholder="rol" variant="secundario" />
-                <Dropdown placeholder="tipo empleado" variant="secundario" />
-                <Dropdown placeholder="estado" variant="secundario" />
+                <Dropdown
+                  placeholder="tipo empleado"
+                  variant="primario"
+                  varianteDos="tipoEmpleado"
+                />
               </div>
             </div>
           )}

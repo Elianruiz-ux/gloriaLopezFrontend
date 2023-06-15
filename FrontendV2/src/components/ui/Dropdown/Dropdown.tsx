@@ -5,18 +5,61 @@ import { Dropdowncss } from './Dropdown.styled';
 interface DropdownProps {
   placeholder: string;
   variant: 'primario' | 'secundario';
+  varianteDos:
+    | 'tipoDocumento'
+    | 'empleado'
+    | 'tipoProducto'
+    | 'proveedor'
+    | 'estado'
+    | 'tipoEmpleado';
   required?: boolean;
 }
 
 // Use the Single Responsibility Principle (SRP)
-const Dropdownhtml = ({ placeholder, variant, required }: DropdownProps) => {
+const Dropdownhtml = ({ placeholder, variant, required, varianteDos }: DropdownProps) => {
   return (
     <Dropdowncss variant={variant}>
       <label className="text">{placeholder}</label>
       <select className="dropdown" autoComplete="off" required={required}>
         <option defaultValue={''}></option>
-        <option value={'c'}>C.c</option>
-        <option value={'t'}>T.i</option>
+
+        {varianteDos == 'tipoDocumento' && (
+          <>
+            <option value={'1'}>C.C</option>
+            <option value={'2'}>T.I</option>
+          </>
+        )}
+        {varianteDos == 'tipoEmpleado' && (
+          <>
+            <option value={'1'}>Pedicurista</option>
+            <option value={'2'}>Peluquero</option>
+            <option value={'3'}>Estilista</option>
+          </>
+        )}
+
+        {varianteDos == 'empleado' && (
+          <>
+            <option value={'1'}>Emplado</option>
+            <option value={'2'}>Administrador</option>
+          </>
+        )}
+
+        {varianteDos == 'proveedor' && (
+          <>
+            <option value={'1'}>Avon</option>
+          </>
+        )}
+        {varianteDos == 'estado' && (
+          <>
+            <option value={'1'}>Activo</option>
+            <option value={'2'}>Inactivo</option>
+          </>
+        )}
+        {varianteDos == 'tipoProducto' && (
+          <>
+            <option value={'1'}>Maquillaje</option>
+          </>
+        )}
       </select>
     </Dropdowncss>
   );

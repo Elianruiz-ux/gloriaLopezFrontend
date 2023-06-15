@@ -140,7 +140,12 @@ const Cartahtml = ({ variant, onClick }: CartaLoginProps) => {
             />
           </div>
           <div className="alinear">
-            <Dropdown placeholder="Tipo de documento" required={true} variant="secundario" />
+            <Dropdown
+              placeholder="Tipo de documento"
+              required={true}
+              variant="secundario"
+              varianteDos="tipoDocumento"
+            />
             <Input
               onInputSearch={(numeroDocumento) => setNumeroDocumento(numeroDocumento)}
               value={numeroDocumento}

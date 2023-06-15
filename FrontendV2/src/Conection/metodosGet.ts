@@ -24,20 +24,7 @@ export async function getEmpleados() {
       method: 'GET',
       headers: {
         'Content-Type': 'application/json'
-      },
-      body: JSON.stringify({
-        id,
-        nombre,
-        fechaNacimiento,
-        fechaIngreso,
-        direccion,
-        tipoDocumento,
-        numeroDocumento,
-        correo,
-        celular,
-        rol,
-        tipoEmpleado
-      })
+      }
     });
 
     if (response.ok) {

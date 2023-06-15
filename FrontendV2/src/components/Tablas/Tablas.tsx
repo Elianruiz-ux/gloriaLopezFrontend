@@ -2,7 +2,8 @@ import { ThemeProvider } from 'styled-components'; // Define the interface for t
 import { DivTablas } from './Tablas.styled';
 import { getEmpleados } from '../../Conection/metodosGet';
 import { useEffect, useState } from 'react';
-
+import { Empleado } from '../../data/Types';
+import { BsPencilSquare } from 'react-icons/bs';
 // eslint-disable-next-line @typescript-eslint/no-empty-interface
 
 interface TablasProps {
@@ -11,7 +12,7 @@ interface TablasProps {
 
 // Use the Single Responsibility Principle (SRP)
 const Tablashtml = ({ variant }: TablasProps) => {
-  const [empleados, setEmpleados] = useState([]);
+  const [empleados, setEmpleados] = useState<Empleado[]>([]);
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -86,9 +87,8 @@ const Tablashtml = ({ variant }: TablasProps) => {
                 <th>número documento</th>
                 <th>correo</th>
                 <th>celular</th>
-                <th>rol</th>
                 <th>tipo empleado</th>
-                <th>estado</th>
+                {/* <th>estado</th> */}
                 <th>editar</th>
               </tr>
             )}
@@ -104,7 +104,11 @@ const Tablashtml = ({ variant }: TablasProps) => {
                 <td>dd</td>
                 <td>dd</td>
                 <td>dd</td>
-                <td>dd</td>
+                <td>
+                  <button className="btnEditar">
+                    <BsPencilSquare />
+                  </button>
+                </td>
               </tr>
             )}
             {variant == 'productos' && (
@@ -115,7 +119,11 @@ const Tablashtml = ({ variant }: TablasProps) => {
                 <td>dd</td>
                 <td>dd</td>
                 <td>dd</td>
-                <td>dd</td>
+                <td>
+                  <button className="btnEditar">
+                    <BsPencilSquare />
+                  </button>
+                </td>
               </tr>
             )}
             {variant == 'proveedores' && (
@@ -127,7 +135,11 @@ const Tablashtml = ({ variant }: TablasProps) => {
                 <td>dd</td>
                 <td>dd</td>
                 <td>dd</td>
-                <td>dd</td>
+                <td>
+                  <button className="btnEditar">
+                    <BsPencilSquare />
+                  </button>
+                </td>
               </tr>
             )}
             {variant == 'servicios' && (
@@ -136,29 +148,36 @@ const Tablashtml = ({ variant }: TablasProps) => {
                 <td>dd</td>
                 <td>dd</td>
                 <td>dd</td>
-                <td>dd</td>
+                <td>
+                  <button className="btnEditar">
+                    <BsPencilSquare />
+                  </button>
+                </td>
               </tr>
             )}
             {variant == 'empleados' &&
-              (empleados
-                ? empleados.map((index, empleado) => (
+              (empleados && empleados.length > 0
+                ? empleados.map((empleado, index) => (
                     <tr key={index}>
-                      <td>{empleado}</td>
-                      <td>dd</td>
-                      <td>dd</td>
-                      <td>dd</td>
-                      <td>dd</td>
-                      <td>dd</td>
-                      <td>dd</td>
-                      <td>dd</td>
-                      <td>dd</td>
-                      <td>dd</td>
-                      <td>dd</td>
-                      <td>dd</td>
-                      <td>dd</td>
+                      <td>{empleado.ID_EMPLEADO}</td>
+                      <td>{empleado.NOMBRE}</td>
+                      <td>{empleado.FECHA_NACIMIENTO.split('T')[0]}</td>
+                      <td>{empleado.FECHA_INGRESO.split('T')[0]}</td>
+                      <td>{empleado.DIRECCION}</td>
+                      <td>{empleado.TIPO_DOCUMENTO}</td>
+                      <td>{empleado.NUMERO_DOCUMENTO}</td>
+                      <td>{empleado.CORREO}</td>
+                      <td>{empleado.CELULAR}</td>
+                      <td>{empleado.TIPO_EMPLEADO}</td>
+                      {/* <td>estado</td> */}
+                      <td>
+                        <button className="btnEditar">
+                          <BsPencilSquare />
+                        </button>
+                      </td>
                     </tr>
                   ))
-                : '')}
+                : null)}
           </tbody>
         </table>
       </div>
