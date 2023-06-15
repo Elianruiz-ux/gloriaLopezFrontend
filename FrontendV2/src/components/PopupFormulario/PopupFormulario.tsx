@@ -6,7 +6,7 @@ import Input from '../ui/Input/Input';
 import Dropdown from '../ui/Dropdown/Dropdown';
 import { toast } from 'react-toastify';
 import { useState } from 'react';
-import { sendEmail } from '../../Conection/metodo';
+import { sendEmail } from '../../Conection/MetodosPost';
 
 // eslint-disable-next-line @typescript-eslint/no-empty-interface
 interface PopUpFormualarioProps {

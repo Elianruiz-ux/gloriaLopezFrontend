@@ -6,7 +6,7 @@ import { Link } from 'react-router-dom';
 import Dropdown from '../ui/Dropdown/Dropdown';
 import { toast } from 'react-toastify';
 import { useState } from 'react';
-import { login, loginUser, sigup } from '../../Conection/metodo';
+import { login, loginUser, sigup } from '../../Conection/MetodosPost';
 
 // eslint-disable-next-line @typescript-eslint/no-empty-interface
 interface CartaLoginProps {

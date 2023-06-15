@@ -1,13 +1,30 @@
 import { ThemeProvider } from 'styled-components'; // Define the interface for the Input component
 import { DivTablas } from './Tablas.styled';
+import { getEmpleados } from '../../Conection/metodosGet';
+import { useEffect, useState } from 'react';
 
 // eslint-disable-next-line @typescript-eslint/no-empty-interface
+
 interface TablasProps {
   variant: 'citas' | 'productos' | 'proveedores' | 'servicios' | 'empleados';
 }
 
 // Use the Single Responsibility Principle (SRP)
 const Tablashtml = ({ variant }: TablasProps) => {
+  const [empleados, setEmpleados] = useState([]);
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const data = await getEmpleados();
+        setEmpleados(data);
+      } catch (error) {
+        console.error(error);
+      }
+    };
+
+    fetchData();
+  }, []);
+  console.log(empleados);
   return (
     <DivTablas variant={variant}>
       <div>
@@ -122,23 +139,26 @@ const Tablashtml = ({ variant }: TablasProps) => {
                 <td>dd</td>
               </tr>
             )}
-            {variant == 'empleados' && (
-              <tr>
-                <td>dd</td>
-                <td>dd</td>
-                <td>dd</td>
-                <td>dd</td>
-                <td>dd</td>
-                <td>dd</td>
-                <td>dd</td>
-                <td>dd</td>
-                <td>dd</td>
-                <td>dd</td>
-                <td>dd</td>
-                <td>dd</td>
-                <td>dd</td>
-              </tr>
-            )}
+            {variant == 'empleados' &&
+              (empleados
+                ? empleados.map((index, empleado) => (
+                    <tr key={index}>
+                      <td>{empleado}</td>
+                      <td>dd</td>
+                      <td>dd</td>
+                      <td>dd</td>
+                      <td>dd</td>
+                      <td>dd</td>
+                      <td>dd</td>
+                      <td>dd</td>
+                      <td>dd</td>
+                      <td>dd</td>
+                      <td>dd</td>
+                      <td>dd</td>
+                      <td>dd</td>
+                    </tr>
+                  ))
+                : '')}
           </tbody>
         </table>
       </div>

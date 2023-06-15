@@ -46,29 +46,6 @@ export async function loginUser(username: string, password: string) {
   }
 }
 
-//Get empleados
-// export async function getEmpleados() {
-//   try {
-//     const response = await fetch(`${API_URL}/authEmp/login`, {
-//       method: 'GET',
-//       headers: {
-//         'Content-Type': 'application/json'
-//       },
-//       body: JSON.stringify({ username, password })
-//     });
-
-//     if (response.ok) {
-//       const { token } = await response.json();
-//       return token;
-//     } else {
-//       const error = await response.json();
-//       throw new Error(error.message);
-//     }
-//   } catch (error) {
-//     throw new Error('Error de red: ' + error);
-//   }
-// }
-
 //Registrar
 export async function sigup(
   nombre: string,
