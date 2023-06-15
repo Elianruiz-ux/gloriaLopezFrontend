@@ -5,17 +5,22 @@ import Button from '../ui/Button/Button';
 import Input from '../ui/Input/Input';
 import Dropdown from '../ui/Dropdown/Dropdown';
 import { toast } from 'react-toastify';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { sendEmail } from '../../Conection/MetodosPost';
+
+import { Empleado } from '../../data/Types';
+import { getEmpleados } from '../../Conection/metodosGet';
+import { useParams } from 'react-router-dom';
 
 // eslint-disable-next-line @typescript-eslint/no-empty-interface
 interface PopUpFormualarioProps {
   variant: 'citas' | 'productos' | 'proveedores' | 'servicios' | 'empleados' | 'login';
   onClick: () => void;
+  ids?: any;
 }
 
 // Use the Single Responsibility Principle (SRP)
-const PopUpFormualariohtml = ({ variant, onClick }: PopUpFormualarioProps) => {
+const PopUpFormualariohtml = ({ variant, onClick, ids }: PopUpFormualarioProps) => {
   const [nombre, setNombre] = useState('');
   const [fechaInicio, setFechaInicio] = useState('');
   const [fechaFin, setFechaFin] = useState('');
@@ -32,6 +37,38 @@ const PopUpFormualariohtml = ({ variant, onClick }: PopUpFormualarioProps) => {
   const [rol, setRol] = useState('');
   const [tipoEmpleado, setTipoEmpleado] = useState('');
   const [valor, setValor] = useState('');
+
+  const [empleados, setEmpleados] = useState<Empleado[]>([]);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const data = await getEmpleados();
+        setEmpleados(data);
+      } catch (error) {
+        console.error(error);
+      }
+    };
+
+    fetchData();
+  }, []);
+  //Empleados
+  useEffect(() => {
+    if (empleados && empleados.length > 0) {
+      const empl = empleados.find((emp) => emp.ID_EMPLEADO == ids);
+      if (empl) {
+        setNombre(empl.NOMBRE);
+        setFechaNacimiento(empl.FECHA_NACIMIENTO.replaceAll('-', '/').split('T')[0]);
+        setFechaInicio(empl.FECHA_INGRESO.replaceAll('-', '/').split('T')[0]);
+        setDireccion(empl.DIRECCION);
+        setNumeroDocumento(empl.NUMERO_DOCUMENTO);
+        setCorreo(empl.CORREO);
+        setCelular(empl.CELULAR);
+      } else {
+        console.log('cargando');
+      }
+    }
+  }, [empleados, ids]);
 
   const handleClickRegistrarCita = () => {
     if (nombre == '' || fechaInicio == '' || fechaFin == '') {
@@ -235,7 +272,7 @@ const PopUpFormualariohtml = ({ variant, onClick }: PopUpFormualarioProps) => {
                   value={fechaNacimiento}
                   variant="secundario"
                   placeholder="fecha nacimiento"
-                  type="date"
+                  type={empleados ? 'text' : 'date'}
                 />
               </div>
               <div className="alinear">
@@ -244,7 +281,7 @@ const PopUpFormualariohtml = ({ variant, onClick }: PopUpFormualarioProps) => {
                   value={fechaInicio}
                   variant="secundario"
                   placeholder="fecha ingreso"
-                  type="date"
+                  type={empleados ? 'text' : 'date'}
                 />
                 <Input
                   onInputSearch={(direccion) => setDireccion(direccion)}
@@ -265,7 +302,7 @@ const PopUpFormualariohtml = ({ variant, onClick }: PopUpFormualarioProps) => {
                   value={numeroDocumento}
                   variant="secundario"
                   placeholder="número documento"
-                  type="number"
+                  type={'number'}
                 />
               </div>
               <div className="alinear">
@@ -308,7 +345,7 @@ const PopUpFormualariohtml = ({ variant, onClick }: PopUpFormualarioProps) => {
           <div className="contenedorbtnAgregar">
             <div className="column">
               <Button
-                placeholder={variant == 'login' ? 'enviar' : 'agregar'}
+                placeholder={variant == 'login' ? 'enviar' : 'aceptar'}
                 variant="primario"
                 onClick={
                   variant == 'citas'

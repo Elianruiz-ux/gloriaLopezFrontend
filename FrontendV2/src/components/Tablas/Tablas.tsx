@@ -4,14 +4,16 @@ import { getEmpleados } from '../../Conection/metodosGet';
 import { useEffect, useState } from 'react';
 import { Empleado } from '../../data/Types';
 import { BsPencilSquare } from 'react-icons/bs';
+import { Link } from 'react-router-dom';
 // eslint-disable-next-line @typescript-eslint/no-empty-interface
 
 interface TablasProps {
   variant: 'citas' | 'productos' | 'proveedores' | 'servicios' | 'empleados';
+  onClick: () => void;
 }
 
 // Use the Single Responsibility Principle (SRP)
-const Tablashtml = ({ variant }: TablasProps) => {
+const Tablashtml = ({ variant, onClick }: TablasProps) => {
   const [empleados, setEmpleados] = useState<Empleado[]>([]);
   useEffect(() => {
     const fetchData = async () => {
@@ -25,7 +27,6 @@ const Tablashtml = ({ variant }: TablasProps) => {
 
     fetchData();
   }, []);
-  console.log(empleados);
   return (
     <DivTablas variant={variant}>
       <div>
@@ -171,9 +172,13 @@ const Tablashtml = ({ variant }: TablasProps) => {
                       <td>{empleado.TIPO_EMPLEADO}</td>
                       {/* <td>estado</td> */}
                       <td>
-                        <button className="btnEditar">
+                        <Link
+                          to={`/empleado/${empleado.ID_EMPLEADO}`}
+                          onClick={onClick}
+                          className="btnEditar"
+                        >
                           <BsPencilSquare />
-                        </button>
+                        </Link>
                       </td>
                     </tr>
                   ))

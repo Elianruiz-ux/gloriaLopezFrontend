@@ -26,6 +26,7 @@ function App() {
           <Route path="/homeUsuario" element={<PaginaInicialLogeoUsario />} />
           <Route path="/homeAdministrador" element={<PaginaInicialLogueoAdministrador />} />
           <Route path="/empleado" element={<PaginaEmpleado />} />
+          <Route path="/empleado/:id" element={<PaginaEmpleado />} />
           <Route path="/productos" element={<PaginaProducto />} />
           <Route path="/proveedores" element={<PaginaProveedores />} />
           <Route path="/servicios" element={<PaginaServicio />} />

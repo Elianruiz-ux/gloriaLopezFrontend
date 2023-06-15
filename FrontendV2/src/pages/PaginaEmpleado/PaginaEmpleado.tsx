@@ -5,12 +5,17 @@ import Button from '../../components/ui/Button/Button';
 import Tablas from '../../components/Tablas/Tablas';
 import { useState } from 'react';
 import PopUpFormulario from '../../components/PopupFormulario/PopupFormulario';
+import { useParams } from 'react-router-dom';
 
 export default function PaginaEmpleado() {
   const [isOpen, setIsOpen] = useState(false);
   const abrirPopup = () => {
+    window.location.href = '/#/empleado';
     setIsOpen(!isOpen);
   };
+  const params = useParams();
+  const id_empleado = params.id;
+  console.log(id_empleado);
   return (
     <div>
       <Helmet>
@@ -33,11 +38,15 @@ export default function PaginaEmpleado() {
           </div>
           <div className="contenedorTabla">
             <div>
-              <Tablas variant="empleados"></Tablas>
+              <Tablas onClick={abrirPopup} variant="empleados"></Tablas>
             </div>
           </div>
         </div>
-        <div>{isOpen && <PopUpFormulario variant={'empleados'} onClick={abrirPopup} />}</div>
+        <div>
+          {isOpen && (
+            <PopUpFormulario variant={'empleados'} ids={id_empleado} onClick={abrirPopup} />
+          )}
+        </div>
       </DivEmpleado>
     </div>
   );
