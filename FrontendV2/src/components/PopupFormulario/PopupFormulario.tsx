@@ -16,6 +16,9 @@ import {
   postRegistrarEmpleado,
   postRegistrarProducto
 } from '../../Conection/MetodosPost';
+
+import { putServicio } from '../../Conection/metodosPut';
+
 import { useParams } from 'react-router-dom';
 
 // eslint-disable-next-line @typescript-eslint/no-empty-interface
