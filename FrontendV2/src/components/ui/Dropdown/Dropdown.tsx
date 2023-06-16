@@ -11,7 +11,8 @@ interface DropdownProps {
     | 'tipoProducto'
     | 'proveedor'
     | 'estado'
-    | 'tipoEmpleado';
+    | 'tipoEmpleado'
+    | 'tipoRol';
   required?: boolean;
 }
 
@@ -58,6 +59,12 @@ const Dropdownhtml = ({ placeholder, variant, required, varianteDos }: DropdownP
         {varianteDos == 'tipoProducto' && (
           <>
             <option value={'1'}>Maquillaje</option>
+          </>
+        )}
+        {varianteDos == 'tipoRol' && (
+          <>
+            <option value={'1'}>Administrador</option>
+            <option value={'2'}>Colaborador</option>
           </>
         )}
       </select>

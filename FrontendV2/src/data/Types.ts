@@ -11,4 +11,28 @@ export interface Empleado {
   CELULAR: string;
   ID_TIPO_EMPLEADO: number;
   TIPO_EMPLEADO: string;
+  ROL: string;
+}
+
+export interface Producto {
+  ID_PRODUCTO: number;
+  Nombre_producto: string;
+  cantidad: number;
+  TIPO_PRODUCTO: string;
+  NOMBRE: string;
+}
+
+export interface Proveedores {
+  ID_PROVEEDOR: number;
+  NOMBRE: string;
+  CORREO: string;
+  DIRECCION: string;
+  TIPO_DOCUMENTO: string;
+  NUMERO_DOCUMENTO: number;
+}
+
+export interface Servicio {
+  ID_SERVICIO: number;
+  NOMBRE: string;
+  VALOR: string;
 }

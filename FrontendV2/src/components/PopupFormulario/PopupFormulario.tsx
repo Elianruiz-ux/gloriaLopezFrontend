@@ -8,8 +8,14 @@ import { toast } from 'react-toastify';
 import { useEffect, useState } from 'react';
 import { sendEmail } from '../../Conection/MetodosPost';
 
-import { Empleado } from '../../data/Types';
+import { Empleado, Servicio } from '../../data/Types';
 import { getEmpleados } from '../../Conection/metodosGet';
+import {
+  postRegistrarServicio,
+  postRegistrarProveedores,
+  postRegistrarEmpleado,
+  postRegistrarProducto
+} from '../../Conection/MetodosPost';
 import { useParams } from 'react-router-dom';
 
 // eslint-disable-next-line @typescript-eslint/no-empty-interface
@@ -21,10 +27,18 @@ interface PopUpFormualarioProps {
 
 // Use the Single Responsibility Principle (SRP)
 const PopUpFormualariohtml = ({ variant, onClick, ids }: PopUpFormualarioProps) => {
+  const today = new Date();
+  const formattedDate = today.toISOString().substr(0, 10);
+
+  const eighteenYearsAgo = new Date(today.getFullYear() - 18, today.getMonth(), today.getDate());
+  const formattedEighteenYearsAgo = `${eighteenYearsAgo.getFullYear()}-${String(
+    eighteenYearsAgo.getMonth() + 1
+  ).padStart(2, '0')}-${String(eighteenYearsAgo.getDate()).padStart(2, '0')}`;
+
   const [nombre, setNombre] = useState('');
-  const [fechaInicio, setFechaInicio] = useState('');
-  const [fechaFin, setFechaFin] = useState('');
-  const [fechaNacimiento, setFechaNacimiento] = useState('');
+  const [fechaInicio, setFechaInicio] = useState(formattedDate);
+  const [fechaFin, setFechaFin] = useState(formattedDate);
+  const [fechaNacimiento, setFechaNacimiento] = useState(formattedDate);
   const [correo, setCorreo] = useState('');
   const [empleado, setEmpleado] = useState('');
   const [estado, setEstado] = useState('');
@@ -37,13 +51,23 @@ const PopUpFormualariohtml = ({ variant, onClick, ids }: PopUpFormualarioProps) 
   const [rol, setRol] = useState('');
   const [tipoEmpleado, setTipoEmpleado] = useState('');
   const [valor, setValor] = useState('');
+  const [contrasena, setContrasena] = useState('');
+  const [confirmarContrasena, setConfirmarContrasena] = useState('');
+
+  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  const isValid = emailRegex.test(correo);
 
   const [empleados, setEmpleados] = useState<Empleado[]>([]);
+  const [servicios, setServicios] = useState<Servicio[]>([]);
+  function isUndefined(data: any): boolean {
+    return typeof data === 'undefined';
+  }
 
   useEffect(() => {
     const fetchData = async () => {
       try {
         const data = await getEmpleados();
+
         setEmpleados(data);
       } catch (error) {
         console.error(error);
@@ -58,6 +82,13 @@ const PopUpFormualariohtml = ({ variant, onClick, ids }: PopUpFormualarioProps) 
       const empl = empleados.find((emp) => emp.ID_EMPLEADO == ids);
       if (empl) {
         setNombre(empl.NOMBRE);
+        console.log(
+          empl.FECHA_NACIMIENTO.split('-')[2].substring(0, 2) +
+            '/' +
+            empl.FECHA_NACIMIENTO.split('-')[1].substring(0, 2) +
+            '/' +
+            empl.FECHA_NACIMIENTO.split('-')[0].substring(0, 4)
+        );
         setFechaNacimiento(empl.FECHA_NACIMIENTO.replaceAll('-', '/').split('T')[0]);
         setFechaInicio(empl.FECHA_INGRESO.replaceAll('-', '/').split('T')[0]);
         setDireccion(empl.DIRECCION);
@@ -79,34 +110,50 @@ const PopUpFormualariohtml = ({ variant, onClick, ids }: PopUpFormualarioProps) 
     }
   };
 
-  const handleClickRegistrarProducto = () => {
+  const handleClickRegistrarProducto = async () => {
     if (nombre == '' || cantidad == '') {
       toast.error('Rellene todos los campo');
     } else {
+      await postRegistrarProducto(nombre, parseFloat(cantidad), '1');
       toast.success('¡Producto registrado!');
       onClick;
+      window.location.href = '/#/productos';
     }
   };
 
-  const handleClickRegistrarProveedor = () => {
-    if (nombre == '' || correo == '' || numeroDocumento == '') {
+  const handleClickRegistrarProveedor = async () => {
+    if (nombre == '' || correo == '' || direccion == '' || numeroDocumento == '') {
       toast.error('Rellene todos los campo');
     } else {
+      try {
+        await postRegistrarProveedores(nombre, correo, direccion, 1, numeroDocumento);
+        toast.success('¡Proveedor registrado!');
+        onClick;
+        window.location.href = '/#/proveedores';
+      } catch (error) {
+        toast.error('Hubo un error al registrar el proveedor');
+      }
       toast.success('¡Proveedor registrado!');
       onClick;
     }
   };
 
-  const handleClickRegistrarServicio = () => {
+  const handleClickRegistrarServicio = async () => {
     if (nombre == '' || valor == '') {
       toast.error('Rellene todos los campo');
     } else {
-      toast.success('¡Servicio registrado!');
-      onClick;
+      try {
+        await postRegistrarServicio(nombre, valor);
+        toast.success('¡Servicio registrado!');
+        onClick;
+        window.location.href = '/#/servicios';
+      } catch (error) {
+        toast.error('Hubo un error al registrar el servicio');
+      }
     }
   };
 
-  const handleClickRegistrarEmpleado = () => {
+  const handleClickRegistrarEmpleado = async () => {
     if (
       nombre == '' ||
       fechaNacimiento == '' ||
@@ -114,12 +161,44 @@ const PopUpFormualariohtml = ({ variant, onClick, ids }: PopUpFormualarioProps) 
       direccion == '' ||
       numeroDocumento == '' ||
       correo == '' ||
-      celular == ''
+      celular == '' ||
+      contrasena == '' ||
+      confirmarContrasena == ''
     ) {
       toast.error('Rellene todos los campo');
+    } else if (contrasena == confirmarContrasena) {
+      if (fechaNacimiento >= formattedEighteenYearsAgo) {
+        toast.error('Debes ser mayor de 18');
+      } else if (!isValid) {
+        toast.error('El correo no es valido');
+      } else if (!(numeroDocumento.length >= 8)) {
+        toast.error('Número de documento no es valido');
+      } else if (!(celular.length >= 10)) {
+        toast.error('Número de celular no es valido');
+      } else {
+        try {
+          await postRegistrarEmpleado(
+            nombre,
+            fechaNacimiento,
+            fechaInicio,
+            direccion,
+            1,
+            numeroDocumento,
+            correo,
+            celular,
+            contrasena,
+            2,
+            1
+          );
+          toast.success('Colaborador registrado!');
+          onClick;
+          window.location.href = '/#/empleado';
+        } catch (error) {
+          toast.error('Hubo un error al registrar el servicio');
+        }
+      }
     } else {
-      toast.success('¡Empleado registrado!');
-      onClick;
+      toast.error('Las contraseñas no coinciden');
     }
   };
 
@@ -223,6 +302,13 @@ const PopUpFormualariohtml = ({ variant, onClick, ids }: PopUpFormualarioProps) 
                 placeholder="correo"
                 type="email"
               />
+              <Input
+                onInputSearch={(direccion) => setDireccion(direccion)}
+                value={direccion}
+                variant="primario"
+                placeholder="direccion"
+                type="email"
+              />
               <Dropdown
                 placeholder="tipo documento"
                 variant="primario"
@@ -254,7 +340,7 @@ const PopUpFormualariohtml = ({ variant, onClick, ids }: PopUpFormualarioProps) 
                 placeholder="valor"
                 type="number"
               />
-              <Dropdown placeholder="estado" variant="primario" varianteDos="estado" />
+              {/* <Dropdown placeholder="estado" variant="primario" varianteDos="estado" /> */}
             </div>
           )}
           {variant == 'empleados' && (
@@ -272,7 +358,7 @@ const PopUpFormualariohtml = ({ variant, onClick, ids }: PopUpFormualarioProps) 
                   value={fechaNacimiento}
                   variant="secundario"
                   placeholder="fecha nacimiento"
-                  type={empleados ? 'text' : 'date'}
+                  type={'date'} //empleados ? 'text' :
                 />
               </div>
               <div className="alinear">
@@ -281,7 +367,7 @@ const PopUpFormualariohtml = ({ variant, onClick, ids }: PopUpFormualarioProps) 
                   value={fechaInicio}
                   variant="secundario"
                   placeholder="fecha ingreso"
-                  type={empleados ? 'text' : 'date'}
+                  type={'date'} //empleados ? 'text' :
                 />
                 <Input
                   onInputSearch={(direccion) => setDireccion(direccion)}
@@ -318,15 +404,34 @@ const PopUpFormualariohtml = ({ variant, onClick, ids }: PopUpFormualarioProps) 
                   value={celular}
                   variant="secundario"
                   placeholder="celular"
-                  type="text"
+                  type="number"
+                />
+              </div>
+              <div className="alinear">
+                <Input
+                  onInputSearch={(contrasena) => setContrasena(contrasena)}
+                  value={contrasena}
+                  variant="secundario"
+                  placeholder="contraseña"
+                  type="password"
+                />
+                <Input
+                  onInputSearch={(confirmarContrasena) =>
+                    setConfirmarContrasena(confirmarContrasena)
+                  }
+                  value={confirmarContrasena}
+                  variant="secundario"
+                  placeholder="confirmar contraseña"
+                  type="password"
                 />
               </div>
               <div className="alinear">
                 <Dropdown
                   placeholder="tipo empleado"
-                  variant="primario"
+                  variant="secundario"
                   varianteDos="tipoEmpleado"
                 />
+                <Dropdown placeholder="tipo rol" variant="secundario" varianteDos="tipoRol" />
               </div>
             </div>
           )}
