@@ -44,11 +44,11 @@ const PopUpFormualariohtml = ({ variant, onClick, ids }: PopUpFormualarioProps) 
   const [fechaNacimiento, setFechaNacimiento] = useState(formattedDate);
   const [correo, setCorreo] = useState('');
   const [empleado, setEmpleado] = useState('');
-  const [estado, setEstado] = useState('');
+  // const [estado, setEstado] = useState('');
   const [cantidad, setCantidad] = useState('');
   const [tipoProducto, setTipoProducto] = useState('');
   const [tipoDocumento, setTipoDocumento] = useState('');
-  const [nombreProvedor, setNombreProvedor] = useState('');
+  // const [nombreProvedor, setNombreProvedor] = useState('');
   const [numeroDocumento, setNumeroDocumento] = useState('');
   const [celular, setCelular] = useState('');
   const [direccion, setDireccion] = useState('');
@@ -65,9 +65,7 @@ const PopUpFormualariohtml = ({ variant, onClick, ids }: PopUpFormualarioProps) 
   const [servicios, setServicios] = useState<Servicio[]>([]);
   const [productos, setProductos] = useState<Producto[]>([]);
   const [proveedores, setProveedores] = useState<Proveedores[]>([]);
-  function isUndefined(data: any): boolean {
-    return typeof data === 'undefined';
-  }
+  const [proveedor, setProveedor] = useState('');
 
   useEffect(() => {
     const fetchData = async () => {
@@ -89,7 +87,7 @@ const PopUpFormualariohtml = ({ variant, onClick, ids }: PopUpFormualarioProps) 
   }, []);
 
   // console.log('empleados', empleados);
-  console.log('servicios', servicios);
+  // console.log('servicios', servicios);
   // console.log('productos', productos);
   // console.log('proveedores', proveedores);
 
@@ -101,10 +99,13 @@ const PopUpFormualariohtml = ({ variant, onClick, ids }: PopUpFormualarioProps) 
         setNombre(empl.NOMBRE);
         setFechaNacimiento(empl.FECHA_NACIMIENTO.replaceAll('-', '/').split('T')[0]);
         setFechaInicio(empl.FECHA_INGRESO.replaceAll('-', '/').split('T')[0]);
+        setTipoDocumento(empl.TIPO_DOCUMENTO);
         setDireccion(empl.DIRECCION);
         setNumeroDocumento(empl.NUMERO_DOCUMENTO);
         setCorreo(empl.CORREO);
         setCelular(empl.CELULAR);
+        setRol(empl.ROL);
+        setTipoEmpleado(empl.TIPO_EMPLEADO);
       } else {
         console.log('cargando');
       }
@@ -134,6 +135,7 @@ const PopUpFormualariohtml = ({ variant, onClick, ids }: PopUpFormualarioProps) 
         setNombre(prov.NOMBRE);
         setCorreo(prov.CORREO);
         setDireccion(prov.DIRECCION);
+        setTipoDocumento(prov.TIPO_DOCUMENTO);
         setNumeroDocumento(prov.NUMERO_DOCUMENTO.toString());
       } else {
         console.log('cargando');
@@ -148,6 +150,8 @@ const PopUpFormualariohtml = ({ variant, onClick, ids }: PopUpFormualarioProps) 
       if (produ) {
         setNombre(produ.NOMBRE_PRODUCTO);
         setCantidad(produ.CANTIDAD.toString());
+        setTipoProducto(produ.TIPO_PRODUCTO);
+        setProveedor(produ.PROVEEDOR);
       } else {
         console.log('cargando');
       }
@@ -164,10 +168,15 @@ const PopUpFormualariohtml = ({ variant, onClick, ids }: PopUpFormualarioProps) 
   };
 
   const handleClickRegistrarProducto = async () => {
-    if (nombre == '' || cantidad == '') {
+    if (nombre == '' || cantidad == '' || tipoProducto == '' || proveedor == '') {
       toast.error('Rellene todos los campo');
     } else {
-      await postRegistrarProducto(nombre, parseFloat(cantidad), 1, 1);
+      await postRegistrarProducto(
+        nombre,
+        parseFloat(cantidad),
+        parseFloat(tipoProducto),
+        parseFloat(proveedor)
+      );
       toast.success('¡Producto registrado!');
       onClick();
       window.location.href = '/#/productos';
@@ -186,7 +195,13 @@ const PopUpFormualariohtml = ({ variant, onClick, ids }: PopUpFormualarioProps) 
   };
 
   const handleClickRegistrarProveedor = async () => {
-    if (nombre == '' || correo == '' || direccion == '' || numeroDocumento == '') {
+    if (
+      nombre == '' ||
+      correo == '' ||
+      direccion == '' ||
+      tipoDocumento == '' ||
+      numeroDocumento == ''
+    ) {
       toast.error('Rellene todos los campo');
     } else if (!isValid) {
       toast.error('El correo no es valido');
@@ -194,7 +209,13 @@ const PopUpFormualariohtml = ({ variant, onClick, ids }: PopUpFormualarioProps) 
       toast.error('Número de documento no es valido');
     } else {
       try {
-        await postRegistrarProveedores(nombre, correo, direccion, 1, numeroDocumento);
+        await postRegistrarProveedores(
+          nombre,
+          correo,
+          direccion,
+          parseFloat(tipoDocumento),
+          numeroDocumento
+        );
         toast.success('¡Proveedor registrado!');
         onClick();
 
@@ -206,7 +227,13 @@ const PopUpFormualariohtml = ({ variant, onClick, ids }: PopUpFormualarioProps) 
   };
 
   const handleClickActualizarProveedor = async () => {
-    if (nombre == '' || correo == '' || direccion == '' || numeroDocumento == '') {
+    if (
+      nombre == '' ||
+      correo == '' ||
+      direccion == '' ||
+      tipoDocumento == '' ||
+      numeroDocumento == ''
+    ) {
       toast.error('Rellene todos los campo');
     } else if (!isValid) {
       toast.error('El correo no es valido');
@@ -214,7 +241,14 @@ const PopUpFormualariohtml = ({ variant, onClick, ids }: PopUpFormualarioProps) 
       toast.error('Número de documento no es valido');
     } else {
       try {
-        await putProveedor(ids, nombre, correo, direccion, 1, numeroDocumento);
+        await putProveedor(
+          ids,
+          nombre,
+          correo,
+          direccion,
+          parseFloat(tipoDocumento),
+          numeroDocumento
+        );
         toast.success('¡Proveedor Actualizado!');
         onClick();
 
@@ -267,11 +301,14 @@ const PopUpFormualariohtml = ({ variant, onClick, ids }: PopUpFormualarioProps) 
       fechaNacimiento == '' ||
       fechaInicio == '' ||
       direccion == '' ||
+      tipoDocumento == '' ||
       numeroDocumento == '' ||
       correo == '' ||
       celular == '' ||
       contrasena == '' ||
-      confirmarContrasena == ''
+      confirmarContrasena == '' ||
+      rol == '' ||
+      tipoEmpleado == ''
     ) {
       toast.error('Rellene todos los campo');
     } else if (contrasena == confirmarContrasena) {
@@ -290,13 +327,13 @@ const PopUpFormualariohtml = ({ variant, onClick, ids }: PopUpFormualarioProps) 
             fechaNacimiento,
             fechaInicio,
             direccion,
-            1,
+            parseFloat(tipoDocumento),
             numeroDocumento,
             correo,
             celular,
             contrasena,
-            2,
-            1
+            parseFloat(rol),
+            parseFloat(tipoEmpleado)
           );
           toast.success('Colaborador registrado!');
           onClick();
@@ -317,11 +354,14 @@ const PopUpFormualariohtml = ({ variant, onClick, ids }: PopUpFormualarioProps) 
       fechaNacimiento == '' ||
       fechaInicio == '' ||
       direccion == '' ||
+      tipoDocumento == '' ||
       numeroDocumento == '' ||
       correo == '' ||
       celular == '' ||
       contrasena == '' ||
-      confirmarContrasena == ''
+      confirmarContrasena == '' ||
+      rol == '' ||
+      tipoEmpleado == ''
     ) {
       toast.error('Rellene todos los campo');
     } else if (contrasena == confirmarContrasena && contrasena.length >= 8) {
@@ -341,13 +381,13 @@ const PopUpFormualariohtml = ({ variant, onClick, ids }: PopUpFormualarioProps) 
             fechaNacimiento,
             fechaInicio,
             direccion,
-            1,
+            parseFloat(tipoDocumento),
             numeroDocumento,
             correo,
             celular,
             contrasena,
-            2,
-            1
+            parseFloat(rol),
+            parseFloat(tipoEmpleado)
           );
           toast.success('Colaborador actualizado!');
           onClick();
@@ -418,7 +458,12 @@ const PopUpFormualariohtml = ({ variant, onClick, ids }: PopUpFormualarioProps) 
                 type="date"
               />
               {/* <Dropdown placeholder="usuario" variant="primario" /> */}
-              <Dropdown placeholder="empleado" variant="primario" varianteDos="empleado" />
+              <Dropdown
+                placeholder="empleado"
+                onChange={(selectedValue) => setEmpleado(selectedValue)}
+                variant="primario"
+                varianteDos="empleado"
+              />
               {/* <Dropdown placeholder="estado" variant="primario" /> */}
             </div>
           )}
@@ -442,8 +487,14 @@ const PopUpFormualariohtml = ({ variant, onClick, ids }: PopUpFormualarioProps) 
                 placeholder="tipo de producto"
                 variant="primario"
                 varianteDos="tipoProducto"
+                onChange={(selectedValue) => setTipoProducto(selectedValue)}
               />
-              <Dropdown placeholder="proveedor" variant="primario" varianteDos="proveedor" />
+              <Dropdown
+                placeholder="proveedor"
+                onChange={(selectedValue) => setProveedor(selectedValue)}
+                variant="primario"
+                varianteDos="proveedor"
+              />
             </div>
           )}
           {variant == 'proveedores' && (
@@ -473,6 +524,7 @@ const PopUpFormualariohtml = ({ variant, onClick, ids }: PopUpFormualarioProps) 
                 placeholder="tipo documento"
                 variant="primario"
                 varianteDos="tipoDocumento"
+                onChange={(selectedValue) => setTipoDocumento(selectedValue)}
               />
               <Input
                 onInputSearch={(numeroDocumento) => setNumeroDocumento(numeroDocumento)}
@@ -518,7 +570,7 @@ const PopUpFormualariohtml = ({ variant, onClick, ids }: PopUpFormualarioProps) 
                   value={fechaNacimiento}
                   variant="secundario"
                   placeholder="fecha nacimiento"
-                  type={'date'} //empleados ? 'text' :
+                  type={ids ? 'text' : 'date'} //empleados ? 'text' :
                 />
               </div>
               <div className="alinear">
@@ -527,7 +579,7 @@ const PopUpFormualariohtml = ({ variant, onClick, ids }: PopUpFormualarioProps) 
                   value={fechaInicio}
                   variant="secundario"
                   placeholder="fecha ingreso"
-                  type={'date'} //empleados ? 'text' :
+                  type={ids ? 'text' : 'date'} //empleados ? 'text' :
                 />
                 <Input
                   onInputSearch={(direccion) => setDireccion(direccion)}
@@ -542,6 +594,7 @@ const PopUpFormualariohtml = ({ variant, onClick, ids }: PopUpFormualarioProps) 
                   placeholder="tipo documento"
                   variant="secundario"
                   varianteDos="tipoDocumento"
+                  onChange={(selectedValue) => setTipoDocumento(selectedValue)}
                 />
                 <Input
                   onInputSearch={(numeroDocumento) => setNumeroDocumento(numeroDocumento)}
@@ -590,8 +643,14 @@ const PopUpFormualariohtml = ({ variant, onClick, ids }: PopUpFormualarioProps) 
                   placeholder="tipo empleado"
                   variant="secundario"
                   varianteDos="tipoEmpleado"
+                  onChange={(selectedValue) => setTipoEmpleado(selectedValue)}
                 />
-                <Dropdown placeholder="tipo rol" variant="secundario" varianteDos="tipoRol" />
+                <Dropdown
+                  placeholder="tipo rol"
+                  variant="secundario"
+                  onChange={(selectedValue) => setRol(selectedValue)}
+                  varianteDos="tipoRol"
+                />
               </div>
             </div>
           )}

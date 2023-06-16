@@ -37,7 +37,27 @@ export interface Servicio {
   VALOR: string;
 }
 
-export interface tipoProducto {
+export interface TipoDocumento {
+  ID_TIPO_DOCUMENTO: string;
+  TIPO_DOCUMENTO: string;
+}
+
+export interface TipoEmpleado {
+  ID_TIPO_EMPLEADO: number;
+  TIPO_EMPLEADO: string;
+}
+
+export interface TipoProducto {
   ID_TIPO_PRODUCTO: number;
   TIPO_PRODUCTO: string;
+}
+
+export interface Rol {
+  ID_ROL: number;
+  ROL: string;
+}
+
+export interface Estado {
+  ID_ESTADO_CITA: number;
+  ESTADO_CITA: string;
 }

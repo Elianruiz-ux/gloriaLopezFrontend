@@ -9,7 +9,7 @@ interface InputProps {
   required?: boolean;
   variant: 'primario' | 'secundario';
   value?: string | undefined;
-  onInputSearch: (value: string) => void;
+  onInputSearch: (value: any) => void;
 }
 
 // Use the Single Responsibility Principle (SRP)

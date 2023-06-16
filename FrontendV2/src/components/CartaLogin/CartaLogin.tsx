@@ -24,6 +24,7 @@ const Cartahtml = ({ variant, onClick }: CartaLoginProps) => {
   //const [tipoDocumento, setTipoDocumento] = useState('');
   const [numeroDocumento, setNumeroDocumento] = useState('');
   const [celular, setCelular] = useState('');
+  const [tipoDocumento, setTipoDocumento] = useState('');
 
   const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
   const isValid = emailRegex.test(user);
@@ -51,7 +52,8 @@ const Cartahtml = ({ variant, onClick }: CartaLoginProps) => {
       celular == '' ||
       user == '' ||
       password == '' ||
-      confirmarPassword == ''
+      confirmarPassword == '' ||
+      tipoDocumento == ''
     ) {
       toast.error('Por favor complete los campos');
     } else if (!(numeroDocumento.length >= 8)) {
@@ -69,7 +71,14 @@ const Cartahtml = ({ variant, onClick }: CartaLoginProps) => {
     } else {
       try {
         toast.success('¡Registro exitoso!');
-        await sigup(nombre.concat(apellido), 1, numeroDocumento, celular, user, password);
+        await sigup(
+          nombre.concat(apellido),
+          parseFloat(tipoDocumento),
+          numeroDocumento,
+          celular,
+          user,
+          password
+        );
         window.location.href = '/#/login';
       } catch (error) {
         toast.error('Correo existente');
@@ -161,6 +170,7 @@ const Cartahtml = ({ variant, onClick }: CartaLoginProps) => {
               required={true}
               variant="secundario"
               varianteDos="tipoDocumento"
+              onChange={(selectedValue) => setTipoDocumento(selectedValue)}
             />
             <Input
               onInputSearch={(numeroDocumento) => setNumeroDocumento(numeroDocumento)}
