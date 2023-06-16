@@ -5,12 +5,17 @@ import Button from '../../components/ui/Button/Button';
 import Tablas from '../../components/Tablas/Tablas';
 import { useState } from 'react';
 import PopUpFormulario from '../../components/PopupFormulario/PopupFormulario';
+import { useParams } from 'react-router-dom';
 
 export default function PaginaProveedores() {
   const [isOpen, setIsOpen] = useState(false);
   const abrirPopup = () => {
+    window.location.href = '/#/proveedores';
+
     setIsOpen(!isOpen);
   };
+  const params = useParams();
+  const id_proveedor = params.id;
   return (
     <div>
       <Helmet>
@@ -33,11 +38,15 @@ export default function PaginaProveedores() {
           </div>
           <div className="contenedorTabla">
             <div>
-              <Tablas variant="proveedores"></Tablas>
+              <Tablas onClick={abrirPopup} variant="proveedores"></Tablas>
             </div>
           </div>
         </div>
-        <div>{isOpen && <PopUpFormulario variant={'proveedores'} onClick={abrirPopup} />}</div>
+        <div>
+          {isOpen && (
+            <PopUpFormulario variant={'proveedores'} ids={id_proveedor} onClick={abrirPopup} />
+          )}
+        </div>
       </DivPaginaProveedores>
     </div>
   );

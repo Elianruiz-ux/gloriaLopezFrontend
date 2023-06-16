@@ -49,8 +49,8 @@ export async function loginUser(username: string, password: string) {
 //Registrar usuario
 export async function sigup(
   nombre: string,
-  id_tipo_documento: number,
-  numero_documento: string,
+  idTipoDocumento: number,
+  numeroDocumento: string,
   celular: string,
   correo: string,
   contrasena: string
@@ -63,8 +63,8 @@ export async function sigup(
       },
       body: JSON.stringify({
         nombre,
-        id_tipo_documento,
-        numero_documento,
+        idTipoDocumento,
+        numeroDocumento,
         celular,
         correo,
         contrasena

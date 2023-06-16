@@ -89,7 +89,6 @@ const Tablashtml = ({ variant, onClick }: TablasProps) => {
                 <th>empleado</th>
                 <th>estado</th>
                 <th>editar</th>
-                <th>eliminar</th>
               </tr>
             )}
             {variant == 'productos' && (
@@ -151,7 +150,6 @@ const Tablashtml = ({ variant, onClick }: TablasProps) => {
                 <td>dd</td>
                 <td>dd</td>
                 <td>dd</td>
-                <td>dd</td>
                 <td>
                   <button className="btnEditar">
                     <BsPencilSquare />
@@ -169,9 +167,16 @@ const Tablashtml = ({ variant, onClick }: TablasProps) => {
                       <td>{producto.TIPO_PRODUCTO}</td>
                       <td>{producto.NOMBRE}</td>
                       <td>
-                        <button className="btnEditar">
+                        <Link
+                          to={`/productos/${producto.ID_PRODUCTO}`}
+                          onClick={onClick}
+                          className="btnEditar"
+                        >
                           <BsPencilSquare />
-                        </button>
+                        </Link>
+                        {/* <button className="btnEditar">
+                          <BsPencilSquare />
+                        </button> */}
                       </td>
                     </tr>
                   ))
@@ -188,9 +193,16 @@ const Tablashtml = ({ variant, onClick }: TablasProps) => {
                       <td>{proveedor.NUMERO_DOCUMENTO}</td>
                       {/* <td>{proveedor.CORREO}</td> */}
                       <td>
-                        <button className="btnEditar">
+                        <Link
+                          to={`/proveedores/${proveedor.ID_PROVEEDOR}`}
+                          onClick={onClick}
+                          className="btnEditar"
+                        >
                           <BsPencilSquare />
-                        </button>
+                        </Link>
+                        {/* <button className="btnEditar">
+                          <BsPencilSquare />
+                        </button> */}
                       </td>
                     </tr>
                   ))
@@ -205,7 +217,7 @@ const Tablashtml = ({ variant, onClick }: TablasProps) => {
                       {/* <td>dd</td> */}
                       <td>
                         <Link
-                          to={`/servicio/${servicio.ID_SERVICIO}`}
+                          to={`/servicios/${servicio.ID_SERVICIO}`}
                           onClick={onClick}
                           className="btnEditar"
                         >

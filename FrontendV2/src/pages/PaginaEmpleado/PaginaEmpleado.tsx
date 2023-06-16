@@ -15,7 +15,6 @@ export default function PaginaEmpleado() {
   };
   const params = useParams();
   const id_empleado = params.id;
-  console.log(id_empleado);
   return (
     <div>
       <Helmet>

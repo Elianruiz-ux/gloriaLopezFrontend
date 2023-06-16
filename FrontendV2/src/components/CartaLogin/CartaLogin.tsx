@@ -25,14 +25,18 @@ const Cartahtml = ({ variant, onClick }: CartaLoginProps) => {
   const [numeroDocumento, setNumeroDocumento] = useState('');
   const [celular, setCelular] = useState('');
 
+  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  const isValid = emailRegex.test(user);
+
   const handleClickIngresarUsuario = async () => {
     if (user == '' || password == '') {
+      toast.error('Correo o contraseña incorrectas');
+    } else if (!isValid) {
       toast.error('Correo o contraseña incorrectas');
     } else {
       try {
         const token = await loginUser(user, password);
         toast.success('¡Inicio exitoso!');
-        console.log('Inicio de sesión exitoso:', token);
         window.location.href = '/#/homeUsuario';
       } catch (error) {
         toast.error('Correo o contraseña incorrectas');
@@ -50,6 +54,12 @@ const Cartahtml = ({ variant, onClick }: CartaLoginProps) => {
       confirmarPassword == ''
     ) {
       toast.error('Por favor complete los campos');
+    } else if (!(numeroDocumento.length >= 8)) {
+      toast.error('Número de documento no es valido');
+    } else if (!(celular.length >= 10)) {
+      toast.error('Número de celular no es valido');
+    } else if (!isValid) {
+      toast.error('Correo no valido');
     } else if (password !== confirmarPassword) {
       toast.error('Las contraseñas no coinciden');
     } else {
@@ -64,6 +74,8 @@ const Cartahtml = ({ variant, onClick }: CartaLoginProps) => {
   };
   const handleClickIngresarAdministrador = async () => {
     if (user == '' || password == '') {
+      toast.error('Correo o contraseña incorrectas');
+    } else if (!isValid) {
       toast.error('Correo o contraseña incorrectas');
     } else {
       try {

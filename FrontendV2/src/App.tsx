@@ -23,13 +23,17 @@ function App() {
         <Routes>
           <Route path="/administrador" element={<PaginaInicialAdmin />} />
           <Route path="/citas" element={<PaginaCitas />} />
+          <Route path="/citas/:id" element={<PaginaCitas />} />
           <Route path="/homeUsuario" element={<PaginaInicialLogeoUsario />} />
           <Route path="/homeAdministrador" element={<PaginaInicialLogueoAdministrador />} />
           <Route path="/empleado" element={<PaginaEmpleado />} />
           <Route path="/empleado/:id" element={<PaginaEmpleado />} />
           <Route path="/productos" element={<PaginaProducto />} />
+          <Route path="/productos/:id" element={<PaginaProducto />} />
           <Route path="/proveedores" element={<PaginaProveedores />} />
+          <Route path="/proveedores/:id" element={<PaginaProveedores />} />
           <Route path="/servicios" element={<PaginaServicio />} />
+          <Route path="/servicios/:id" element={<PaginaServicio />} />
           <Route path="/reportes" element={<PaginaReportes />} />
           <Route path="/login" element={<PaginaLogin />} />
           <Route path="/registro" element={<PaginaRegistro />} />

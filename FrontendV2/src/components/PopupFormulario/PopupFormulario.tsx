@@ -8,8 +8,8 @@ import { toast } from 'react-toastify';
 import { useEffect, useState } from 'react';
 import { sendEmail } from '../../Conection/MetodosPost';
 
-import { Empleado, Servicio } from '../../data/Types';
-import { getEmpleados } from '../../Conection/metodosGet';
+import { Empleado, Producto, Proveedores, Servicio } from '../../data/Types';
+import { getEmpleados, getProductos, getProveedor, getServicios } from '../../Conection/metodosGet';
 import {
   postRegistrarServicio,
   postRegistrarProveedores,
@@ -45,6 +45,7 @@ const PopUpFormualariohtml = ({ variant, onClick, ids }: PopUpFormualarioProps) 
   const [cantidad, setCantidad] = useState('');
   const [tipoProducto, setTipoProducto] = useState('');
   const [tipoDocumento, setTipoDocumento] = useState('');
+  const [nombreProvedor, setNombreProvedor] = useState('');
   const [numeroDocumento, setNumeroDocumento] = useState('');
   const [celular, setCelular] = useState('');
   const [direccion, setDireccion] = useState('');
@@ -59,6 +60,8 @@ const PopUpFormualariohtml = ({ variant, onClick, ids }: PopUpFormualarioProps) 
 
   const [empleados, setEmpleados] = useState<Empleado[]>([]);
   const [servicios, setServicios] = useState<Servicio[]>([]);
+  const [productos, setProductos] = useState<Producto[]>([]);
+  const [proveedores, setProveedores] = useState<Proveedores[]>([]);
   function isUndefined(data: any): boolean {
     return typeof data === 'undefined';
   }
@@ -67,8 +70,13 @@ const PopUpFormualariohtml = ({ variant, onClick, ids }: PopUpFormualarioProps) 
     const fetchData = async () => {
       try {
         const data = await getEmpleados();
-
+        const dataS = await getServicios();
+        const dataPro = await getProductos();
+        const dataProve = await getProveedor();
         setEmpleados(data);
+        setServicios(dataS);
+        setProductos(dataPro);
+        setProveedores(dataProve);
       } catch (error) {
         console.error(error);
       }
@@ -76,19 +84,18 @@ const PopUpFormualariohtml = ({ variant, onClick, ids }: PopUpFormualarioProps) 
 
     fetchData();
   }, []);
+
+  // console.log('empleados', empleados);
+  // console.log('servicios', servicios);
+  // console.log('productos', productos);
+  // console.log('proveedores', proveedores);
+
   //Empleados
   useEffect(() => {
     if (empleados && empleados.length > 0) {
       const empl = empleados.find((emp) => emp.ID_EMPLEADO == ids);
       if (empl) {
         setNombre(empl.NOMBRE);
-        console.log(
-          empl.FECHA_NACIMIENTO.split('-')[2].substring(0, 2) +
-            '/' +
-            empl.FECHA_NACIMIENTO.split('-')[1].substring(0, 2) +
-            '/' +
-            empl.FECHA_NACIMIENTO.split('-')[0].substring(0, 4)
-        );
         setFechaNacimiento(empl.FECHA_NACIMIENTO.replaceAll('-', '/').split('T')[0]);
         setFechaInicio(empl.FECHA_INGRESO.replaceAll('-', '/').split('T')[0]);
         setDireccion(empl.DIRECCION);
@@ -101,12 +108,53 @@ const PopUpFormualariohtml = ({ variant, onClick, ids }: PopUpFormualarioProps) 
     }
   }, [empleados, ids]);
 
+  // servicios
+  useEffect(() => {
+    if (servicios && servicios.length > 0) {
+      const serv = servicios.find((ser) => ser.ID_SERVICIO == ids);
+      if (serv) {
+        setNombre(serv.NOMBRE);
+        setValor(serv.VALOR);
+      } else {
+        console.log('cargando');
+      }
+    }
+  }, [servicios, ids]);
+
+  // proveedores
+  useEffect(() => {
+    if (proveedores && proveedores.length > 0) {
+      const prov = proveedores.find((pro) => pro.ID_PROVEEDOR == ids);
+      if (prov) {
+        setNombre(prov.NOMBRE);
+        setCorreo(prov.CORREO);
+        setDireccion(prov.DIRECCION);
+        setNumeroDocumento(prov.NUMERO_DOCUMENTO.toString());
+      } else {
+        console.log('cargando');
+      }
+    }
+  }, [proveedores, ids]);
+
+  //productos
+  useEffect(() => {
+    if (productos && productos.length > 0) {
+      const produ = productos.find((prod) => prod.ID_PRODUCTO == ids);
+      if (produ) {
+        setNombre(produ.Nombre_producto);
+        setCantidad(produ.cantidad.toString());
+      } else {
+        console.log('cargando');
+      }
+    }
+  }, [productos, ids]);
+
   const handleClickRegistrarCita = () => {
     if (nombre == '' || fechaInicio == '' || fechaFin == '') {
       toast.error('Rellene todos los campos');
     } else {
       toast.success('¡Cita registrada!');
-      onClick;
+      onClick();
     }
   };
 
@@ -116,7 +164,7 @@ const PopUpFormualariohtml = ({ variant, onClick, ids }: PopUpFormualarioProps) 
     } else {
       await postRegistrarProducto(nombre, parseFloat(cantidad), '1');
       toast.success('¡Producto registrado!');
-      onClick;
+      onClick();
       window.location.href = '/#/productos';
     }
   };
@@ -124,28 +172,36 @@ const PopUpFormualariohtml = ({ variant, onClick, ids }: PopUpFormualarioProps) 
   const handleClickRegistrarProveedor = async () => {
     if (nombre == '' || correo == '' || direccion == '' || numeroDocumento == '') {
       toast.error('Rellene todos los campo');
+    } else if (!isValid) {
+      toast.error('El correo no es valido');
+    } else if (!(numeroDocumento.length >= 8)) {
+      toast.error('Número de documento no es valido');
     } else {
       try {
         await postRegistrarProveedores(nombre, correo, direccion, 1, numeroDocumento);
         toast.success('¡Proveedor registrado!');
-        onClick;
+        onClick();
+
         window.location.href = '/#/proveedores';
       } catch (error) {
         toast.error('Hubo un error al registrar el proveedor');
       }
       toast.success('¡Proveedor registrado!');
-      onClick;
+      onClick();
     }
   };
 
   const handleClickRegistrarServicio = async () => {
     if (nombre == '' || valor == '') {
       toast.error('Rellene todos los campo');
+    } else if (!(valor.length >= 4)) {
+      toast.error('El valor debe de ser mayor a mil pesos');
     } else {
       try {
         await postRegistrarServicio(nombre, valor);
         toast.success('¡Servicio registrado!');
-        onClick;
+        onClick();
+
         window.location.href = '/#/servicios';
       } catch (error) {
         toast.error('Hubo un error al registrar el servicio');
@@ -191,7 +247,8 @@ const PopUpFormualariohtml = ({ variant, onClick, ids }: PopUpFormualarioProps) 
             1
           );
           toast.success('Colaborador registrado!');
-          onClick;
+          onClick();
+
           window.location.href = '/#/empleado';
         } catch (error) {
           toast.error('Hubo un error al registrar el servicio');
@@ -209,7 +266,7 @@ const PopUpFormualariohtml = ({ variant, onClick, ids }: PopUpFormualarioProps) 
       try {
         await sendEmail(correo);
         toast.success('¡Envio exitoso!');
-        onClick;
+        onClick();
       } catch (err) {
         toast.error('Hubo un problema al enviar el correo');
       }
