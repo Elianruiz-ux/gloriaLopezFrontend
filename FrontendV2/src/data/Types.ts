@@ -36,3 +36,8 @@ export interface Servicio {
   NOMBRE: string;
   VALOR: string;
 }
+
+export interface tipoProducto {
+  ID_TIPO_PRODUCTO: number;
+  TIPO_PRODUCTO: string;
+}

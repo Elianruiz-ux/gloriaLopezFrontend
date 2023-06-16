@@ -10,8 +10,7 @@ export async function login(username: string, password: string) {
       },
       body: JSON.stringify({ username, password })
     });
-
-    if (response.ok) {
+    if (response.status !== 203) {
       const { token } = await response.json();
       return token;
     } else {
@@ -34,7 +33,7 @@ export async function loginUser(username: string, password: string) {
       body: JSON.stringify({ username, password })
     });
 
-    if (response.ok) {
+    if (response.status !== 203) {
       const { token } = await response.json();
       return token;
     } else {
@@ -220,7 +219,7 @@ export async function postRegistrarProducto(
 }
 
 //Enviar correo
-export async function sendEmail(correo: string) {
+export async function sendEmail(email: string) {
   try {
     const response = await fetch(`${API_URL}/authEmp/recoverPassword`, {
       method: 'POST',
@@ -228,7 +227,7 @@ export async function sendEmail(correo: string) {
         'Content-Type': 'application/json'
       },
       body: JSON.stringify({
-        correo
+        email
       })
     });
 

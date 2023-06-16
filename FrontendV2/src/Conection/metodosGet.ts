@@ -84,3 +84,25 @@ export async function getEmpleados() {
     throw new Error('Error en la conexión');
   }
 }
+
+//Get tipo producto
+export async function getTipoProducto() {
+  try {
+    const response = await fetch(`${API_URL}/productos/all`, {
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json'
+      }
+    });
+
+    if (response.ok) {
+      const data = await response.json();
+      return data;
+    } else {
+      throw new Error('Error al obtener los productos');
+    }
+  } catch (error) {
+    console.error(error);
+    throw new Error('Error en la conexión');
+  }
+}
