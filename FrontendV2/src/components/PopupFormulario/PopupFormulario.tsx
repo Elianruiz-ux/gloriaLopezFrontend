@@ -73,13 +73,13 @@ const PopUpFormualariohtml = ({ variant, onClick, ids }: PopUpFormualarioProps) 
     const fetchData = async () => {
       try {
         const data = await getEmpleados();
-        const dataS = await getServicios();
+        const dataSer = await getServicios();
         const dataPro = await getProductos();
         const dataProve = await getProveedor();
-        setEmpleados(data);
-        setServicios(dataS);
-        setProductos(dataPro);
-        setProveedores(dataProve);
+        variant == 'empleados' && setEmpleados(data);
+        variant == 'servicios' && setServicios(dataSer);
+        variant == 'productos' && setProductos(dataPro);
+        variant == 'proveedores' && setProveedores(dataProve);
       } catch (error) {
         console.error(error);
       }
@@ -89,7 +89,7 @@ const PopUpFormualariohtml = ({ variant, onClick, ids }: PopUpFormualarioProps) 
   }, []);
 
   // console.log('empleados', empleados);
-  // console.log('servicios', servicios);
+  console.log('servicios', servicios);
   // console.log('productos', productos);
   // console.log('proveedores', proveedores);
 
@@ -123,6 +123,8 @@ const PopUpFormualariohtml = ({ variant, onClick, ids }: PopUpFormualarioProps) 
       }
     }
   }, [servicios, ids]);
+
+  console.log('servicios', servicios);
 
   // proveedores
   useEffect(() => {
@@ -172,7 +174,40 @@ const PopUpFormualariohtml = ({ variant, onClick, ids }: PopUpFormualarioProps) 
     }
   };
 
+  const handleClickActualizarProducto = async () => {
+    if (nombre == '' || cantidad == '') {
+      toast.error('Rellene todos los campo');
+    } else {
+      await postRegistrarProducto(nombre, parseFloat(cantidad), '1');
+      toast.success('¡Producto registrado!');
+      onClick();
+      window.location.href = '/#/productos';
+    }
+  };
+
   const handleClickRegistrarProveedor = async () => {
+    if (nombre == '' || correo == '' || direccion == '' || numeroDocumento == '') {
+      toast.error('Rellene todos los campo');
+    } else if (!isValid) {
+      toast.error('El correo no es valido');
+    } else if (!(numeroDocumento.length >= 8)) {
+      toast.error('Número de documento no es valido');
+    } else {
+      try {
+        await postRegistrarProveedores(nombre, correo, direccion, 1, numeroDocumento);
+        toast.success('¡Proveedor registrado!');
+        onClick();
+
+        window.location.href = '/#/proveedores';
+      } catch (error) {
+        toast.error('Hubo un error al registrar el proveedor');
+      }
+      toast.success('¡Proveedor registrado!');
+      onClick();
+    }
+  };
+
+  const handleClickActualizarProveedor = async () => {
     if (nombre == '' || correo == '' || direccion == '' || numeroDocumento == '') {
       toast.error('Rellene todos los campo');
     } else if (!isValid) {
@@ -212,7 +247,75 @@ const PopUpFormualariohtml = ({ variant, onClick, ids }: PopUpFormualarioProps) 
     }
   };
 
+  const handleClickActualizarServicio = async () => {
+    if (nombre == '' || valor == '') {
+      toast.error('Rellene todos los campo');
+    } else if (!(valor.length >= 4)) {
+      toast.error('El valor debe de ser mayor a mil pesos');
+    } else {
+      try {
+        await putServicio(ids, nombre, valor);
+        toast.success('¡Servicio actualizado!');
+        onClick();
+
+        window.location.href = '/#/servicios';
+      } catch (error) {
+        toast.error('Hubo un error al actualizar el servicio');
+      }
+    }
+  };
+
   const handleClickRegistrarEmpleado = async () => {
+    if (
+      nombre == '' ||
+      fechaNacimiento == '' ||
+      fechaInicio == '' ||
+      direccion == '' ||
+      numeroDocumento == '' ||
+      correo == '' ||
+      celular == '' ||
+      contrasena == '' ||
+      confirmarContrasena == ''
+    ) {
+      toast.error('Rellene todos los campo');
+    } else if (contrasena == confirmarContrasena) {
+      if (fechaNacimiento >= formattedEighteenYearsAgo) {
+        toast.error('Debes ser mayor de 18');
+      } else if (!isValid) {
+        toast.error('El correo no es valido');
+      } else if (!(numeroDocumento.length >= 8)) {
+        toast.error('Número de documento no es valido');
+      } else if (!(celular.length >= 10)) {
+        toast.error('Número de celular no es valido');
+      } else {
+        try {
+          await postRegistrarEmpleado(
+            nombre,
+            fechaNacimiento,
+            fechaInicio,
+            direccion,
+            1,
+            numeroDocumento,
+            correo,
+            celular,
+            contrasena,
+            2,
+            1
+          );
+          toast.success('Colaborador registrado!');
+          onClick();
+
+          window.location.href = '/#/empleado';
+        } catch (error) {
+          toast.error('Hubo un error al registrar el servicio');
+        }
+      }
+    } else {
+      toast.error('Las contraseñas no coinciden');
+    }
+  };
+
+  const handleClickActualizarEmpleado = async () => {
     if (
       nombre == '' ||
       fechaNacimiento == '' ||
@@ -510,10 +613,18 @@ const PopUpFormualariohtml = ({ variant, onClick, ids }: PopUpFormualarioProps) 
           <div className="contenedorbtnAgregar">
             <div className="column">
               <Button
-                placeholder={variant == 'login' ? 'enviar' : 'aceptar'}
+                placeholder={variant == 'login' ? 'enviar' : ids ? 'actualizar' : 'aceptar'}
                 variant="primario"
                 onClick={
-                  variant == 'citas'
+                  ids && variant == 'servicios'
+                    ? handleClickActualizarServicio
+                    : ids && variant == 'proveedores'
+                    ? handleClickActualizarProveedor
+                    : ids && variant == 'productos'
+                    ? handleClickActualizarProducto
+                    : ids && variant == 'empleados'
+                    ? handleClickActualizarEmpleado
+                    : variant == 'citas'
                     ? handleClickRegistrarCita
                     : variant == 'productos'
                     ? handleClickRegistrarProducto

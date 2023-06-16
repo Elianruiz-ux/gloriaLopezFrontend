@@ -14,7 +14,7 @@ export default function PaginaServicio() {
     setIsOpen(!isOpen);
   };
   const params = useParams();
-  const id_proveedor = params.id;
+  const id_servicio = params.id;
   return (
     <div>
       <Helmet>
@@ -43,7 +43,7 @@ export default function PaginaServicio() {
         </div>
         <div>
           {isOpen && (
-            <PopUpFormulario variant={'servicios'} ids={id_proveedor} onClick={abrirPopup} />
+            <PopUpFormulario variant={'servicios'} ids={id_servicio} onClick={abrirPopup} />
           )}
         </div>
       </DivPaginaServicio>
