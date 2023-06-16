@@ -39,19 +39,7 @@ const Tablashtml = ({ variant, onClick }: TablasProps) => {
     fetchData();
   }, []);
 
-  //Producto
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const data = await getProductos();
-        setProducto(data);
-      } catch (error) {
-        console.error(error);
-      }
-    };
 
-    fetchData();
-  }, []);
   return (
     <DivTablas variant={variant}>
       <div>
