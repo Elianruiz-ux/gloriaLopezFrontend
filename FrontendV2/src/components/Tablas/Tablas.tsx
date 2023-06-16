@@ -162,10 +162,10 @@ const Tablashtml = ({ variant, onClick }: TablasProps) => {
                 ? productos.map((producto, index) => (
                     <tr key={index}>
                       <td>{index}</td>
-                      <td>{producto.Nombre_producto}</td>
-                      <td>{producto.cantidad}</td>
+                      <td>{producto.NOMBRE_PRODUCTO}</td>
+                      <td>{producto.CANTIDAD}</td>
                       <td>{producto.TIPO_PRODUCTO}</td>
-                      <td>{producto.NOMBRE}</td>
+                      <td>{producto.PROVEEDOR}</td>
                       <td>
                         <Link
                           to={`/productos/${producto.ID_PRODUCTO}`}

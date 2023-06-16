@@ -16,10 +16,10 @@ export interface Empleado {
 
 export interface Producto {
   ID_PRODUCTO: number;
-  Nombre_producto: string;
-  cantidad: number;
+  NOMBRE_PRODUCTO: string;
+  CANTIDAD: number;
   TIPO_PRODUCTO: string;
-  NOMBRE: string;
+  PROVEEDOR: string;
 }
 
 export interface Proveedores {

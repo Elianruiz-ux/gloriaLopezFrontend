@@ -17,7 +17,7 @@ import {
   postRegistrarProducto
 } from '../../Conection/MetodosPost';
 
-import { putServicio } from '../../Conection/metodosPut';
+import { putServicio, putProducto, putProveedor, putEmpleado } from '../../Conection/metodosPut';
 
 import { useParams } from 'react-router-dom';
 
@@ -146,8 +146,8 @@ const PopUpFormualariohtml = ({ variant, onClick, ids }: PopUpFormualarioProps) 
     if (productos && productos.length > 0) {
       const produ = productos.find((prod) => prod.ID_PRODUCTO == ids);
       if (produ) {
-        setNombre(produ.Nombre_producto);
-        setCantidad(produ.cantidad.toString());
+        setNombre(produ.NOMBRE_PRODUCTO);
+        setCantidad(produ.CANTIDAD.toString());
       } else {
         console.log('cargando');
       }
@@ -167,7 +167,7 @@ const PopUpFormualariohtml = ({ variant, onClick, ids }: PopUpFormualarioProps) 
     if (nombre == '' || cantidad == '') {
       toast.error('Rellene todos los campo');
     } else {
-      await postRegistrarProducto(nombre, parseFloat(cantidad), '1');
+      await postRegistrarProducto(nombre, parseFloat(cantidad), 1, 1);
       toast.success('¡Producto registrado!');
       onClick();
       window.location.href = '/#/productos';
@@ -178,8 +178,8 @@ const PopUpFormualariohtml = ({ variant, onClick, ids }: PopUpFormualarioProps) 
     if (nombre == '' || cantidad == '') {
       toast.error('Rellene todos los campo');
     } else {
-      await postRegistrarProducto(nombre, parseFloat(cantidad), '1');
-      toast.success('¡Producto registrado!');
+      await putProducto(ids, nombre, parseFloat(cantidad));
+      toast.success('¡Producto actualizado!');
       onClick();
       window.location.href = '/#/productos';
     }
@@ -202,8 +202,6 @@ const PopUpFormualariohtml = ({ variant, onClick, ids }: PopUpFormualarioProps) 
       } catch (error) {
         toast.error('Hubo un error al registrar el proveedor');
       }
-      toast.success('¡Proveedor registrado!');
-      onClick();
     }
   };
 
@@ -216,16 +214,14 @@ const PopUpFormualariohtml = ({ variant, onClick, ids }: PopUpFormualarioProps) 
       toast.error('Número de documento no es valido');
     } else {
       try {
-        await postRegistrarProveedores(nombre, correo, direccion, 1, numeroDocumento);
-        toast.success('¡Proveedor registrado!');
+        await putProveedor(ids, nombre, correo, direccion, 1, numeroDocumento);
+        toast.success('¡Proveedor Actualizado!');
         onClick();
 
         window.location.href = '/#/proveedores';
       } catch (error) {
         toast.error('Hubo un error al registrar el proveedor');
       }
-      toast.success('¡Proveedor registrado!');
-      onClick();
     }
   };
 
@@ -328,7 +324,7 @@ const PopUpFormualariohtml = ({ variant, onClick, ids }: PopUpFormualarioProps) 
       confirmarContrasena == ''
     ) {
       toast.error('Rellene todos los campo');
-    } else if (contrasena == confirmarContrasena) {
+    } else if (contrasena == confirmarContrasena && contrasena.length >= 8) {
       if (fechaNacimiento >= formattedEighteenYearsAgo) {
         toast.error('Debes ser mayor de 18');
       } else if (!isValid) {
@@ -339,7 +335,8 @@ const PopUpFormualariohtml = ({ variant, onClick, ids }: PopUpFormualarioProps) 
         toast.error('Número de celular no es valido');
       } else {
         try {
-          await postRegistrarEmpleado(
+          await putEmpleado(
+            ids,
             nombre,
             fechaNacimiento,
             fechaInicio,
@@ -352,7 +349,7 @@ const PopUpFormualariohtml = ({ variant, onClick, ids }: PopUpFormualarioProps) 
             2,
             1
           );
-          toast.success('Colaborador registrado!');
+          toast.success('Colaborador actualizado!');
           onClick();
 
           window.location.href = '/#/empleado';
@@ -361,7 +358,7 @@ const PopUpFormualariohtml = ({ variant, onClick, ids }: PopUpFormualarioProps) 
         }
       }
     } else {
-      toast.error('Las contraseñas no coinciden');
+      toast.error('Contraseña no valida');
     }
   };
 

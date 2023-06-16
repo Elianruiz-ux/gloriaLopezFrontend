@@ -191,10 +191,11 @@ export async function postRegistrarEmpleado(
 export async function postRegistrarProducto(
   nombreProducto: string,
   cantidad: number,
-  idTipoProducto: string
+  idTipoProducto: number,
+  idProveedor: number
 ) {
   try {
-    const response = await fetch(`${API_URL}/productos`, {
+    const response = await fetch(`${API_URL}/productos/producto`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'
@@ -202,7 +203,8 @@ export async function postRegistrarProducto(
       body: JSON.stringify({
         nombreProducto,
         cantidad,
-        idTipoProducto
+        idTipoProducto,
+        idProveedor
       })
     });
 
