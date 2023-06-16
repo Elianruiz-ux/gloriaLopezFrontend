@@ -6,6 +6,8 @@ import Tablas from '../../components/Tablas/Tablas';
 import { useState } from 'react';
 import PopUpFormulario from '../../components/PopupFormulario/PopupFormulario';
 import { useParams } from 'react-router-dom';
+import {getEmpleados} from '../../Conection/metodosGet';
+import * as XLSX from 'xlsx';
 
 export default function PaginaEmpleado() {
   const [isOpen, setIsOpen] = useState(false);
@@ -17,7 +19,21 @@ export default function PaginaEmpleado() {
   const id_empleado = params.id;
 
   const handleClickGenerar = () => {
-    ('');
+    getEmpleados()
+    .then(data => {
+
+      const workbook = XLSX.utils.book_new();
+
+      const worksheet = XLSX.utils.json_to_sheet(data);
+
+      XLSX.utils.book_append_sheet(workbook, worksheet, 'Empleados');
+
+      XLSX.writeFile(workbook, 'empleados.xlsx');
+    })
+    .catch(error => {
+      console.error('Error al obtener los empleados:', error);
+    });
+
   };
   return (
     <div>
