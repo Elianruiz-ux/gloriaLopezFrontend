@@ -6,7 +6,7 @@ import Tablas from '../../components/Tablas/Tablas';
 import { useState } from 'react';
 import PopUpFormulario from '../../components/PopupFormulario/PopupFormulario';
 import { useParams } from 'react-router-dom';
-import {getProveedores} from '../../Conection/metodosGet';
+import { getProveedor } from '../../Conection/metodosGet';
 import * as XLSX from 'xlsx';
 
 export default function PaginaProveedores() {
@@ -20,20 +20,19 @@ export default function PaginaProveedores() {
   const id_proveedor = params.id;
 
   const handleClickGenerar = () => {
-    getProveedores()
-    .then(data => {
+    getProveedor()
+      .then((data) => {
+        const workbook = XLSX.utils.book_new();
 
-      const workbook = XLSX.utils.book_new();
+        const worksheet = XLSX.utils.json_to_sheet(data);
 
-      const worksheet = XLSX.utils.json_to_sheet(data);
+        XLSX.utils.book_append_sheet(workbook, worksheet, 'Proveedores');
 
-      XLSX.utils.book_append_sheet(workbook, worksheet, 'Proveedores');
-
-      XLSX.writeFile(workbook, 'proveedores.xlsx');
-    })
-    .catch(error => {
-      console.error('Error al obtener los proveedores:', error);
-    });
+        XLSX.writeFile(workbook, 'proveedores.xlsx');
+      })
+      .catch((error) => {
+        console.error('Error al obtener los proveedores:', error);
+      });
   };
   return (
     <div>

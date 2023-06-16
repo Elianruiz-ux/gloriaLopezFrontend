@@ -6,9 +6,8 @@ import Tablas from '../../components/Tablas/Tablas';
 import { useState } from 'react';
 import PopUpFormulario from '../../components/PopupFormulario/PopupFormulario';
 import { useParams } from 'react-router-dom';
-import {getProductos} from '../../Conection/metodosGet';
+import { getProductos } from '../../Conection/metodosGet';
 import * as XLSX from 'xlsx';
-
 
 export default function PaginaProducto() {
   const [isOpen, setIsOpen] = useState(false);
@@ -20,22 +19,19 @@ export default function PaginaProducto() {
   const id_producto = params.id;
 
   const handleClickGenerar = () => {
-
     getProductos()
-    .then(data => {
+      .then((data) => {
+        const workbook = XLSX.utils.book_new();
 
-      const workbook = XLSX.utils.book_new();
+        const worksheet = XLSX.utils.json_to_sheet(data);
 
-      const worksheet = XLSX.utils.json_to_sheet(data);
+        XLSX.utils.book_append_sheet(workbook, worksheet, 'Productos');
 
-      XLSX.utils.book_append_sheet(workbook, worksheet, 'Productos');
-
-      XLSX.writeFile(workbook, 'productos.xlsx');
-    })
-    .catch(error => {
-      console.error('Error al obtener los productos:', error);
-    });
-
+        XLSX.writeFile(workbook, 'productos.xlsx');
+      })
+      .catch((error) => {
+        console.error('Error al obtener los productos:', error);
+      });
   };
   return (
     <div>

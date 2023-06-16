@@ -22,7 +22,7 @@ export async function getProductos() {
 }
 
 //Get proveedor
-export async function getProveedores() {
+export async function getProveedor() {
   try {
     const response = await fetch(`${API_URL}/proveedor/all`, {
       method: 'GET',

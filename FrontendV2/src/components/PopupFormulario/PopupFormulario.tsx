@@ -9,7 +9,7 @@ import { useEffect, useState } from 'react';
 import { sendEmail } from '../../Conection/MetodosPost';
 
 import { Empleado, Producto, Proveedores, Servicio } from '../../data/Types';
-import { getEmpleados, getProductos, getProveedores, getServicios } from '../../Conection/metodosGet';
+import { getEmpleados, getProductos, getProveedor, getServicios } from '../../Conection/metodosGet';
 import {
   postRegistrarServicio,
   postRegistrarProveedores,
@@ -73,7 +73,7 @@ const PopUpFormualariohtml = ({ variant, onClick, ids }: PopUpFormualarioProps) 
         const data = await getEmpleados();
         const dataSer = await getServicios();
         const dataPro = await getProductos();
-        const dataProve = await getProveedores();
+        const dataProve = await getProveedor();
         variant == 'empleados' && setEmpleados(data);
         variant == 'servicios' && setServicios(dataSer);
         variant == 'productos' && setProductos(dataPro);

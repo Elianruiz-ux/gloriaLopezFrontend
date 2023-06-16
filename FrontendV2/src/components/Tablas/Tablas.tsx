@@ -1,6 +1,11 @@
 import { ThemeProvider } from 'styled-components'; // Define the interface for the Input component
 import { DivTablas } from './Tablas.styled';
-import { getEmpleados, getProveedores, getServicios, getProductos } from '../../Conection/metodosGet';
+import {
+  getEmpleados,
+  getProveedor,
+  getServicios,
+  getProductos
+} from '../../Conection/metodosGet';
 import { useEffect, useState } from 'react';
 import { Empleado, Proveedores, Servicio, Producto } from '../../data/Types';
 import { BsPencilSquare } from 'react-icons/bs';
@@ -24,7 +29,7 @@ const Tablashtml = ({ variant, onClick }: TablasProps) => {
     const fetchData = async () => {
       try {
         const data = await getEmpleados();
-        const dataPro = await getProveedores();
+        const dataPro = await getProveedor();
         const dataSer = await getServicios();
         const dataProd = await getProductos();
         variant == 'empleados' && setEmpleados(data);
@@ -38,7 +43,6 @@ const Tablashtml = ({ variant, onClick }: TablasProps) => {
 
     fetchData();
   }, []);
-
 
   return (
     <DivTablas variant={variant}>

@@ -6,7 +6,7 @@ import Tablas from '../../components/Tablas/Tablas';
 import PopUpFormulario from '../../components/PopupFormulario/PopupFormulario';
 import { useState } from 'react';
 import { useParams } from 'react-router-dom';
-import {getServicios} from '../../Conection/metodosGet';
+import { getServicios } from '../../Conection/metodosGet';
 
 import * as XLSX from 'xlsx';
 
@@ -21,19 +21,18 @@ export default function PaginaServicio() {
 
   const handleClickGenerar = () => {
     getServicios()
-    .then(data => {
+      .then((data) => {
+        const workbook = XLSX.utils.book_new();
 
-      const workbook = XLSX.utils.book_new();
+        const worksheet = XLSX.utils.json_to_sheet(data);
 
-      const worksheet = XLSX.utils.json_to_sheet(data);
+        XLSX.utils.book_append_sheet(workbook, worksheet, 'Servicios');
 
-      XLSX.utils.book_append_sheet(workbook, worksheet, 'Servicios');
-
-      XLSX.writeFile(workbook, 'servicios.xlsx');
-    })
-    .catch(error => {
-      console.error('Error al obtener los servicios:', error);
-    });
+        XLSX.writeFile(workbook, 'servicios.xlsx');
+      })
+      .catch((error) => {
+        console.error('Error al obtener los servicios:', error);
+      });
   };
   return (
     <div>
