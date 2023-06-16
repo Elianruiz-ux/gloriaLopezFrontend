@@ -24,35 +24,13 @@ const Tablashtml = ({ variant, onClick }: TablasProps) => {
     const fetchData = async () => {
       try {
         const data = await getEmpleados();
-        setEmpleados(data);
-      } catch (error) {
-        console.error(error);
-      }
-    };
-
-    fetchData();
-  }, []);
-
-  //Proveedores
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const data = await getProveedor();
-        setProveedores(data);
-      } catch (error) {
-        console.error(error);
-      }
-    };
-
-    fetchData();
-  }, []);
-
-  //Servicios
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const data = await getServicios();
-        setServicios(data);
+        const dataPro = await getProveedor();
+        const dataSer = await getServicios();
+        const dataProd = await getProductos();
+        variant == 'empleados' && setEmpleados(data);
+        variant == 'proveedores' && setProveedores(dataPro);
+        variant == 'servicios' && setServicios(dataSer);
+        variant == 'productos' && setProducto(dataProd);
       } catch (error) {
         console.error(error);
       }
@@ -143,13 +121,13 @@ const Tablashtml = ({ variant, onClick }: TablasProps) => {
           <tbody>
             {variant == 'citas' && (
               <tr>
-                <td>dd</td>
-                <td>dd</td>
-                <td>dd</td>
-                <td>dd</td>
-                <td>dd</td>
-                <td>dd</td>
-                <td>dd</td>
+                <td>sin datos</td>
+                <td>sin datos</td>
+                <td>sin datos</td>
+                <td>sin datos</td>
+                <td>sin datos</td>
+                <td>sin datos</td>
+                <td>sin datos</td>
                 <td>
                   <button className="btnEditar">
                     <BsPencilSquare />

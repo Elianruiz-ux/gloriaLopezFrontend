@@ -16,6 +16,10 @@ export default function PaginaProveedores() {
   };
   const params = useParams();
   const id_proveedor = params.id;
+
+  const handleClickGenerar = () => {
+    ('');
+  };
   return (
     <div>
       <Helmet>
@@ -33,6 +37,13 @@ export default function PaginaProveedores() {
                 placeholder="Agregar proveedor"
                 variant="secundario"
                 onClick={abrirPopup}
+              ></Button>
+            </div>
+            <div className="contenedorBtn">
+              <Button
+                placeholder="Generar excel"
+                variant="primario"
+                onClick={handleClickGenerar}
               ></Button>
             </div>
           </div>

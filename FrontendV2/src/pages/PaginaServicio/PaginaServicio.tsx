@@ -15,6 +15,10 @@ export default function PaginaServicio() {
   };
   const params = useParams();
   const id_servicio = params.id;
+
+  const handleClickGenerar = () => {
+    ('');
+  };
   return (
     <div>
       <Helmet>
@@ -32,6 +36,13 @@ export default function PaginaServicio() {
                 placeholder="Agregar servicio"
                 variant="secundario"
                 onClick={abrirPopup}
+              ></Button>
+            </div>
+            <div className="contenedorBtn">
+              <Button
+                placeholder="Generar excel"
+                variant="primario"
+                onClick={handleClickGenerar}
               ></Button>
             </div>
           </div>

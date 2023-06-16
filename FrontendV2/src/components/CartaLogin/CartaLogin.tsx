@@ -60,7 +60,11 @@ const Cartahtml = ({ variant, onClick }: CartaLoginProps) => {
       toast.error('Número de celular no es valido');
     } else if (!isValid) {
       toast.error('Correo no valido');
-    } else if (password !== confirmarPassword) {
+    } else if (
+      password !== confirmarPassword &&
+      password.length >= 8 &&
+      confirmarPassword.length >= 8
+    ) {
       toast.error('Las contraseñas no coinciden');
     } else {
       try {

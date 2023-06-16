@@ -15,6 +15,10 @@ export default function PaginaCitas() {
   };
   const params = useParams();
   const id_citas = params.id;
+
+  const handleClickGenerar = () => {
+    ('');
+  };
   return (
     <div>
       <Helmet>
@@ -29,6 +33,13 @@ export default function PaginaCitas() {
           <div className="contenedorFiltros">
             <div className="contenedorBtn">
               <Button placeholder="Agregar cita" variant="secundario" onClick={abrirPopup}></Button>
+            </div>
+            <div className="contenedorBtn">
+              <Button
+                placeholder="Generar excel"
+                variant="primario"
+                onClick={handleClickGenerar}
+              ></Button>
             </div>
           </div>
           <div className="contenedorTabla">

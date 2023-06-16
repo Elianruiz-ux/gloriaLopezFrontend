@@ -15,6 +15,10 @@ export default function PaginaProducto() {
   };
   const params = useParams();
   const id_producto = params.id;
+
+  const handleClickGenerar = () => {
+    ('');
+  };
   return (
     <div>
       <Helmet>
@@ -32,6 +36,13 @@ export default function PaginaProducto() {
                 placeholder="Agregar producto"
                 variant="secundario"
                 onClick={abrirPopup}
+              ></Button>
+            </div>
+            <div className="contenedorBtn">
+              <Button
+                placeholder="Generar excel"
+                variant="primario"
+                onClick={handleClickGenerar}
               ></Button>
             </div>
           </div>

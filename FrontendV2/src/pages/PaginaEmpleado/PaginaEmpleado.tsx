@@ -15,6 +15,10 @@ export default function PaginaEmpleado() {
   };
   const params = useParams();
   const id_empleado = params.id;
+
+  const handleClickGenerar = () => {
+    ('');
+  };
   return (
     <div>
       <Helmet>
@@ -32,6 +36,13 @@ export default function PaginaEmpleado() {
                 placeholder="Agregar empleado"
                 variant="secundario"
                 onClick={abrirPopup}
+              ></Button>
+            </div>
+            <div className="contenedorBtn">
+              <Button
+                placeholder="Generar excel"
+                variant="primario"
+                onClick={handleClickGenerar}
               ></Button>
             </div>
           </div>
