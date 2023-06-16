@@ -170,6 +170,8 @@ const PopUpFormualariohtml = ({ variant, onClick, ids }: PopUpFormualarioProps) 
   const handleClickRegistrarProducto = async () => {
     if (nombre == '' || cantidad == '' || tipoProducto == '' || proveedor == '') {
       toast.error('Rellene todos los campo');
+    } else if (parseFloat(cantidad) < 0) {
+      toast.error('La cantidad no puede ser menor a cero');
     } else {
       await postRegistrarProducto(
         nombre,
@@ -186,6 +188,8 @@ const PopUpFormualariohtml = ({ variant, onClick, ids }: PopUpFormualarioProps) 
   const handleClickActualizarProducto = async () => {
     if (nombre == '' || cantidad == '') {
       toast.error('Rellene todos los campo');
+    } else if (parseFloat(cantidad) < 0) {
+      toast.error('La cantidad no puede ser menor a cero');
     } else {
       await putProducto(ids, nombre, parseFloat(cantidad));
       toast.success('¡Producto actualizado!');
@@ -262,7 +266,7 @@ const PopUpFormualariohtml = ({ variant, onClick, ids }: PopUpFormualarioProps) 
   const handleClickRegistrarServicio = async () => {
     if (nombre == '' || valor == '') {
       toast.error('Rellene todos los campo');
-    } else if (!(valor.length >= 4)) {
+    } else if (!(parseFloat(valor) >= 1000)) {
       toast.error('El valor debe de ser mayor a mil pesos');
     } else {
       try {
@@ -280,7 +284,7 @@ const PopUpFormualariohtml = ({ variant, onClick, ids }: PopUpFormualarioProps) 
   const handleClickActualizarServicio = async () => {
     if (nombre == '' || valor == '') {
       toast.error('Rellene todos los campo');
-    } else if (!(valor.length >= 4)) {
+    } else if (!(parseFloat(valor) >= 1000)) {
       toast.error('El valor debe de ser mayor a mil pesos');
     } else {
       try {
@@ -311,7 +315,7 @@ const PopUpFormualariohtml = ({ variant, onClick, ids }: PopUpFormualarioProps) 
       tipoEmpleado == ''
     ) {
       toast.error('Rellene todos los campo');
-    } else if (contrasena == confirmarContrasena) {
+    } else if (contrasena == confirmarContrasena && contrasena.length >= 8) {
       if (fechaNacimiento >= formattedEighteenYearsAgo) {
         toast.error('Debes ser mayor de 18');
       } else if (!isValid) {
@@ -344,7 +348,7 @@ const PopUpFormualariohtml = ({ variant, onClick, ids }: PopUpFormualarioProps) 
         }
       }
     } else {
-      toast.error('Las contraseñas no coinciden');
+      toast.error('Contraseña no valida');
     }
   };
 
